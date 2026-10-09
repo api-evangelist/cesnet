@@ -1,0 +1,566 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Perun RPC API
+  version: 1.0.0
+extends: ../openapi/_original/cesnet-perun-rpc-openapi.yml
+x-generated: '2026-10-09'
+x-method: generated
+x-source: openapi/_original/cesnet-perun-rpc-openapi.yml
+x-rationale: Adds self-hosting/auth-path context to info and flags the 137 operations whose operationId begins with delete
+  or remove as x-agent-destructive (derived from the operationId verb only), without mutating the original contract.
+actions:
+- target: $.info
+  description: Record that Perun is self-hosted software and how the server URL selects authentication.
+  update:
+    x-self-hosted: true
+    x-host-note: Perun is deployed per institution; the servers entry https://{server}/{authentication}/rpc defaults to CESNET
+      api-dev.perun-aai.org. The {authentication} segment (ba, krb, non, cert, oauth, fed) selects the auth method.
+    x-docs: https://perun-aai.org/documentation/
+- target: $.paths['/urlinjsonout/attributesManager/deleteAttribute'].post
+  description: Flag deleteAttributeDefinition as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/deleteAttributes'].post
+  description: Flag deleteAttributeDefinitions as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/m-workWithUserAttributes'].post
+  description: Flag removeMemberAttributesWorkWithUserAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/m-g-workWithUserAttributes'].post
+  description: Flag removeMemberGroupAttributesWorkWithUserAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/g-r-workWithGroupAttributes'].post
+  description: Flag removeGroupResourceAttributesWorkWithGroupAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/m-g'].post
+  description: Flag removeMemberGroupAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/m-r'].post
+  description: Flag removeMemberResourceAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/u-f'].post
+  description: Flag removeUserFacilityAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/f-r-u-m'].post
+  description: Flag removeAttributesForFacilityResourceUserMember as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/f-r-g-u-m'].post
+  description: Flag removeAttributesForFacilityResourceGroupUserMember as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/g-r'].post
+  description: Flag removeGroupResourceAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/r'].post
+  description: Flag removeResourceAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/ues'].post
+  description: Flag removeUesAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/h'].post
+  description: Flag removeHostAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/f'].post
+  description: Flag removeFacilityAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/m'].post
+  description: Flag removeMemberAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/u'].post
+  description: Flag removeUserAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/g'].post
+  description: Flag removeGroupAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttributes/v'].post
+  description: Flag removeVoAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/u-f'].post
+  description: Flag removeUserFacilityAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/f'].post
+  description: Flag removeFacilityAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/v'].post
+  description: Flag removeVoAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/m-r'].post
+  description: Flag removeMemberResourceAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/g-r'].post
+  description: Flag removeGroupResourceAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/r'].post
+  description: Flag removeResourceAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/m-g'].post
+  description: Flag removeMemberGroupAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/m'].post
+  description: Flag removeMemberAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/u'].post
+  description: Flag removeUserAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/g'].post
+  description: Flag removeGroupAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/h'].post
+  description: Flag removeHostAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/ues'].post
+  description: Flag removeUserExtSourceAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/attributesManager/removeAttribute/e'].post
+  description: Flag removeEntitylessAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/cabinetManager/deletePublicationSystem'].post
+  description: Flag deletePublicationSystem as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/cabinetManager/deleteCategory'].post
+  description: Flag deleteCategory as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/cabinetManager/deleteThanks'].post
+  description: Flag deleteThanks as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/cabinetManager/deleteAuthorship'].post
+  description: Flag deleteAuthorship as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/cabinetManager/deletePublication'].post
+  description: Flag deletePublication as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/extSourcesManager/deleteExtSource'].post
+  description: Flag deleteExtSource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/extSourcesManager/removeExtSource/v-s'].post
+  description: Flag removeExtSourceWithVoSource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/extSourcesManager/removeExtSources/v-s'].post
+  description: Flag removeExtSourcesWithVoSource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/extSourcesManager/removeExtSource/g-s'].post
+  description: Flag removeExtSourceWithGroupSource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/extSourcesManager/removeExtSources/g-s'].post
+  description: Flag removeExtSourcesWithGroupSource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/usersManager/deleteAlternativePassword'].post
+  description: Flag deleteAlternativePassword as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/usersManager/removeUserExtSource'].post
+  description: Flag removeUserExtSource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/usersManager/removeUserExtSources'].post
+  description: Flag removeUserExtSources as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/usersManager/removeSpecificUserOwner'].post
+  description: Flag removeSpecificUserOwner as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/usersManager/deletePassword/login'].post
+  description: Flag deletePasswordForLogin as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/usersManager/deletePassword/user'].post
+  description: Flag deletePasswordForUser as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/usersManager/deleteUser'].post
+  description: Flag deleteUser as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/usersManager/deleteReservedLogin'].post
+  description: Flag deleteReservedLogin as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/membersManager/removeSponsor'].post
+  description: Flag removeSponsor as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/membersManager/removeSponsors'].post
+  description: Flag removeSponsors as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/membersManager/deleteMember'].post
+  description: Flag deleteMember as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/membersManager/deleteMembers'].post
+  description: Flag deleteMembers as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/membersManager/deleteMembers'].post
+  description: Flag deleteMembersBodyParams as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwner'].post
+  description: Flag removeFacilityOwner as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwners'].post
+  description: Flag removeFacilityOwners as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwner/f-o-name'].post
+  description: Flag removeFacilityOwnerByFacilityNameOwnerName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwners/f-o-name'].post
+  description: Flag removeFacilityOwnersByFacilityNameOwnerName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwner/f-name'].post
+  description: Flag removeFacilityOwnerByFacilityName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwners/f-name'].post
+  description: Flag removeFacilityOwnersByFacilityName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwner/o-name'].post
+  description: Flag removeFacilityOwnerByOwnerName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeOwners/o-name'].post
+  description: Flag removeFacilityOwnersByOwnerName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/deleteFacility'].post
+  description: Flag deleteFacility as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/deleteFacility/f-name'].post
+  description: Flag deleteFacilityByFacilityName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeHosts'].post
+  description: Flag removeHosts as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeHosts/f-name'].post
+  description: Flag removeHostsByFacilityName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeHost'].post
+  description: Flag removeHost as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeHostByHostname'].post
+  description: Flag removeHostByHostname as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeAdmin/user'].post
+  description: Flag removeFacilityAdminUser as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeAdmin/user/f-name'].post
+  description: Flag removeFacilityAdminUserByFacilityName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeAdmin/group'].post
+  description: Flag removeFacilityAdminGroup as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeAdmin/group/f-name'].post
+  description: Flag removeFacilityAdminGroupByFacilityName as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeBan/byId'].post
+  description: Flag removeFacilityBanById as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/facilitiesManager/removeBan/byUserIdFacilityId'].post
+  description: Flag removeBanByUserIdFacilityId as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/ownersManager/deleteOwner'].post
+  description: Flag deleteOwner as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/ownersManager/deleteOwners'].post
+  description: Flag deleteOwners as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/groupsManager/deleteGroup'].post
+  description: Flag deleteGroup as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/groupsManager/deleteGroups'].post
+  description: Flag deleteGroups as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/groupsManager/removeMember'].post
+  description: Flag removeMember as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/groupsManager/removeMembers'].post
+  description: Flag removeMembers as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/groupsManager/removeMembers'].post
+  description: Flag removeMembersBodyParams as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/groupsManager/removeGroupUnion'].post
+  description: Flag removeGroupUnion as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/groupsManager/removeGroupUnions'].post
+  description: Flag removeGroupUnions as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/deleteResource'].post
+  description: Flag deleteResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeGroupFromResource'].post
+  description: Flag removeGroupFromResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeGroupsFromResource'].post
+  description: Flag removeGroupsFromResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeGroupFromResources'].post
+  description: Flag removeGroupFromResources as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeAdmin/r-u'].post
+  description: Flag removeUserAdminResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeAdmin/r-g'].post
+  description: Flag removeGroupAdminResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeService'].post
+  description: Flag removeService as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeService/forResources'].post
+  description: Flag removeServiceForResources as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeServices'].post
+  description: Flag removeServices as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/deleteAllResources'].post
+  description: Flag deleteAllResources as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/resourcesManager/deleteResourceTag'].post
+  description: Flag deleteResourceTag as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/deleteAllResourcesTagsForVo'].post
+  description: Flag deleteAllResourcesTagsForVo as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/resourcesManager/removeResourceTagFromResource'].post
+  description: Flag removeResourceTagFromResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/resourcesManager/removeResourceTagsFromResource'].post
+  description: Flag removeResourceTagsFromResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeAllResourcesTagFromResource'].post
+  description: Flag removeAllResourceTagsFromResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeBan/id'].post
+  description: Flag removeResourceBanById as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeBan/member-resource-id'].post
+  description: Flag removeBanByMemberAndResource as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeResourceSelfServiceUser'].post
+  description: Flag removeResourceSelfServiceUser as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/resourcesManager/removeResourceSelfServiceGroup'].post
+  description: Flag removeResourceSelfServiceGroup as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/deleteVo'].post
+  description: Flag deleteVo as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/removeAdmin/user'].post
+  description: Flag removeVoAdminUser as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/removeAdmin/group'].post
+  description: Flag removeVoAdminGroup as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/removeSponsorRole/user'].post
+  description: Flag removeSponsorRoleFromUser as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/removeSponsorRole/group'].post
+  description: Flag removeSponsorRoleFromGroup as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/removeBan'].post
+  description: Flag removeVoBan as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/removeBanForMember'].post
+  description: Flag removeVoBanForMember as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/vosManager/removeMemberVo'].post
+  description: Flag removeMemberVo as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/registrarManager/deleteApplication'].post
+  description: Flag deleteApplication as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/registrarManager/deleteApplications'].post
+  description: Flag deleteApplications as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/registrarManager/deleteApplicationMail/v'].post
+  description: Flag deleteApplicationMailForVo as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/registrarManager/deleteApplicationMail/g'].post
+  description: Flag deleteApplicationMailForGroup as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/registrarManager/deleteGroupsFromAutoRegistration'].post
+  description: Flag deleteGroupsFromAutoRegistration as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/registrarManager/deleteGroupsFromAutoRegistration/vo'].post
+  description: Flag deleteVoGroupsFromAutoRegistration as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/registrarManager/deleteGroupsFromAutoRegistration/group'].post
+  description: Flag deleteSubgroupsFromAutoRegistration as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/deleteService'].post
+  description: Flag deleteService as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/deleteServices'].post
+  description: Flag deleteServices as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/removeRequiredAttribute'].post
+  description: Flag removeRequiredAttribute as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/removeRequiredAttributes'].post
+  description: Flag removeRequiredAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/removeAllRequiredAttributes'].post
+  description: Flag removeAllRequiredAttributes as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/removeDestination'].post
+  description: Flag removeDestination as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/removeDestinations'].post
+  description: Flag removeDestinations as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/servicesManager/removeDestinationsByRichDestinations'].post
+  description: Flag removeDestinationsByRichDestinations as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/servicesManager/removeAllDestinations'].post
+  description: Flag removeAllDestinations as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/tasksManager/deleteTask'].post
+  description: Flag deleteTask as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/tasksManager/deleteTaskResultById'].post
+  description: Flag deleteTaskResultById as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/tasksManager/deleteTaskResultsByIds'].post
+  description: Flag deleteTaskResultsByIds as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/tasksManager/deleteTaskResults/id'].post
+  description: Flag deleteTaskResultsIds as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/json/tasksManager/deleteTaskResults/name'].post
+  description: Flag deleteTaskResultsNames as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/notificationManager/removePerunNotifTemplateById'].post
+  description: Flag removePerunNotifTemplateById as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/notificationManager/removePerunNotifRegexById'].post
+  description: Flag removePerunNotifRegexById as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/notificationManager/removePerunNotifTemplateRegexRelation'].post
+  description: Flag removePerunNotifTemplateRegexRelation as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/notificationManager/removePerunNotifReceiverById'].post
+  description: Flag removePerunNotifReceiverById as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true
+- target: $.paths['/urlinjsonout/notificationManager/removePerunNotifTemplateMessage'].post
+  description: Flag removePerunNotifTemplateMessage as destructive so agents confirm before calling.
+  update:
+    x-agent-destructive: true

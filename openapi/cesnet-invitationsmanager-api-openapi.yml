@@ -1,0 +1,921 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Invitations Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged InvitationsManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: InvitationsManager
+  description: InvitationsManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-InvitationsManager.html
+paths:
+  /json/invitationsManager/getInvitationByApplication:
+    get:
+      tags:
+      - InvitationsManager
+      operationId: getInvitationByApplication
+      summary: Get invitation object associated with the application.
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/invitationsManager/getInvitationById:
+    get:
+      tags:
+      - InvitationsManager
+      operationId: getInvitationById
+      summary: Gets existing invitation by its ID
+      parameters:
+      - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/invitationsManager/getInvitationWithSenderByApplication:
+    get:
+      tags:
+      - InvitationsManager
+      operationId: getInvitationWithSenderByApplication
+      summary: Get invitation object associated with the application, enriched with the…
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationWithSenderResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/invitationsManager/inviteToGroup:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: inviteToGroup
+      summary: Creates invitation to group and sends the link via email.
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/groupId'
+      - name: receiverName
+        description: Name of the invited user
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: receiverEmail
+        description: Email of the invited user
+        schema:
+          type: string
+          format: string
+        in: query
+        required: true
+      - name: language
+        description: Language of the invitation, should match available instance locales
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: expiration
+        description: Expiration date of the invite in format yyyy-MM-dd}
+        schema:
+          type: string
+        in: query
+        required: false
+      - name: redirectUrl
+        description: URL to redirect to after application filled out.
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/invitationsManager/inviteToGroupFromCsv:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: inviteToGroupFromCsv
+      summary: Creates invitations to group and sends the link via email from CSV.
+      responses:
+        '200':
+          $ref: '#/components/responses/MapStringStringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputInviteToGroupFromCsv
+              description: input to inviteToGroupFromCsv
+              type: object
+              required:
+              - vo
+              - group
+              - invitationData
+              - language
+              - expiration
+              properties:
+                vo:
+                  type: integer
+                  description: vo id
+                group:
+                  type: integer
+                  description: group id
+                invitationData:
+                  type: array
+                  items:
+                    type: string
+                  description: values separated with semicolons
+                language:
+                  type: string
+                  description: language
+                expiration:
+                  type:
+                  - string
+                  - 'null'
+                  description: 'Date in format yyyy-MM-dd '
+                redirectUrl:
+                  type:
+                  - string
+                  - 'null'
+                  description: redirect url
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/invitationsManager/canInvitationBeAccepted:
+    get:
+      tags:
+      - InvitationsManager
+      operationId: canInvitationBeAccepted
+      summary: Checks whether an invitation under the given uuid exists, is in a pending state…
+      parameters:
+      - $ref: '#/components/parameters/invitationUuid'
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/invitationsManager/revokeInvitationById:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: revokeInvitationById
+      summary: Revokes existing invitation by its id
+      parameters:
+      - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/invitationsManager/revokeInvitationByUuid:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: revokeInvitationByUuid
+      summary: Revokes existing invitation by its uuid
+      parameters:
+      - $ref: '#/components/parameters/invitationUuid'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/invitationsManager/extendInvitationExpiration:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: extendInvitationExpiration
+      summary: Sets a new later expiration date for the invitation
+      parameters:
+      - $ref: '#/components/parameters/invitationId'
+      - name: expiration
+        description: New expiration date of the invite in format yyyy-MM-dd}
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/invitationsManager/extendInvitationExpirationByUUID:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: extendInvitationExpirationByUUID
+      summary: Sets a new later expiration date for the invitation given by its token
+      parameters:
+      - $ref: '#/components/parameters/invitationUuid'
+      - name: expiration
+        description: New expiration date of the invite in format yyyy-MM-dd}
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/InvitationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/invitationsManager/getInvitationsPage:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: getInvitationsPage
+      summary: Get page of invitations for the given group, based on the query attributes
+      responses:
+        '200':
+          $ref: '#/components/responses/PaginatedInvitationWithSenderResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetInvitationsPage
+              description: input to getInvitationsPage
+              type: object
+              required:
+              - group
+              - query
+              properties:
+                group:
+                  type: integer
+                query:
+                  $ref: '#/components/schemas/InvitationsPageQuery'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/invitationsManager/resendInvitation:
+    post:
+      tags:
+      - InvitationsManager
+      operationId: resendInvitation
+      summary: Resends the notification for the given preapproved invitation
+      parameters:
+      - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  parameters:
+    voId:
+      name: vo
+      description: id of Vo
+      schema:
+        type: integer
+      in: query
+      required: true
+    invitationUuid:
+      name: uuid
+      description: uuid of Invitation
+      schema:
+        type: string
+        format: uuid
+      in: query
+      required: true
+    groupId:
+      name: group
+      description: id of Group
+      schema:
+        type: integer
+      in: query
+      required: true
+    applicationId:
+      name: appId
+      description: id of application
+      schema:
+        type: integer
+      in: query
+      required: true
+    invitationId:
+      name: invitation
+      description: id of Invitation
+      schema:
+        type: integer
+      in: query
+      required: true
+  schemas:
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Invitation:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        voId:
+          type: integer
+        groupId:
+          type: integer
+        applicationId:
+          type:
+          - integer
+          - 'null'
+        senderId:
+          type: integer
+        receiverName:
+          type: string
+        receiverEmail:
+          type: string
+          format: email
+        redirectUrl:
+          type:
+          - string
+          - 'null'
+        token:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        language:
+          type: string
+        expiration:
+          type: string
+        status:
+          $ref: '#/components/schemas/InvitationStatus'
+    InvitationsPageQuery:
+      properties:
+        pageSize:
+          type: integer
+        offset:
+          type: integer
+        order:
+          $ref: '#/components/schemas/SortingOrder'
+        sortColumn:
+          $ref: '#/components/schemas/InvitationsOrderColumn'
+        searchString:
+          type: string
+        statuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvitationStatus'
+        expirationFrom:
+          type: string
+          format: date
+        expirationTo:
+          type: string
+          format: date
+      required:
+      - pageSize
+      - offset
+      - order
+      - sortColumn
+    InvitationsOrderColumn:
+      type: string
+      enum:
+      - ID
+      - STATUS
+      - EXPIRATION
+      - RECEIVER_NAME
+      - RECEIVER_EMAIL
+      - SENDER_NAME
+    InvitationStatus:
+      type: string
+      enum:
+      - PENDING
+      - ACCEPTED
+      - EXPIRED
+      - REVOKED
+      - UNSENT
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    InvitationWithSender:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Invitation'
+      properties:
+        senderName:
+          type: string
+        senderEmail:
+          type: string
+          format: email
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    SortingOrder:
+      type: string
+      enum:
+      - ASCENDING
+      - DESCENDING
+    PaginatedInvitationsWithSender:
+      properties:
+        offset:
+          type: integer
+        pageSize:
+          type: integer
+        totalCount:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvitationWithSender'
+      required:
+      - offset
+      - pageSize
+      - totalCount
+      - data
+  responses:
+    MapStringStringResponse:
+      description: returns Map<String,String>
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+    InvitationResponse:
+      description: returns Invitation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Invitation'
+    VoidResponse:
+      description: returns nothing
+    PaginatedInvitationWithSenderResponse:
+      description: returns Paginated<InvitationWithSender>
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginatedInvitationsWithSender'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    InvitationWithSenderResponse:
+      description: returns InvitationWithSender
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvitationWithSender'
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

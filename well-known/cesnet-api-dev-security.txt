@@ -1,0 +1,14 @@
+# RFC 9116 security vulnerability disclosure practices https://www.rfc-editor.org/rfc/rfc9116
+Contact: mailto:certs@cesnet.cz
+Contact: tel:+420-234-680-222
+Encryption: https://csirt.cesnet.cz/publickey.asc
+Expires: 2027-01-01T00:00:00Z
+Policy: https://csirt.cesnet.cz/en/vulnerability_report
+Preferred-Languages: en, cs, sk
+Canonical: https://perun-dev.cesnet.cz/.well-known/security.txt
+Canonical: https://perun-dev.vm.cesnet.cz/.well-known/security.txt
+Canonical: https://api-dev.perun-aai.org/.well-known/security.txt
+Canonical: https://gui-dev.perun-aai.org/.well-known/security.txt
+Canonical: https://profile-dev.perun-aai.org/.well-known/security.txt
+Canonical: https://pwdreset-dev.perun-aai.org/.well-known/security.txt
+Canonical: https://publications-dev.perun-aai.org/.well-known/security.txt

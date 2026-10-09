@@ -1,0 +1,67 @@
+generated: '2026-10-09'
+method: searched
+source:
+- https://www.cesnet.cz/en/gdpr
+- https://www.cesnet.cz/en/terms-and-conditions
+name: CESNET Regulatory Posture
+description: >-
+  Regulatory signals from CESNET's own legal page (https://www.cesnet.cz/en/gdpr, "How CESNET processes personal data").
+  CESNET, z. s. p. o. is a Czech association acting as data controller under Regulation (EU) 2016/679 (GDPR).
+  https://www.cesnet.cz/en/terms-and-conditions (HTTP 200) is only an index of services and holds no posture language.
+  No accessibility statement was found (/en/accessibility returned 404). No subprocessor list, AI, incident-notification,
+  data-residency, GPC or transparency-report language was found on the pages read.
+signals:
+  data_subject_request:
+    url: https://www.cesnet.cz/en/gdpr
+    section: Information about processing personal data for participants of public events of the CESNET Association
+    note: >-
+      GDPR rights (Art. 15-18, 21, complaint to the Czech Office for Personal Data Protection) are listed for newsletter
+      subscribers and event participants, with a response deadline of one month that can be extended by two months, and a contact address (oou@cesnet.cz).
+    evidence:
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: CESNET Association will respond to requests within one month of receipt. This period may be extended by an additional two months, depending on the complexity and volume of requests.
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: Requests to exercise these rights may require identification. While exercising these rights is generally free, CESNET Association may charge a fee for manifestly unfounded or excessive requests, or refuse such requests.
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: For questions regarding personal data processing or to exercise your rights, please contact us at oou@cesnet.cz or use the contact details provided on our website.
+  data_retention:
+    url: https://www.cesnet.cz/en/gdpr
+    section: Information on the processing of personal data for persons cooperating with TMC CESNET
+    note: >-
+      Retention periods are stated per processing context: TMC accounts deleted six months after cooperation ends,
+      event attendance lists archived five years, mailing-list admin data kept for the length of membership.
+    evidence:
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: Data is retained for the duration of the user account and will be deleted six months after the end of cooperation or termination of membership in a TMC working group.
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: 'Archiving Attendance Lists: Attendance records are archived for five years due to funding requirements.'
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: Your personal data relating to the administration of the List shall only be stored as long as you remain member of the List. The List archives are kept over the entire period of List’s existence.
+  subprocessors:
+    url: https://www.cesnet.cz/en/gdpr
+    section: Information on the processing of personal data for persons cooperating with TMC CESNET
+    note: >-
+      Transfers to third-party cloud/communication services are acknowledged for the TMC department only, but the
+      promised list of services is an unfilled placeholder on the live page ("[link to list of services]") -- no subprocessor list is actually published.
+      Elsewhere (mailing lists, newsletter, events) the page states data is not transferred to third parties unless required by law.
+    evidence:
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: Personal data may be transferred to third-party services used for collaboration within the TMC Department. This primarily includes external cloud services or communication platforms. An updated list of these services and the types of data transferred can be found at [link to list of services].
+    - source: https://www.cesnet.cz/en/gdpr
+      http_status: 200
+      fetched: '2026-10-09'
+      quote: Your personal data are not made accessible to third parties nor traded with. On the contrary, we care for their protection from the technical, organisational and ethical point of view.

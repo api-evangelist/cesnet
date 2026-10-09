@@ -1,0 +1,54 @@
+generated: '2026-10-09'
+method: searched
+source: https://perun-aai.org/documentation/perun-rpc-api
+name: CESNET API Lifecycle
+versioning:
+  scheme: semver (semantic-release, conventional commits)
+  perun_rpc_api: Docs published per release with a version selector (current v56.0.2); no version segment in the RPC URL. Major versions are frequent (v53.0.0 to v56.0.2 between mid-2026 and 2026-09-11)
+    and BREAKING CHANGES are flagged in release notes.
+  exafs_api: Semantic Versioning per CHANGELOG (Keep a Changelog); REST path /api/v3; current 1.4.1 (2026-09-29).
+deprecation:
+  policy: null
+  note: 'No written deprecation policy, Sunset or Deprecation headers found. The Perun OpenAPI marks operations deprecated: true.'
+  deprecated_operations_count: 32
+  deprecated_operations:
+  - getFacilityOwners
+  - getFacilityOwnersByFacilityName
+  - addFacilityOwner
+  - addFacilityOwners
+  - addFacilityOwnerByFacilityNameOwnerName
+  - addFacilityOwnersByFacilityNameOwnerName
+  - addFacilityOwnerByFacilityName
+  - addFacilityOwnersByFacilityName
+  - addFacilityOwnerByOwnerName
+  - addFacilityOwnersByOwnerName
+  - removeFacilityOwner
+  - removeFacilityOwners
+  - removeFacilityOwnerByFacilityNameOwnerName
+  - removeFacilityOwnersByFacilityNameOwnerName
+  - removeFacilityOwnerByFacilityName
+  - removeFacilityOwnersByFacilityName
+  - removeFacilityOwnerByOwnerName
+  - removeFacilityOwnersByOwnerName
+  - getOwnerFacilities
+  - copyOwners
+  - copyOwnersBySourceDestinationNames
+  - copyOwnersBySourceName
+  - copyOwnersByDestinationName
+  - createOwner
+  - deleteOwner
+  - deleteOwners
+  - getOwnerById
+  - getOwnerByName
+  - getAllOwners
+  - getGroupsToAutoRegistration
+  - deleteGroupsFromAutoRegistration
+  - addGroupsToAutoRegistration
+  derived_from: openapi/cesnet-perun-rpc-openapi.yml
+support_period: null
+sla: null
+status_page: null
+releases:
+- https://gitlab.ics.muni.cz/perun/perun-idm/perun/-/releases
+- https://github.com/CESNET/exafs/blob/main/CHANGELOG.md
+note: Both APIs are self-hosted open-source software; there is no CESNET-operated SLA or status page for them.

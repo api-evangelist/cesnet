@@ -1,0 +1,191 @@
+generated: '2026-10-09'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 16
+  own: 10
+  other_domain: 2
+  platform: 4
+  roles:
+  - api
+  - docs
+  - identity
+  - other
+  - security
+  - source
+  - website
+hosts:
+- host: api-dev.perun-aai.org
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: perun-aai.org
+  role: other
+  relation: other-domain
+- host: api.cesnet.cz
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: cesnet.cz
+  role: api
+  relation: own
+- host: csirt.cesnet.cz
+  found_by:
+  - pointer
+  types:
+  - Security
+  serves: []
+  registrable_domain: cesnet.cz
+  role: security
+  relation: own
+- host: cz.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: docs.du.cesnet.cz
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - namespace-probe
+  - docs-index
+  - well-known
+  types:
+  - GettingStarted
+  - Documentation
+  serves:
+  - docs
+  title: Data Storage Services
+  status: 200
+  registrable_domain: cesnet.cz
+  role: docs
+  relation: own
+- host: du.cesnet.cz
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: cesnet.cz
+  role: other
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - GitHubOrganization
+  - SpectralRules
+  serves:
+  - docs
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: lg.cesnet.cz
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: cesnet.cz
+  role: other
+  relation: own
+- host: muj.cesnet.cz
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - Login
+  serves: []
+  registrable_domain: cesnet.cz
+  role: identity
+  relation: own
+- host: netreport.cesnet.cz
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: cesnet.cz
+  role: other
+  relation: own
+- host: perun-aai.org
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - docs
+  registrable_domain: perun-aai.org
+  role: other
+  relation: other-domain
+- host: speedtest.cesnet.cz
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: cesnet.cz
+  role: other
+  relation: own
+- host: twitter.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: twitter.com
+  role: other
+  relation: platform
+- host: vidcon.cesnet.cz
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: cesnet.cz
+  role: other
+  relation: own
+- host: www.cesnet.cz
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - Website
+  - Newsroom
+  - TermsOfService
+  - PrivacyPolicy
+  - Support
+  serves: []
+  registrable_domain: cesnet.cz
+  role: website
+  relation: own
+- host: www.youtube.com
+  found_by:
+  - pointer
+  types:
+  - YouTube
+  serves: []
+  registrable_domain: youtube.com
+  role: other
+  relation: platform

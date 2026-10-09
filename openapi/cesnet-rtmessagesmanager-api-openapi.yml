@@ -1,0 +1,348 @@
+openapi: 3.2.0
+info:
+  title: Cesnet RT Messages Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged RTMessagesManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: RTMessagesManager
+  description: RTMessagesManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-RTMessagesManager.html
+paths:
+  /urlinjsonout/rtMessagesManager/sentMessageToRT/q:
+    post:
+      tags:
+      - RTMessagesManager
+      operationId: sentMessageToRTWithQueue
+      summary: Sends a message to RT. Only text information is sent
+      parameters:
+      - name: queue
+        description: RT queue
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: subject
+        description: Message subject
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: text
+        description: Message text
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/RTMessageResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/rtMessagesManager/sentMessageToRT/m-q:
+    post:
+      tags:
+      - RTMessagesManager
+      operationId: sentMessageToRTWithMemberQueue
+      summary: Sends a message to RT. Member id is sent
+      parameters:
+      - name: memberId
+        description: Member whose e-mail address will be user
+        schema:
+          type: integer
+        in: query
+        required: true
+      - name: queue
+        description: RT queue
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: subject
+        description: Message subject
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: text
+        description: Message text
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/RTMessageResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/rtMessagesManager/sentMessageToRT/v-q:
+    post:
+      tags:
+      - RTMessagesManager
+      operationId: sentMessageToRTWithVoQueue
+      summary: Sends a message to RT. VO id is sent
+      parameters:
+      - name: voId
+        description: VO id
+        schema:
+          type: integer
+        in: query
+        required: true
+      - name: queue
+        description: RT queue
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: subject
+        description: Message subject
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: text
+        description: Message text
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/RTMessageResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/rtMessagesManager/sentMessageToRT/v:
+    post:
+      tags:
+      - RTMessagesManager
+      operationId: sentMessageToRTWithVo
+      summary: Sends a message to RT. VO id is sent. Queue is not sent
+      parameters:
+      - name: voId
+        description: VO id
+        schema:
+          type: integer
+        in: query
+        required: true
+      - name: subject
+        description: Message subject
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: text
+        description: Message text
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/RTMessageResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  schemas:
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    RTMessage:
+      type: object
+      properties:
+        memberPreferredEmail:
+          type: string
+        ticketNumber:
+          type: integer
+  responses:
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    RTMessageResponse:
+      description: Confirmation with e-mail address the ticket was created for
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RTMessage'
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

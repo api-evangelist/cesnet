@@ -1,0 +1,960 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Ext Sources Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged ExtSourcesManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: ExtSourcesManager
+  description: ExtSourcesManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-ExtSourcesManager.html
+paths:
+  /json/extSourcesManager/createExtSource/es:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: createExtSourceFromExtSourceObject
+      summary: Creates an external source.
+      responses:
+        '200':
+          $ref: '#/components/responses/ExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: ExtSourceObject
+              description: input to createExtSourceFromExtSourceObject
+              type: object
+              required:
+              - extSource
+              properties:
+                extSource:
+                  $ref: '#/components/schemas/ExtSource'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/createExtSource/n-t:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: createExtSourceWithNameType
+      summary: Creates an external source
+      parameters:
+      - $ref: '#/components/parameters/name'
+      - name: type
+        schema:
+          type: string
+        description: type of ExtSource
+        required: true
+        in: query
+      responses:
+        '200':
+          $ref: '#/components/responses/ExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/deleteExtSource:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: deleteExtSource
+      summary: Delete an external source
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/extSourcesManager/getExtSourceById:
+    get:
+      tags:
+      - ExtSourcesManager
+      operationId: getExtSourceById
+      summary: Returns an external source by its id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/extSourcesManager/getExtSourceByName:
+    get:
+      tags:
+      - ExtSourcesManager
+      operationId: getExtSourceByName
+      summary: Returns an external source by its name
+      parameters:
+      - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/extSourcesManager/getVoExtSources:
+    get:
+      tags:
+      - ExtSourcesManager
+      operationId: getVoExtSources
+      summary: Returns the list of external sources associated with a VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfExtSourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/extSourcesManager/getGroupExtSources:
+    get:
+      tags:
+      - ExtSourcesManager
+      operationId: getGroupExtSources
+      summary: Returns the list of external sources associated with a GROUP
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfExtSourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/extSourcesManager/getExtSources:
+    get:
+      tags:
+      - ExtSourcesManager
+      operationId: getExtSources
+      summary: Returns the list of all external sources
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfExtSourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/addExtSource/v-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: addExtSourceWithVoSource
+      summary: Associate an external source definition with a VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/sourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/addExtSources/v-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: addExtSourcesWithVoSource
+      summary: Associate external source definitions with a VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/extSourceIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/addExtSource/g-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: addExtSourceWithGroupSource
+      summary: Associate an external source definition with a GROUP
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/sourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/addExtSources/g-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: addExtSourcesWithGroupSource
+      summary: Associate external source definitions with a GROUP
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/extSourceIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/removeExtSource/v-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: removeExtSourceWithVoSource
+      summary: Remove an association of an external source from a VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/sourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/removeExtSources/v-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: removeExtSourcesWithVoSource
+      summary: remove associations of external source definitions with a VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/extSourceIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/removeExtSource/g-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: removeExtSourceWithGroupSource
+      summary: Remove an association of an external source from a GROUP
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/sourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/extSourcesManager/removeExtSources/g-s:
+    post:
+      tags:
+      - ExtSourcesManager
+      operationId: removeExtSourcesWithGroupSource
+      summary: Remove associations of external source definitions with a GROUP
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/extSourceIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/extSourcesManager/loadExtSourcesDefinitions:
+    get:
+      tags:
+      - ExtSourcesManager
+      operationId: loadExtSourcesDefinitions
+      summary: Loads ext source definitions from the configuration file and updates entries…
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  responses:
+    ListOfExtSourcesResponse:
+      description: returns List<ExtSource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ExtSource'
+    ExtSourceResponse:
+      description: returns ExtSource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExtSource'
+    VoidResponse:
+      description: returns nothing
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+  parameters:
+    sourceId:
+      name: source
+      description: external source id
+      schema:
+        type: integer
+      in: query
+      required: true
+    voId:
+      name: vo
+      description: id of Vo
+      schema:
+        type: integer
+      in: query
+      required: true
+    extSourceIds:
+      name: extSources[]
+      description: list of extSource ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+    groupId:
+      name: group
+      description: id of Group
+      schema:
+        type: integer
+      in: query
+      required: true
+    name:
+      name: name
+      description: name of entity
+      schema:
+        type: string
+      in: query
+      required: true
+  schemas:
+    ExtSource:
+      description: represents external source of data for users such as an IdP or an HR database
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

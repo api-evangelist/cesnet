@@ -1,0 +1,7 @@
+generated: '2026-10-09'
+method: none
+source: https://perun-aai.org/documentation/perun-rpc-api
+name: CESNET Rate Limits
+limit_count: 0
+limits: []
+note: Neither the Perun RPC usage docs nor the ExaFS API/AUTH docs and contract document request rate limits or rate-limit headers. Both are self-hosted, so any throttling is the operator's configuration. ExaFS does enforce per-organization and global RULE-COUNT limits (FLOWSPEC4_MAX_RULES, FLOWSPEC6_MAX_RULES, RTBH_MAX_RULES; CHANGELOG 1.4.0/1.4.1), which cap stored rules, not request rates.

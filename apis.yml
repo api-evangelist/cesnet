@@ -1,23 +1,840 @@
 aid: cesnet
+
 name: CESNET
-description: 'CESNET is a company surfaced via the API Evangelist harvest backlog (source: spectral-ruleset-github)
-  and added to the network as a stub for full-pipeline profiling.'
+
+description: 'CESNET (CESNET, z.s.p.o., an association of legal entities) is the Czech national research and education network operator, an association
+  of top Czech universities and the Czech Academy of Sciences. It runs the high-performance CESNET3 academic backbone and delivers ICT services
+  to its members: networking, MetaCentrum computing, data storage (FileSender, ownCloud), identity federation and eduroam, multimedia/videoconferencing,
+  and security services, and is part of the e-INFRA CZ research infrastructure. It publishes open-source projects, including the Perun identity
+  and access management system, on GitHub.'
+
+image: https://avatars.githubusercontent.com/u/1116469?v=4
+
 url: https://raw.githubusercontent.com/api-evangelist/cesnet/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:spectral-ruleset-github
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-09 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-09'
+
 modified: '2026-10-09'
+
 tags:
 - Company
-apis: []
+- Research and Education Network
+- Academic Networks
+- Czech Republic
+- High Performance Computing
+- Data Storage
+- Identity Federation
+- Cybersecurity
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: SecurityTxt
+  url: well-known/cesnet-csirt-security.txt
+- type: AgenticAccess
+  url: agentic-access/cesnet-agentic-access.yml
+- type: Spectral
+  url: rules/cesnet-rules.yml
+- type: Spectral
+  url: rules/cesnet-perun-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/cesnet-context.jsonld
+- type: Vocabulary
+  url: vocabulary/cesnet-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/cesnet-data-model.yml
+- type: CLI
+  url: cli/cesnet-cli.yml
+- type: ChangeLog
+  url: changelog/cesnet-changelog.yml
+- type: Conventions
+  url: conventions/cesnet-conventions.yml
+- type: Security
+  url: https://csirt.cesnet.cz/en/vulnerability_report
+- type: Deprecation
+  url: lifecycle/cesnet-lifecycle.yml
+- type: Lifecycle
+  url: lifecycle/cesnet-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/cesnet-error-codes.yml
+- type: ErrorCatalog
+  url: errors/cesnet-problem-types.yml
+- type: Conformance
+  url: conformance/cesnet-conformance.yml
+- type: Overlay
+  url: overlays/cesnet-exafs-overlay.yaml
+- type: SecurityTxt
+  url: well-known/cesnet-vidcon-security.txt
+- type: SecurityTxt
+  url: well-known/cesnet-security.txt
+- type: SecurityTxt
+  url: well-known/cesnet-perun-aai-security.txt
+- type: SecurityTxt
+  url: well-known/cesnet-du-security.txt
+- type: SecurityTxt
+  url: well-known/cesnet-api-dev-security.txt
+- type: WellKnown
+  url: well-known/cesnet-well-known.yml
+- type: Hosts
+  url: hosts/cesnet-hosts.yml
+- type: SDKs
+  url: packages/cesnet-packages.yml
+- type: Packages
+  url: packages/cesnet-packages.yml
+- type: GettingStarted
+  url: https://docs.du.cesnet.cz/en/docs/object-storage-rbd/rbd-setup
+- type: Documentation
+  url: https://docs.du.cesnet.cz/
+- type: Authentication
+  url: authentication/cesnet-authentication.yml
+- type: VulnerabilityDisclosure
+  url: security/cesnet-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/cesnet-domain-security.yml
 - type: Website
   url: https://www.cesnet.cz/
+- type: Newsroom
+  url: https://www.cesnet.cz/en/news
+- type: TermsOfService
+  url: https://www.cesnet.cz/en/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.cesnet.cz/en/gdpr
+- type: Support
+  url: https://www.cesnet.cz/en/contacts
+- type: Login
+  url: https://muj.cesnet.cz/
+- type: GitHubOrganization
+  url: https://github.com/CESNET
+- type: LinkedIn
+  url: https://cz.linkedin.com/company/cesnet-z.s.p.o
+- type: X
+  url: https://twitter.com/CESNET_cz
+- type: YouTube
+  url: https://www.youtube.com/channel/UCtnBLNeqJ6wlRK0Dtq5Ch5A
+- type: SpectralRules
+  url: https://github.com/CESNET/perun/blob/fde3db50b38f793c941b3cb1fc99ec1b24b8bd88/ruleset-vacuum.yaml
+
+apis:
+- aid: cesnet:cesnet-attributesmanager-api
+  name: CESNET Attributes Manager API
+  description: AttributesManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - AttributesManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-attributesmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-auditmessagesmanager-api
+  name: CESNET Audit Messages Manager API
+  description: AuditMessage RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - AuditMessagesManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-auditmessagesmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-authorization-api
+  name: CESNET Authorization API
+  description: Endpoints for obtaining and managing API tokens.
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - Authorization
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-authorization-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-authzresolver-api
+  name: CESNET Authz Resolver API
+  description: AuthzResolver RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - AuthzResolver
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-authzresolver-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-cabinetmanager-api
+  name: CESNET Cabinet Manager API
+  description: CabinetManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - CabinetManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-cabinetmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-choices-api
+  name: CESNET Choices API
+  description: Choices for rule actions and communities.
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - Choices
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-choices-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-configmanager-api
+  name: CESNET Config Manager API
+  description: ConfigManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - ConfigManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-configmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-consentsmanager-api
+  name: CESNET Consents Manager API
+  description: ConsentsManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - ConsentsManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-consentsmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-databasemanager-api
+  name: CESNET Database Manager API
+  description: DatabaseManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - DatabaseManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-databasemanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-extsourcesmanager-api
+  name: CESNET Ext Sources Manager API
+  description: ExtSourcesManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - ExtSourcesManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-extsourcesmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-facilitiesmanager-api
+  name: CESNET Facilities Manager API
+  description: FacilitiesManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - FacilitiesManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-facilitiesmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-groupsmanager-api
+  name: CESNET Groups Manager API
+  description: GroupsManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - GroupsManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-groupsmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-integrationmanager-api
+  name: CESNET Integration Manager API
+  description: IntegrationManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - IntegrationManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-integrationmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-invitationsmanager-api
+  name: CESNET Invitations Manager API
+  description: InvitationsManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - InvitationsManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-invitationsmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-membersmanager-api
+  name: CESNET Members Manager API
+  description: MembersManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - MembersManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-membersmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-notificationmanager-api
+  name: CESNET Notification Manager API
+  description: NotificationManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - NotificationManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-notificationmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-ownersmanager-api
+  name: CESNET Owners Manager API
+  description: OwnersManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - OwnersManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-ownersmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-registrarmanager-api
+  name: CESNET Registrar Manager API
+  description: RegistrarManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - RegistrarManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-registrarmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-resourcesmanager-api
+  name: CESNET Resources Manager API
+  description: ResourcesManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - ResourcesManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-resourcesmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-rtmessagesmanager-api
+  name: CESNET RT Messages Manager API
+  description: RTMessagesManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - RTMessagesManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-rtmessagesmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-rules-api
+  name: CESNET Rules API
+  description: Endpoints for managing IPv4, IPv6, and RTBH rules.
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-rules-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-searcher-api
+  name: CESNET Searcher API
+  description: Searcher RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - Searcher
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-searcher-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-servicesmanager-api
+  name: CESNET Services Manager API
+  description: ServicesManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - ServicesManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-servicesmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-tasksmanager-api
+  name: CESNET Tasks Manager API
+  description: TasksManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - TasksManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-tasksmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-usersmanager-api
+  name: CESNET Users Manager API
+  description: UsersManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - UsersManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-usersmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-utils-api
+  name: CESNET Utils API
+  description: various utilities
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - Utils
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-utils-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+- aid: cesnet:cesnet-vosmanager-api
+  name: CESNET Vos Manager API
+  description: VosManager RPC API in Perun
+  humanURL: https://perun-aai.org/documentation/
+  baseURL: https://api-dev.perun-aai.org/ba/rpc
+  tags:
+  - VosManager
+  properties:
+  - type: OpenAPI
+    url: openapi/cesnet-vosmanager-api-openapi.yml
+  - type: GitHubRepository
+    url: https://github.com/CESNET/perun
+  - type: JSONSchema
+    url: json-schema/cesnet-application-form-item-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-perun-notif-template-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-application-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-registrar-application-input-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-applications-page-query-schema.json
+  - type: JSONSchema
+    url: json-schema/cesnet-publication-schema.json
+  - type: GitHubRepository
+    url: https://github.com/CESNET/exafs
+x-enrichment:
+  date: '2026-10-09'
+  status: enriched
+  artifacts_added: 47
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

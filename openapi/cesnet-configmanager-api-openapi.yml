@@ -1,0 +1,159 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Config Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged ConfigManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: ConfigManager
+  description: ConfigManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-ConfigManager.html
+paths:
+  /json/configManager/getPersonalDataChangeConfig:
+    get:
+      tags:
+      - ConfigManager
+      operationId: getPersonalDataChangeConfig
+      summary: Gets personal data change configuration with all related core config properties
+      responses:
+        '200':
+          $ref: '#/components/responses/PersonalDataChangeConfigResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  responses:
+    PersonalDataChangeConfigResponse:
+      description: returns PersonalDataChangeConfig
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PersonalDataChangeConfig'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+  schemas:
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    PersonalDataChangeConfig:
+      description: represents personal data change config
+      type: object
+      properties:
+        enableLinkedName:
+          type: boolean
+        enableCustomName:
+          type: boolean
+        customNameRequiresApprove:
+          type: boolean
+        enableLinkedOrganization:
+          type: boolean
+        enableCustomOrganization:
+          type: boolean
+        customOrganizationRequiresApprove:
+          type: boolean
+        enableLinkedEmail:
+          type: boolean
+        enableCustomEmail:
+          type: boolean
+        customEmailRequiresVerification:
+          type: boolean
+      required:
+      - enableLinkedName
+      - enableCustomName
+      - customNameRequiresApprove
+      - enableLinkedOrganization
+      - enableCustomOrganization
+      - customOrganizationRequiresApprove
+      - enableLinkedEmail
+      - enableCustomEmail
+      - customEmailRequiresVerification
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

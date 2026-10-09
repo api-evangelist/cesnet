@@ -1,0 +1,45 @@
+generated: '2026-10-09'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/cesnet-exafs-openapi.yml
+- openapi/cesnet-perun-rpc-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: PerunException
+coverage:
+  operations: 989
+  statuses_declared: 5
+problems:
+- status: 400
+  title: Bad Request
+  description: Invalid input data
+  operations: 3
+  media_types: []
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Not allowed to view this rule
+  operations: 7
+  media_types: []
+  schema: null
+- status: 403
+  title: Forbidden
+  description: Rule limit reached or read-only token
+  operations: 7
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: Rule not found
+  operations: 8
+  media_types: []
+  schema: null
+- status: default
+  title: null
+  description: exception occurred
+  operations: 975
+  media_types:
+  - application/json
+  schema: PerunException

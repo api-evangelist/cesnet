@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cesnet/main/json-schema/cesnet-publication-schema.json",
+  "title": "Publication",
+  "x-generated": "2026-10-09",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Publication",
+  "allOf": [
+    {
+      "$ref": "#/$defs/PerunBean"
+    }
+  ],
+  "properties": {
+    "authors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Author"
+      }
+    },
+    "externalId": {
+      "type": "integer"
+    },
+    "publicationSystemId": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "main": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "doi": {
+      "type": "string"
+    },
+    "categoryId": {
+      "type": "integer"
+    },
+    "rank": {
+      "type": "number",
+      "format": "double"
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "createdByUid": {
+      "type": "integer"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "$defs": {
+    "Attribute": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/AttributeDefinition"
+        }
+      ],
+      "properties": {
+        "valueCreatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valueCreatedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valueModifiedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valueModifiedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "nullable": true
+        }
+      }
+    },
+    "AttributeDefinition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Auditable"
+        }
+      ],
+      "properties": {
+        "friendlyName": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "writable": {
+          "type": "boolean"
+        },
+        "unique": {
+          "type": "boolean"
+        },
+        "friendlyNameParameter": {
+          "type": "string",
+          "readOnly": true
+        },
+        "baseFriendlyName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "entity": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "Auditable": {
+      "description": "represents audit information",
+      "allOf": [
+        {
+          "$ref": "#/$defs/PerunBean"
+        }
+      ],
+      "properties": {
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modifiedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modifiedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdByUid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "modifiedByUid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "Author": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/PerunBean"
+        }
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "titleBefore": {
+          "type": "string"
+        },
+        "titleAfter": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Attribute"
+          }
+        },
+        "authorships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Authorship"
+          }
+        }
+      }
+    },
+    "Authorship": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/PerunBean"
+        }
+      ],
+      "properties": {
+        "publicationId": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "integer"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "createdByUid": {
+          "type": "integer"
+        }
+      }
+    },
+    "PerunBean": {
+      "description": "identifiable entity in Perun, common ancestor of all entity classes",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "beanName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "beanName"
+      ]
+    }
+  }
+}

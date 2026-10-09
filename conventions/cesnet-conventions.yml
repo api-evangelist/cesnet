@@ -1,0 +1,53 @@
+generated: '2026-10-09'
+method: searched
+source: https://perun-aai.org/documentation/perun-rpc-api
+name: CESNET API Conventions
+description: Cross-cutting semantics of CESNET's two published APIs -- the Perun RPC API (docs page "How to use Perun RPC") and the ExaFS REST API (Swagger 2.0 contract + docs/AUTH.md). Both are self-hosted open-source software.
+docs:
+- https://perun-aai.org/documentation/perun-rpc-api
+- https://github.com/CESNET/exafs/blob/main/docs/API.md
+- https://github.com/CESNET/exafs/blob/main/docs/AUTH.md
+apis:
+  cesnet:perun-rpc-api:
+    style: RPC over HTTP -- "Perun RPC is not using traditional REST API"
+    url_structure: http(s)://[server]/[authentication]/rpc/[format]/[manager]/[method]?[params]
+    authentication: 'Done by the Apache web server in front of Perun; path segment selects it: fed (Shibboleth IDP), krb (Kerberos), cert (Certificate), oauth (OIDC), non (without authorization); the OpenAPI adds ba (HTTP Basic). See authentication/cesnet-authentication.yml.'
+    authorization: Done on the Perun side based on privileges stored inside Perun; a few methods are accessible without authorization.
+    http_methods: '"We recommend to use POST requests all the time." GET only for listing methods (get, list); state-changing methods must be POST.'
+    request_format: POST body is a JSON object whose properties are the method parameters; GET passes params as query (listParam[]=value).
+    response_formats: [json, jsonp]
+    csrf: Domains with GUI and API deployed together require CSRF token -- cookie XSRF-TOKEN echoed in header X-XSRF-TOKEN on state-changing requests (POST, PUT); not used with OIDC.
+    error_envelope: '"If OK, all requests to Perun API returns 200 return code. When processing of your request throws an exception in java code, response is still 200, but it''s body is replaced with serialized Exception object." Schema PerunException {errorId, name, message}. See errors/cesnet-error-codes.yml.'
+    null_and_primitive_returns: 'Null or primitive results are returned as a simple string (null, not {"value": null}).'
+    pagination: Paginated listing methods take a query object (e.g. getMembersPage / getGroupsPage style) -- not a cross-cutting cursor convention.
+    versioning: Docs are versioned per Perun release (v56.0.2 current); no version in URL.
+    rate_limit_signaling: none documented
+  cesnet:exafs-api:
+    style: REST, JSON, base path /api/v3 per changelog
+    authentication: Machine API key (x-api-key) exchanged at GET /auth for a token sent as x-access-token; API keys are tied to an existing user and have an expiration date.
+    error_envelope: HTTP status codes (400, 401, 403, 404) per the Swagger contract; rule-limit rejections report "Rule limit ... reached".
+    rate_limit_signaling: none documented (per-organization rule-count limits exist, not request rates)
+idempotency:
+  coverage: none
+  note: Neither API documents an idempotency key or replay protection.
+reversibility:
+  status: documented
+  surfaces:
+  - api: cesnet:exafs-api
+    write: POST /rules/ipv4, /rules/ipv6, /rules/rtbh (create and announce a rule)
+    reversal: DELETE /rules/ipv4/{rule_id}, /rules/ipv6/{rule_id}, /rules/rtbh/{rule_id}
+    window: null
+    note: The contract documents deletion of a created rule; no reversal window is stated.
+  - api: cesnet:perun-rpc-api
+    write: create*/add*/assign* manager methods
+    reversal: paired delete*/remove*/unassign* methods
+    window: null
+    note: Paired inverse methods exist in the RPC surface, but no restore/undo of a deletion and no window is documented.
+dry_run:
+  supported: false
+  note: none documented
+related:
+  authentication: authentication/cesnet-authentication.yml
+  errors: errors/cesnet-error-codes.yml
+  lifecycle: lifecycle/cesnet-lifecycle.yml
+  rate_limits: rate-limits/cesnet-rate-limits.yml

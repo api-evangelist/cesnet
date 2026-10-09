@@ -1,0 +1,70 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for ExaFS API
+  version: 1.0.0
+extends: ../openapi/_original/cesnet-exafs-openapi.yml
+x-generated: '2026-10-09'
+x-method: generated
+x-source: openapi/_original/cesnet-exafs-swagger.yml
+x-rationale: The ExaFS Swagger 2.0 contract defines no operationIds, no host and no tag descriptions, which leaves agents
+  and tool generators nothing stable to bind to. This overlay adds operationIds derived from method+path (our naming, not
+  CESNET's) and notes the self-hosted nature, without mutating the original.
+actions:
+- target: $.paths['/auth'].get
+  description: Add operationId for GET /auth.
+  update:
+    operationId: getAuthToken
+- target: $.paths['/rules'].get
+  description: Add operationId for GET /rules.
+  update:
+    operationId: listRules
+- target: $.paths['/rules/ipv4'].post
+  description: Add operationId for POST /rules/ipv4.
+  update:
+    operationId: createIpv4Rule
+- target: $.paths['/rules/ipv6'].post
+  description: Add operationId for POST /rules/ipv6.
+  update:
+    operationId: createIpv6Rule
+- target: $.paths['/rules/rtbh'].post
+  description: Add operationId for POST /rules/rtbh.
+  update:
+    operationId: createRtbhRule
+- target: $.paths['/rules/ipv4/{rule_id}'].get
+  description: Add operationId for GET /rules/ipv4/{rule_id}.
+  update:
+    operationId: getIpv4Rule
+- target: $.paths['/rules/ipv4/{rule_id}'].delete
+  description: Add operationId for DELETE /rules/ipv4/{rule_id}.
+  update:
+    operationId: deleteIpv4Rule
+- target: $.paths['/rules/ipv6/{rule_id}'].get
+  description: Add operationId for GET /rules/ipv6/{rule_id}.
+  update:
+    operationId: getIpv6Rule
+- target: $.paths['/rules/ipv6/{rule_id}'].delete
+  description: Add operationId for DELETE /rules/ipv6/{rule_id}.
+  update:
+    operationId: deleteIpv6Rule
+- target: $.paths['/rules/rtbh/{rule_id}'].get
+  description: Add operationId for GET /rules/rtbh/{rule_id}.
+  update:
+    operationId: getRtbhRule
+- target: $.paths['/rules/rtbh/{rule_id}'].delete
+  description: Add operationId for DELETE /rules/rtbh/{rule_id}.
+  update:
+    operationId: deleteRtbhRule
+- target: $.paths['/actions'].get
+  description: Add operationId for GET /actions.
+  update:
+    operationId: listActions
+- target: $.paths['/communities'].get
+  description: Add operationId for GET /communities.
+  update:
+    operationId: listCommunities
+- target: $.info
+  description: Record that ExaFS is self-hosted and the contract names no host.
+  update:
+    x-self-hosted: true
+    x-host-note: ExaFS is deployed by each operator; supply your own instance host. Authenticate with x-api-key at GET /auth,
+      then send x-access-token.

@@ -1,0 +1,485 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Owners Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged OwnersManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: OwnersManager
+  description: OwnersManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-OwnersManager.html
+paths:
+  /json/ownersManager/createOwner:
+    post:
+      deprecated: true
+      tags:
+      - OwnersManager
+      operationId: createOwner
+      summary: Creates a new owner
+      responses:
+        '200':
+          $ref: '#/components/responses/OwnerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCreateOwner
+              description: input to createOwner, no id, numeric ownerType instead of string type
+              type: object
+              required:
+              - name
+              - contact
+              - ownerType
+              properties:
+                name:
+                  type: string
+                  description: name of contact, e.g. John Doe or NSA
+                contact:
+                  type: string
+                  description: email address
+                ownerType:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  description: 0 - technical, 1 - administrative
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/ownersManager/deleteOwner:
+    post:
+      deprecated: true
+      tags:
+      - OwnersManager
+      operationId: deleteOwner
+      summary: Deletes Owner specified by id. Returns null
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      parameters:
+      - $ref: '#/components/parameters/ownerId'
+      - $ref: '#/components/parameters/forceDelete'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/ownersManager/deleteOwners:
+    post:
+      deprecated: true
+      tags:
+      - OwnersManager
+      operationId: deleteOwners
+      summary: Deletes owners by ids. Returns null
+      parameters:
+      - $ref: '#/components/parameters/ownerIds'
+      - $ref: '#/components/parameters/forceDelete'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/ownersManager/getOwnerById:
+    get:
+      deprecated: true
+      tags:
+      - OwnersManager
+      operationId: getOwnerById
+      summary: Returns Owner by its id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/OwnerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/ownersManager/getOwnerByName:
+    get:
+      deprecated: true
+      tags:
+      - OwnersManager
+      operationId: getOwnerByName
+      summary: Returns Owner by its name
+      parameters:
+      - $ref: '#/components/parameters/ownerName'
+      responses:
+        '200':
+          $ref: '#/components/responses/OwnerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/ownersManager/getOwners:
+    get:
+      deprecated: true
+      tags:
+      - OwnersManager
+      operationId: getAllOwners
+      summary: Returns all owners
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfOwnersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  parameters:
+    ownerIds:
+      name: owners[]
+      description: list of owner ids
+      schema:
+        type: array
+        items:
+          type: integer
+      in: query
+      required: true
+    forceDelete:
+      name: force
+      description: If true, delete entity forcefully.
+      schema:
+        type: boolean
+      in: query
+      required: false
+    ownerName:
+      name: owner
+      description: name of Owner
+      schema:
+        type: string
+      in: query
+      required: true
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+    ownerId:
+      name: owner
+      description: id of Owner
+      schema:
+        type: integer
+      in: query
+      required: true
+  schemas:
+    OwnerType:
+      description: enumeration of types of Owners
+      type: string
+      enum:
+      - technical
+      - administrative
+    Owner:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        contact:
+          type: string
+        type:
+          $ref: '#/components/schemas/OwnerType'
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+  responses:
+    VoidResponse:
+      description: returns nothing
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    ListOfOwnersResponse:
+      description: returns List<Owner>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Owner'
+    OwnerResponse:
+      description: returns Owner
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Owner'
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

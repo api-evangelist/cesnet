@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cesnet/main/json-schema/cesnet-application-schema.json",
+  "title": "Application",
+  "x-generated": "2026-10-09",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Application",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "vo": {
+      "$ref": "#/$defs/Vo"
+    },
+    "group": {
+      "$ref": "#/$defs/Group"
+    },
+    "type": {
+      "$ref": "#/$defs/AppType"
+    },
+    "fedInfo": {
+      "type": "string"
+    },
+    "state": {
+      "$ref": "#/$defs/AppState"
+    },
+    "extSourceName": {
+      "type": "string"
+    },
+    "extSourceType": {
+      "type": "string"
+    },
+    "extSourceLoa": {
+      "type": "integer"
+    },
+    "user": {
+      "$ref": "#/$defs/User"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "createdByUid": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "modifiedAt": {
+      "type": "string"
+    },
+    "modifiedByUid": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "modifiedByDisplayName": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "autoApproveError": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "AppState": {
+      "type": "string",
+      "enum": [
+        "NEW",
+        "VERIFIED",
+        "APPROVED",
+        "REJECTED"
+      ]
+    },
+    "AppType": {
+      "type": "string",
+      "enum": [
+        "INITIAL",
+        "EXTENSION",
+        "EMBEDDED"
+      ]
+    },
+    "Auditable": {
+      "description": "represents audit information",
+      "allOf": [
+        {
+          "$ref": "#/$defs/PerunBean"
+        }
+      ],
+      "properties": {
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modifiedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modifiedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdByUid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "modifiedByUid": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "Group": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Auditable"
+        }
+      ],
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "voId": {
+          "type": "integer"
+        },
+        "parentGroupId": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "uuid": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "PerunBean": {
+      "description": "identifiable entity in Perun, common ancestor of all entity classes",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "beanName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "beanName"
+      ]
+    },
+    "User": {
+      "description": "represents user as a physical person",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Auditable"
+        }
+      ],
+      "properties": {
+        "firstName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "middleName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleBefore": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "titleAfter": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "serviceUser": {
+          "type": "boolean"
+        },
+        "sponsoredUser": {
+          "type": "boolean"
+        },
+        "uuid": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "specificUser": {
+          "type": "boolean"
+        },
+        "majorSpecificType": {
+          "type": "string"
+        }
+      }
+    },
+    "Vo": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Auditable"
+        }
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    }
+  }
+}

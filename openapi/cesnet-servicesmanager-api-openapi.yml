@@ -1,0 +1,3465 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Services Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged ServicesManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: ServicesManager
+  description: ServicesManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-ServicesManager.html
+paths:
+  /urlinjsonout/servicesManager/blockServiceOnFacility:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockServiceOnFacility
+      summary: Bans service on a facility
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/blockServicesOnFacility:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockServicesOnFacility
+      summary: Bans services on a facility
+      parameters:
+      - $ref: '#/components/parameters/serviceIds'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/blockServiceOnDestination/s-d:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockServiceOnDestination
+      summary: Bans Service on a destination
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/blockServiceOnDestination/s-dname-dtype:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockServiceOnDestinationWithNameAndType
+      summary: Bans Service on a destination
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/destinationName'
+      - $ref: '#/components/parameters/destinationType'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/blockServiceOnDestinations:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockServiceOnDestinations
+      summary: Bans Service on given destinations
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/destinationIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/blockServicesOnDestinations:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockServicesOnDestinations
+      summary: Bans the Service on the destination - each pair defined by the rich destination
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputBlockServicesOnDestinations
+              description: input to blockServicesOnDestinations
+              type: object
+              required:
+              - richDestinations
+              properties:
+                richDestinations:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/RichDestination'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/blockAllServicesOnFacility:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockAllServicesOnFacility
+      summary: Block all services currently assigned on this facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/blockAllServicesOnDestination/d:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockAllServicesOnDestinationById
+      summary: Block all services currently assigned on this destination.
+      parameters:
+      - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/blockAllServicesOnDestination/dname-dtype:
+    post:
+      tags:
+      - ServicesManager
+      operationId: blockAllServicesOnDestinationByName
+      summary: Block all services currently assigned on this destination.
+      parameters:
+      - $ref: '#/components/parameters/destinationName'
+      - $ref: '#/components/parameters/destinationType'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getServicesBlockedOnFacility:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getServicesBlockedOnFacility
+      summary: Returns list of denials for a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfServicesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getServicesBlockedOnDestination:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getServicesBlockedOnDestination
+      summary: Returns list of denials for a destination
+      parameters:
+      - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfServicesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/isServiceBlockedOnFacility:
+    get:
+      tags:
+      - ServicesManager
+      operationId: isServiceBlockedOnFacility
+      summary: Is this Service denied on the facility?
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/isServiceBlockedOnDestination:
+    get:
+      tags:
+      - ServicesManager
+      operationId: isServiceBlockedOnDestination
+      summary: Is this Service denied on the destination?
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockAllServicesOnFacility:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockAllServicesOnFacility
+      summary: Erase all the possible denials on this facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockAllServicesOnDestination/d:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockAllServicesOnDestinationById
+      summary: Erase all the possible denials on this destination
+      parameters:
+      - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockAllServicesOnDestination/dname-dtype:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockAllServicesOnDestinationByName
+      summary: Erase all the possible denials on this destination
+      parameters:
+      - $ref: '#/components/parameters/destinationName'
+      - $ref: '#/components/parameters/destinationType'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockServiceOnFacility:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockServiceOnFacility
+      summary: Free the denial of the Service on this facility.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockServicesOnFacility:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockServicesOnFacility
+      summary: Free the denial of the Service on this facility
+      parameters:
+      - $ref: '#/components/parameters/serviceIds'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockServiceOnDestination/s-d:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockServiceOnDestinationById
+      summary: Free the denial of the Service on this destination.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/destinationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockServiceOnDestination/s-dname-dtype:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockServiceOnDestinationByName
+      summary: Free the denial of the Service on this destination.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/destinationName'
+      - $ref: '#/components/parameters/destinationType'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/unblockServiceOnDestinations:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockServiceOnDestinations
+      summary: Free the denial of the Service on these destinations.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/destinationIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/unblockServicesOnDestinations:
+    post:
+      tags:
+      - ServicesManager
+      operationId: unblockServicesOnDestinations
+      summary: Free the denial of the Service on the destination - each pair defined by the…
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUnlockServicesOnDestinations
+              description: input to unblockServicesOnDestinations
+              type: object
+              required:
+              - richDestinations
+              properties:
+                richDestinations:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/RichDestination'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/forceServicePropagation:
+    post:
+      tags:
+      - ServicesManager
+      operationId: forceServicePropagation
+      summary: Forces service propagation on defined facility.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/optionalFacilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/forceServicePropagationBulk:
+    post:
+      tags:
+      - ServicesManager
+      operationId: forceServicePropagationBulk
+      summary: Forces services propagation on all facilities, where the services are defined…
+      parameters:
+      - $ref: '#/components/parameters/serviceIds'
+      - $ref: '#/components/parameters/optionalFacilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/planServicePropagation:
+    post:
+      tags:
+      - ServicesManager
+      operationId: planServicePropagation
+      summary: Plans service propagation on defined facility.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/optionalFacilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getFacilityAssignedServicesForGUI:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getFacilityAssignedServicesForGUI
+      summary: Return list of ServiceForGUI assigned on facility, (Service with…
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfServiceForGUIResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/createService:
+    post:
+      tags:
+      - ServicesManager
+      operationId: createServiceWithService
+      summary: Creates a new service.
+      responses:
+        '200':
+          $ref: '#/components/responses/ServiceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCreateService
+              description: input to createService
+              type: object
+              required:
+              - service
+              properties:
+                service:
+                  $ref: '#/components/schemas/Service'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/createService:
+    post:
+      tags:
+      - ServicesManager
+      operationId: createService
+      summary: Creates a new service
+      parameters:
+      - name: name
+        description: name
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: description
+        description: description
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: script
+        description: script which should be constructed like ./service_name (where anything else than [a-z,A-Z] is converted to _)
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ServiceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/deleteService:
+    post:
+      tags:
+      - ServicesManager
+      operationId: deleteService
+      summary: Deletes a service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/forceDelete'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/deleteServices:
+    post:
+      tags:
+      - ServicesManager
+      operationId: deleteServices
+      summary: Deletes given services
+      parameters:
+      - $ref: '#/components/parameters/serviceIds'
+      - $ref: '#/components/parameters/forceDelete'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/updateService:
+    post:
+      tags:
+      - ServicesManager
+      operationId: updateService
+      summary: Updates a service
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateService
+              description: input to updateService
+              type: object
+              required:
+              - service
+              properties:
+                service:
+                  $ref: '#/components/schemas/Service'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getServiceById:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getServiceById
+      summary: Returns a service by its id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/ServiceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getServiceByName:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getServiceByName
+      summary: Returns a service by its name
+      parameters:
+      - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          $ref: '#/components/responses/ServiceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getServices:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getServices
+      summary: Returns all services
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfServicesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getServicesByAttributeDefinition:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getServicesByAttributeDefinition
+      summary: Get all services with given attribute
+      parameters:
+      - $ref: '#/components/parameters/attributeDefinitionId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfServicesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getHashedHierarchicalData:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getHashedHierarchicalData
+      summary: Generates hashed hierarchical data structure for given service and facility
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      - name: consentEval
+        description: if true the method will run consent eval
+        schema:
+          type: boolean
+        in: query
+        required: false
+      - name: taskRun
+        description: id of the task propagation run
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/HashedGenDataResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getHashedDataWithGroups:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getHashedDataWithGroups
+      summary: Generates hashed group structure data for given service and facility
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      - name: consentEval
+        description: if true the method will run consent eval
+        schema:
+          type: boolean
+        in: query
+        required: false
+      - name: taskRun
+        description: id of the task propagation run
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/HashedGenDataResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/addRequiredAttribute:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addRequiredAttribute
+      summary: Mark the attribute as required for the service.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/attributeId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/addRequiredAttributes:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addRequiredAttributes
+      summary: Batch version of addRequiredAttribute
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/attributes'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/removeRequiredAttribute:
+    post:
+      tags:
+      - ServicesManager
+      operationId: removeRequiredAttribute
+      summary: Remove required attribute from service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/attributeId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/removeRequiredAttributes:
+    post:
+      tags:
+      - ServicesManager
+      operationId: removeRequiredAttributes
+      summary: Remove required attributes from service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/attributes'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/removeAllRequiredAttributes:
+    post:
+      tags:
+      - ServicesManager
+      operationId: removeAllRequiredAttributes
+      summary: Remove all required attributes from service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getDestinationById:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getDestinationById
+      summary: Returns a destination by its id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/DestinationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getDestinations/s-f:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getDestinations
+      summary: Returns list of all destinations defined for the service and facility
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getDestinations/all:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getAllDestinations
+      summary: Get list of all destinations
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getAllRichDestinations/s:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getAllRichDestinationsForService
+      summary: Returns list of all rich destinations defined for the service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getAllRichDestinations/f:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getAllRichDestinationsForFacility
+      summary: Returns list of all rich destinations defined for the facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getRichDestinations:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getRichDestinations
+      summary: Returns list of all rich destinations defined for the service and facility
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/addDestination:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addDestination
+      summary: Adds an destination for a facility and service.
+      description: InvalidDestinationException is thrown when destination value is invalid in given destination type.
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      - name: destination
+        description: Destination's destination, usually a DNS name
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: type
+        description: Destination's type
+        schema:
+          $ref: '#/components/schemas/DestinationType'
+        in: query
+        required: true
+      - name: propagationType
+        description: Destination's propagationType
+        schema:
+          $ref: '#/components/schemas/DestinationPropagationType'
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/DestinationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/addDestination:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addDestinationToMultipleServices
+      description: Adds an destination for a facility and list of services. If destination doesn't exist it will be created. InvalidDestinationException is thrown when destination value is invalid in given destination type.
+      responses:
+        '200':
+          $ref: '#/components/responses/DestinationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputAddDestinationToMultipleServices
+              description: input to addDestinationToMultipleServices
+              type: object
+              required:
+              - services
+              - facility
+              - destination
+              - type
+              properties:
+                services:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Service'
+                facility:
+                  type: integer
+                destination:
+                  type: string
+                type:
+                  $ref: '#/components/schemas/DestinationType'
+                propagationType:
+                  $ref: '#/components/schemas/DestinationPropagationType'
+      summary: Add destination to multiple services
+      x-summary-source: derived
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/addDestinationsForAllServicesOnFacility:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addDestinationsForAllServicesOnFacility
+      summary: Adds destination for all services defined on the facility
+      description: InvalidDestinationException is thrown when destination value is invalid in given destination type.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/destinationName'
+      - name: type
+        description: Destination type (host,user@host,user@host:port,url,service-specific, s3, s3-json, url-json)
+        schema:
+          $ref: '#/components/schemas/DestinationType'
+        in: query
+        required: true
+      - name: propagationType
+        description: propagation type (PARALLEL, DUMMY - doesn't send data)
+        schema:
+          $ref: '#/components/schemas/DestinationPropagationType'
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/addDestinationsDefinedByHostsOnFacility/s-f:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addDestinationsDefinedByHostsOnFacilityWithServiceAndFacility
+      summary: Add services destinations for all services currently available on facility…
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/addDestinationsDefinedByHostsOnFacility/lists-f:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addDestinationsDefinedByHostsOnFacilityWithListOfServiceAndFacility
+      summary: Add services destinations for list of services.
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputAddDestinationsDefinedByHostsOnFacility
+              description: input to addDestinationsDefinedByHostsOnFacility
+              type: object
+              required:
+              - services
+              - facility
+              properties:
+                services:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Service'
+                facility:
+                  type: integer
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/addDestinationsDefinedByHostsOnFacility/f:
+    post:
+      tags:
+      - ServicesManager
+      operationId: addDestinationsDefinedByHostsOnFacilityWithFacility
+      summary: Add services destinations for one service.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/removeDestination:
+    post:
+      tags:
+      - ServicesManager
+      operationId: removeDestination
+      summary: Removes the specified destination from the facility and service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      - name: destination
+        description: Destination's destination
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: type
+        description: Destination's type
+        schema:
+          $ref: '#/components/schemas/DestinationType'
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/removeDestinations:
+    post:
+      tags:
+      - ServicesManager
+      operationId: removeDestinations
+      summary: Removes the specified destinations from the facility and service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/destinationIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/removeDestinationsByRichDestinations:
+    post:
+      tags:
+      - ServicesManager
+      operationId: removeDestinationsByRichDestinations
+      summary: Removes destinations defined by list of rich destinations.
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputRemoveRichDestinations
+              description: input to removeRichDestinations
+              type: object
+              required:
+              - richDestinations
+              properties:
+                richDestinations:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/RichDestination'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/servicesManager/removeAllDestinations:
+    post:
+      tags:
+      - ServicesManager
+      operationId: removeAllDestinations
+      summary: Removes all destinations from a facility and service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getFacilitiesDestinations:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getFacilitiesDestinations
+      summary: List all destinations for all facilities which are joined by resources to the VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfDestinationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getDestinationsCount:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getDestinationsCount
+      summary: Gets count of all destinations
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getAssignedServices/f:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getAssignedServices
+      summary: List all services associated with the facility (via resource)
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfServicesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getAssignedServices/f-v:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getAssignedServicesVo
+      summary: List all services associated with the facility and vo (via resource)
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfServicesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/servicesManager/getAssignedResourcesForService:
+    get:
+      tags:
+      - ServicesManager
+      operationId: getAssignedResources
+      summary: Lists resources assigned to service
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  responses:
+    ListOfRichDestinationsResponse:
+      description: returns List<RichDestination>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichDestination'
+    ListOfServicesResponse:
+      description: returns List<Service>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Service'
+    ListOfResourcesResponse:
+      description: returns List<Resource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Resource'
+    HashedGenDataResponse:
+      description: return hashed gen data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HashedGenData'
+    VoidResponse:
+      description: returns nothing
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    ServiceResponse:
+      description: returns Service
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Service'
+    ListOfServiceForGUIResponse:
+      description: return List<ServiceForGUI>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ServiceForGUI'
+    IntegerResponse:
+      description: returns Integer
+      content:
+        application/json:
+          schema:
+            type: integer
+    DestinationResponse:
+      description: returns Destination
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Destination'
+    ListOfDestinationsResponse:
+      description: returns List<Destination>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Destination'
+  parameters:
+    serviceId:
+      name: service
+      description: id of Service
+      schema:
+        type: integer
+      in: query
+      required: true
+    voId:
+      name: vo
+      description: id of Vo
+      schema:
+        type: integer
+      in: query
+      required: true
+    forceDelete:
+      name: force
+      description: If true, delete entity forcefully.
+      schema:
+        type: boolean
+      in: query
+      required: false
+    destinationType:
+      name: destinationType
+      description: Destination type (like host, user@host, user@host:port, service-specific, ...)
+      schema:
+        type: string
+      in: query
+      required: true
+    serviceIds:
+      name: services[]
+      description: list of Service ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    facilityId:
+      name: facility
+      description: id of Facility
+      schema:
+        type: integer
+      in: query
+      required: true
+    attributes:
+      name: attributes[]
+      description: list of attribute ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    destinationIds:
+      name: destinations[]
+      description: list of Destination ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    destinationId:
+      name: destination
+      description: id of Destination
+      schema:
+        type: integer
+      in: query
+      required: true
+    attributeId:
+      name: attributeId
+      description: id of AttributeDefinition
+      schema:
+        type: integer
+      in: query
+      required: true
+    attributeDefinitionId:
+      name: attributeDefinition
+      description: id of AttributeDefinition
+      schema:
+        type: integer
+      in: query
+      required: true
+    destinationName:
+      name: destination
+      description: string name of destination
+      schema:
+        type: string
+      in: query
+      required: true
+    optionalFacilityId:
+      name: facility
+      description: id of Facility
+      schema:
+        type: integer
+      in: query
+      required: false
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+    name:
+      name: name
+      description: name of entity
+      schema:
+        type: string
+      in: query
+      required: true
+  schemas:
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    AttributeDefinition:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        friendlyName:
+          type: string
+        namespace:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        type:
+          type: string
+        displayName:
+          type: string
+        writable:
+          type: boolean
+        unique:
+          type: boolean
+        friendlyNameParameter:
+          type: string
+          readOnly: true
+        baseFriendlyName:
+          type: string
+          readOnly: true
+        entity:
+          type: string
+          readOnly: true
+    Service:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        delay:
+          type: integer
+        recurrence:
+          type: integer
+        enabled:
+          type: boolean
+        script:
+          type: string
+        useExpiredMembers:
+          type: boolean
+        useExpiredVoMembers:
+          type: boolean
+        useBannedMembers:
+          type: boolean
+    Resource:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        voId:
+          type: integer
+        facilityId:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+    DestinationType:
+      type: string
+      description: type of destination, i.e. way of delivery of service settings
+      enum:
+      - host
+      - url
+      - user@host
+      - user@host:port
+      - service-specific
+      - user@host-windows
+      - host-windows-proxy
+      - s3
+      - s3-json
+      - url-json
+    Destination:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        destination:
+          type: string
+        type:
+          $ref: '#/components/schemas/DestinationType'
+        propagationType:
+          $ref: '#/components/schemas/DestinationPropagationType'
+    GenDataNode:
+      type: object
+      properties:
+        children:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GenDataNode'
+        members:
+          type: object
+          additionalProperties:
+            type: integer
+    ServiceForGUI:
+      allOf:
+      - $ref: '#/components/schemas/Service'
+      properties:
+        allowedOnFacility:
+          type: boolean
+    HashedGenData:
+      type: object
+      properties:
+        attributes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Attribute'
+        hierarchy:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GenDataNode'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    RichDestination:
+      allOf:
+      - $ref: '#/components/schemas/Destination'
+      properties:
+        blocked:
+          type: boolean
+        service:
+          $ref: '#/components/schemas/Service'
+        facility:
+          $ref: '#/components/schemas/Facility'
+        lastSuccessfulPropagation:
+          type: string
+        lastAttemptedPropagation:
+          type: string
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    DestinationPropagationType:
+      type: string
+      description: type of propagation of service settings to a destination
+      enum:
+      - PARALLEL
+      - SERIAL
+      - DUMMY
+    Attribute:
+      allOf:
+      - $ref: '#/components/schemas/AttributeDefinition'
+      properties:
+        valueCreatedAt:
+          type:
+          - string
+          - 'null'
+        valueCreatedBy:
+          type:
+          - string
+          - 'null'
+        valueModifiedAt:
+          type:
+          - string
+          - 'null'
+        valueModifiedBy:
+          type:
+          - string
+          - 'null'
+        value: {}
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

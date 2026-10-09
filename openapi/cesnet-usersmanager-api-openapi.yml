@@ -1,0 +1,5407 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Users Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged UsersManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: UsersManager
+  description: UsersManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-UsersManager.html
+paths:
+  /json/usersManager/getUserById:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserById
+      summary: Returns user by its id
+      description: Returns object representing the User
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getSponsorsForMember/member:
+    get:
+      tags:
+      - UsersManager
+      operationId: getSponsorsForMember
+      summary: Gets sponsors for given member with optional attribute names
+      parameters:
+      - $ref: '#/components/parameters/memberId'
+      - $ref: '#/components/parameters/attrNamesOptional'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfSponsorsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getSponsorsForMember/vo:
+    get:
+      tags:
+      - UsersManager
+      operationId: getSponsorsForMemberByVoAndLogin
+      summary: Gets sponsors for member specified by VO, extSourceName and extLogin with…
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/extSourceName'
+      - $ref: '#/components/parameters/extLogin'
+      - $ref: '#/components/parameters/attrNamesOptional'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfSponsorsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserByExtSourceNameAndExtLogin:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserByExtSourceNameAndExtLogin
+      summary: Returns user by its ExtSourceName and ExtLogin
+      description: Returns User found by its authentication data
+      parameters:
+      - $ref: '#/components/parameters/extLogin'
+      - $ref: '#/components/parameters/extSourceName'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getRichUserWithAttributes:
+    get:
+      tags:
+      - UsersManager
+      operationId: getRichUserWithAttributes
+      summary: Returns user with attributes
+      description: Returns object representing the User with attributes
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RichUserResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUsers:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUsers
+      summary: Returns all users
+      description: Returns list of objects representing the User
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getAllRichUsersWithAttributes:
+    get:
+      tags:
+      - UsersManager
+      operationId: getAllRichUsersWithAttributes
+      summary: Returns users with attributes
+      description: Returns list of objects representing the User with attributes
+      parameters:
+      - name: includedSpecificUsers
+        description: if you want to or don't want to get specificUsers too
+        schema:
+          type: boolean
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getRichUsersByIds:
+    get:
+      tags:
+      - UsersManager
+      operationId: getRichUsersByIds
+      summary: Returns rich users without attributes by their IDs
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getRichUsersWithAttributesByIds:
+    get:
+      tags:
+      - UsersManager
+      operationId: getRichUsersWithAttributesByIds
+      summary: Returns rich users with attributes by their IDs
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserExtSources:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserExtSources
+      summary: Gets list of all user's external sources
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUserExtSourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/checkPasswordStrength:
+    post:
+      tags:
+      - UsersManager
+      operationId: checkPasswordStrength
+      summary: Check password strength for the given namespace.
+      description: If the check fails, the PasswordStrengthException error is returned.
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCheckPasswordStrength
+              description: input for checkPasswordStrength
+              type: object
+              required:
+              - password
+              - namespace
+              properties:
+                password:
+                  type: string
+                namespace:
+                  type: string
+                login:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getGroupsWhereUserIsActive/facility:
+    get:
+      tags:
+      - UsersManager
+      operationId: getGroupsForFacilityWhereUserIsActive
+      summary: Get list of groups of user on specified facility where use is active
+      description: That means User is a VALID in the VO and the Group and groups are assigned to the facility.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getGroupsWhereUserIsActive/resource:
+    get:
+      tags:
+      - UsersManager
+      operationId: getGroupsForResourceWhereUserIsActive
+      summary: Get list of groups of user on specified resource where use is active
+      description: That means User is a VALID in the VO and the Group and groups are assigned to the resource.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getRichGroupsWhereUserIsActive/facility:
+    get:
+      tags:
+      - UsersManager
+      operationId: getRichGroupsForFacilityWhereUserIsActive
+      summary: Get list of groups of user on specified facility where use is active
+      description: That means User is a VALID in the VO and the Group and groups are assigned to the facility.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/attrNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getRichGroupsWhereUserIsActive/resource:
+    get:
+      tags:
+      - UsersManager
+      operationId: getRichGroupsForResourceWhereUserIsActive
+      summary: Get list of groups of user on specified resource where use is active
+      description: That means User is a VALID in the VO and the Group and groups are assigned to the resource.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/resourceId'
+      - $ref: '#/components/parameters/attrNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/findUsers:
+    get:
+      tags:
+      - UsersManager
+      operationId: findUsers
+      summary: Returns list of Users with attributes who matches the searchString, searching…
+      parameters:
+      - $ref: '#/components/parameters/searchString'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/findRichUsers:
+    get:
+      tags:
+      - UsersManager
+      operationId: findRichUsers
+      summary: Returns list of RichUsers with attributes who matches the searchString…
+      parameters:
+      - $ref: '#/components/parameters/searchString'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/findRichUsersWithAttributes:
+    get:
+      tags:
+      - UsersManager
+      operationId: findRichUsersWithAttributes
+      summary: Returns list of RichUsers with attributes who matches the searchString
+      parameters:
+      - $ref: '#/components/parameters/searchString'
+      - name: attrsNames[]
+        description: list of attribute names List<String> or null
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getRichUsersWithoutVoWithAttributes:
+    get:
+      tags:
+      - UsersManager
+      operationId: getRichUsersWithoutVoWithAttributes
+      summary: Returns list of RichUsers which are not members of any VO with attributes
+      parameters:
+      - name: attrsNames[]
+        description: list of attribute names List<String> or null
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getVosWhereUserIsMember:
+    get:
+      tags:
+      - UsersManager
+      operationId: getVosWhereUserIsMember
+      summary: Returns list of VOs, where the user is a Member
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfVosResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getVosWhereUserIsAdmin:
+    get:
+      tags:
+      - UsersManager
+      operationId: getVosWhereUserIsAdmin
+      summary: Returns list of VOs, where the user is an Administrator.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfVosResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getGroupsWhereUserIsAdmin/u:
+    get:
+      tags:
+      - UsersManager
+      operationId: getGroupsWhereUserIsAdmin
+      summary: Returns list of Groups in Perun, where the User is a direct Administrator or he…
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getGroupsWhereUserIsAdmin/u-v:
+    get:
+      tags:
+      - UsersManager
+      operationId: getGroupsInVoWhereUserIsAdmin
+      summary: Returns list of Groups in selected Vo, where the User is a direct Administrator…
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getRichUserExtSources/u:
+    get:
+      tags:
+      - UsersManager
+      operationId: getRichUserExtSources
+      summary: Gets list of all user's external sources with attributes
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichUserExtSourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/createAlternativePassword:
+    post:
+      tags:
+      - UsersManager
+      operationId: createAlternativePassword
+      summary: Creates alternative password in external system
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCreateAlternativePassword
+              description: input for createAlternativePassword
+              type: object
+              required:
+              - user
+              - description
+              - loginNamespace
+              - password
+              properties:
+                user:
+                  type: integer
+                description:
+                  type: string
+                loginNamespace:
+                  type: string
+                password:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/deleteAlternativePassword:
+    post:
+      tags:
+      - UsersManager
+      operationId: deleteAlternativePassword
+      summary: Deletes alternative password in external system
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputDeleteAlternativePassword
+              description: input for deleteAlternativePassword
+              type: object
+              required:
+              - user
+              - passwordId
+              - loginNamespace
+              properties:
+                user:
+                  type: string
+                passwordId:
+                  type: string
+                loginNamespace:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/updateUserExtSourceLastAccess:
+    post:
+      tags:
+      - UsersManager
+      operationId: updateUserExtSourceLastAccess
+      summary: Updates user's userExtSource last access time in DB.
+      parameters:
+      - $ref: '#/components/parameters/userExtSourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/removeUserExtSource:
+    post:
+      tags:
+      - UsersManager
+      operationId: removeUserExtSource
+      summary: Remove user's external source.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/userExtSourceId'
+      - $ref: '#/components/parameters/forceDelete'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/removeUserExtSources:
+    post:
+      tags:
+      - UsersManager
+      operationId: removeUserExtSources
+      summary: Remove user's external sources.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: userExtSources
+        description: list of userExtSource ids
+        schema:
+          type: array
+          items:
+            type: integer
+        in: query
+        required: true
+      - $ref: '#/components/parameters/forceDelete'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserExtSourceById:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserExtSourceById
+      summary: Returns user ext source by its id
+      parameters:
+      - $ref: '#/components/parameters/userExtSourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserExtSourceByExtLoginAndExtSourceName:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserExtSourceByExtLoginAndExtSourceName
+      summary: Returns user's external source by the user's external login and external source…
+      parameters:
+      - $ref: '#/components/parameters/extSourceName'
+      - name: extSourceLogin
+        description: external source login
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/UserExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserExtSourcesByIds:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserExtSourcesByIds
+      summary: Returns list of user ext sources by their ids
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUserExtSourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserExtSourceByUniqueAttributeValue/id:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserExtSourceByUniqueAttributeValueAndAttributeId
+      summary: Return userExtSource for specific attribute definition (specified by id) and…
+      parameters:
+      - $ref: '#/components/parameters/attributeId'
+      - $ref: '#/components/parameters/attributeValue'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserExtSourceByUniqueAttributeValue/name:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserExtSourceByUniqueAttributeValueAndAttributeName
+      summary: Return userExtSource for specific attribute definition (specified by name) and…
+      parameters:
+      - $ref: '#/components/parameters/attributeName'
+      - $ref: '#/components/parameters/attributeValue'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/requestPreferredEmailChange:
+    post:
+      tags:
+      - UsersManager
+      operationId: requestPreferredEmailChange
+      summary: Request to change preferred email address of user.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: email
+        description: new email address to set
+        schema:
+          type: string
+        in: query
+        required: true
+      - name: lang
+        description: language to get confirmation mail in (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      - name: linkPath
+        description: path that is appended to the referer and creates the verification link (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      - name: customUrl
+        description: url to verification link containing path (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      - name: idpFilter
+        description: authentication method appended to query parameters of verification link (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/addUserExtSource:
+    post:
+      tags:
+      - UsersManager
+      operationId: addUserExtSource
+      summary: Adds user's external sources
+      responses:
+        '200':
+          $ref: '#/components/responses/UserExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: AddUserExtSourceInput
+              description: input to addUserExtSource
+              type: object
+              required:
+              - user
+              - userExtSource
+              properties:
+                user:
+                  type: integer
+                userExtSource:
+                  $ref: '#/components/schemas/UserExtSource'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/addUserExtSourceWithAttributes:
+    post:
+      tags:
+      - UsersManager
+      operationId: addUserExtSourceWithAttributes
+      summary: Adds user's external source along with the given attributes
+      responses:
+        '200':
+          $ref: '#/components/responses/RichUserExtSourceResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: AddUserExtSourceWithAttributesInput
+              description: input to addUserExtSourceWithAttributes
+              type: object
+              required:
+              - user
+              - userExtSource
+              - attributes
+              properties:
+                user:
+                  type: integer
+                userExtSource:
+                  $ref: '#/components/schemas/UserExtSource'
+                attributes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Attribute'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/validatePreferredEmailChange:
+    post:
+      tags:
+      - UsersManager
+      operationId: validatePreferredEmailChangeWithToken
+      summary: Validate new preferred email address.
+      responses:
+        '200':
+          $ref: '#/components/responses/StringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputValidatePreferredEmailChange
+              description: input for validatePreferredEmailChange
+              type: object
+              required:
+              - token
+              - u
+              properties:
+                token:
+                  type: string
+                  format: uuid
+                u:
+                  type: integer
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getPendingPreferredEmailChanges:
+    get:
+      tags:
+      - UsersManager
+      operationId: getPendingPreferredEmailChanges
+      summary: Return list of email addresses of user, which are awaiting validation and are…
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfStringsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getAssignedRichResources:
+    get:
+      tags:
+      - UsersManager
+      operationId: getAssignedRichResourcesForUser
+      summary: Get all rich resources where the user is assigned.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getAssociatedResources:
+    get:
+      tags:
+      - UsersManager
+      operationId: getAssociatedResourcesForUser
+      summary: Get all resources associated with the user on the facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUsersByIds:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUsersByIds
+      summary: Returns list of Users by their ids
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getSpecificUsersByUser:
+    get:
+      tags:
+      - UsersManager
+      operationId: getSpecificUsersByUser
+      summary: Get all specific users who are owned by the user
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/addSpecificUserOwner:
+    post:
+      tags:
+      - UsersManager
+      operationId: addSpecificUserOwner
+      summary: Add specific user owner
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/specificUserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/moveUserExtSource:
+    post:
+      tags:
+      - UsersManager
+      operationId: moveUserExtSource
+      summary: Move UserExtSource from one user to another
+      parameters:
+      - name: sourceUser
+        schema:
+          type: integer
+        in: query
+        description: id of source user
+        required: true
+      - name: targetUser
+        schema:
+          type: integer
+        in: query
+        description: id of target user
+        required: true
+      - $ref: '#/components/parameters/userExtSourceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/removeSpecificUserOwner:
+    post:
+      tags:
+      - UsersManager
+      operationId: removeSpecificUserOwner
+      summary: Remove specific user owner
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/specificUserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUsersBySpecificUser:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUsersBySpecificUser
+      summary: Return all users who owns the specific user
+      parameters:
+      - $ref: '#/components/parameters/specificUserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUnanonymizedUsersBySpecificUser:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUnanonymizedUsersBySpecificUser
+      summary: Return all users who owns the specific user and are not anonymized
+      parameters:
+      - $ref: '#/components/parameters/specificUserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/updateUser:
+    post:
+      tags:
+      - UsersManager
+      operationId: updateUser
+      summary: Updates user
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateUser
+              description: input to updateUser
+              type: object
+              required:
+              - user
+              properties:
+                user:
+                  $ref: '#/components/schemas/User'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/createServiceUser:
+    post:
+      tags:
+      - UsersManager
+      operationId: createServiceUser
+      summary: From given candidate, creates a service user and assign given owners to him
+      description: 'This method also checks if some of given userExtSources do exist. If so,
+
+        this method throws a UserExtSourceExistsException.
+
+        This method can also set only user-def and user-opt attributes for the given candidate.'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCreateServiceUser
+              description: input to createServiceUser
+              type: object
+              required:
+              - candidate
+              - specificUserOwners
+              properties:
+                candidate:
+                  $ref: '#/components/schemas/Candidate'
+                specificUserOwners:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/User'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/checkPasswordResetRequestIsValid/token:
+    post:
+      tags:
+      - UsersManager
+      operationId: checkPasswordResetRequestByTokenIsValid
+      summary: Checks if the password reset request is valid
+      description: 'This method throws PasswordResetLinkExpiredException when the password reset request expired.
+
+        This method throws PasswordResetLinkNotValidException when the password reset request was already
+
+        used or has never existed.'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCheckPasswordResetRequestByTokenIsValid
+              description: input to checkPasswordResetRequestByTokenIsValid
+              type: object
+              required:
+              - token
+              properties:
+                token:
+                  type: string
+                  format: uuid
+                  description: token for the password reset request
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/changeNonAuthzPassword/token:
+    post:
+      tags:
+      - UsersManager
+      operationId: changeNonAuthzPasswordByToken
+      summary: Changes user password in defined login-namespace based on token parameter
+      description: 'This method throws PasswordResetLinkExpiredException when the password reset request expired.
+
+        This method throws PasswordResetLinkNotValidException when the password reset request was already
+
+        used or has never existed.'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputChangeNonAuthzPasswordByToken
+              description: input for changeNonAuthzPasswordByToken
+              type: object
+              required:
+              - token
+              - password
+              properties:
+                token:
+                  type: string
+                  format: uuid
+                  description: token for the password reset request
+                password:
+                  type: string
+                lang:
+                  type: string
+                  description: language to get notifications in (optional)
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/reservePassword/login:
+    post:
+      tags:
+      - UsersManager
+      operationId: reservePasswordForLogin
+      summary: Reserves password for a user in specified login-namespace
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputReservePasswordForLogin
+              description: input for reservePasswordForLogin
+              type: object
+              required:
+              - login
+              - namespace
+              - password
+              properties:
+                login:
+                  type: string
+                namespace:
+                  type: string
+                password:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/reservePassword/user:
+    post:
+      tags:
+      - UsersManager
+      operationId: reservePasswordForUser
+      summary: Reserves password for a user in specified login-namespace
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputReservePasswordForUser
+              description: input for reservePasswordForUser
+              type: object
+              required:
+              - user
+              - namespace
+              - password
+              properties:
+                user:
+                  type: integer
+                namespace:
+                  type: string
+                password:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/validatePassword/login:
+    post:
+      tags:
+      - UsersManager
+      operationId: validatePasswordForLogin
+      summary: Validate password for a user in specified login-namespace
+      parameters:
+      - $ref: '#/components/parameters/login'
+      - $ref: '#/components/parameters/namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/validatePassword/user:
+    post:
+      tags:
+      - UsersManager
+      operationId: validatePasswordForUser
+      summary: Validate password for a user in specified login-namespace
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/deletePassword/login:
+    post:
+      tags:
+      - UsersManager
+      operationId: deletePasswordForLogin
+      summary: Delete password for a user in specified login-namespace
+      parameters:
+      - $ref: '#/components/parameters/login'
+      - $ref: '#/components/parameters/namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/deletePassword/user:
+    post:
+      tags:
+      - UsersManager
+      operationId: deletePasswordForUser
+      summary: Delete password for a user in specified login-namespace
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/changePassword/login:
+    post:
+      tags:
+      - UsersManager
+      operationId: changePasswordForLogin
+      summary: Changes password for a user in specified login-namespace
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputChangePasswordForLogin
+              description: input for changePasswordForLogin
+              type: object
+              required:
+              - login
+              - namespace
+              - newPassword
+              properties:
+                login:
+                  type: string
+                namespace:
+                  type: string
+                newPassword:
+                  type: string
+                oldPassword:
+                  type: string
+                checkOldPassword:
+                  type: boolean
+                  description: True if the oldPassword has to be checked. When omitted it defaults to false.
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/changePassword/user:
+    post:
+      tags:
+      - UsersManager
+      operationId: changePasswordForUser
+      summary: Changes password for a user in specified login-namespace
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputChangePasswordForUser
+              description: input for changePasswordForUser
+              type: object
+              required:
+              - user
+              - namespace
+              - newPassword
+              properties:
+                user:
+                  type: integer
+                namespace:
+                  type: string
+                newPassword:
+                  type: string
+                oldPassword:
+                  type: string
+                checkOldPassword:
+                  type: boolean
+                  description: True if the oldPassword has to be checked. When omitted it defaults to false.
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/loginExist:
+    post:
+      tags:
+      - UsersManager
+      operationId: loginExist
+      summary: Check wheter login exists in specified login-namespace.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/setLogin:
+    post:
+      tags:
+      - UsersManager
+      operationId: setLogin
+      summary: Set new login in namespace if login is available and user doesn't have login in…
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/login'
+      - $ref: '#/components/parameters/namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/setSpecificUser:
+    post:
+      tags:
+      - UsersManager
+      operationId: setSpecificUser
+      summary: Set specific user type for specific user and set ownership of this user to the…
+      parameters:
+      - name: specificUser
+        schema:
+          type: integer
+        in: query
+        description: id of specific user
+        required: true
+      - name: specificUserType
+        schema:
+          type: string
+          enum:
+          - SERVICE
+          - SPONSORED
+          - NORMAL
+        in: query
+        description: specific type of user
+        required: true
+      - name: owner
+        schema:
+          type: integer
+        in: query
+        description: id of user, who will be owner of the specific user
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/unsetSpecificUser:
+    post:
+      tags:
+      - UsersManager
+      operationId: unsetSpecificUser
+      summary: Remove all ownerships of this specific user and unset this specific user type…
+      parameters:
+      - name: specificUser
+        schema:
+          type: integer
+        in: query
+        description: id of specific user
+        required: true
+      - name: specificUserType
+        schema:
+          type: string
+          enum:
+          - SERVICE
+          - SPONSORED
+          - NORMAL
+        in: query
+        description: specific type of user
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/UserResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/deleteUser:
+    post:
+      tags:
+      - UsersManager
+      operationId: deleteUser
+      summary: Deletes a user
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/forceDelete'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/anonymizeUser:
+    post:
+      tags:
+      - UsersManager
+      operationId: anonymizeUser
+      summary: Anonymizes user - according to configuration, each of user's attributes is…
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: force
+        schema:
+          type: boolean
+        in: query
+        required: false
+        description: if true the user is removed from all groups and vos
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/isLoginAvailable:
+    post:
+      tags:
+      - UsersManager
+      operationId: isLoginAvailable
+      summary: Checks if the login is available in the namespace. Return 1 if yes, 0 if no
+      parameters:
+      - name: loginNamespace
+        description: login namespace
+        schema:
+          type: string
+        in: query
+        required: true
+      - $ref: '#/components/parameters/login'
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/blockLogins:
+    post:
+      tags:
+      - UsersManager
+      operationId: blockLogins
+      summary: Block logins for given namespace or block logins globally (if no namespace is…
+      parameters:
+      - name: logins[]
+        schema:
+          type: array
+          items:
+            type: string
+        in: query
+        required: false
+        description: list of logins to be blocked
+      - name: namespace
+        description: login namespace
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/blockLogins:
+    post:
+      tags:
+      - UsersManager
+      operationId: blockLoginsBodyParams
+      summary: Block logins for given namespace or block logins globally (if no namespace is…
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputBlockLogins
+              description: input to block logins
+              type: object
+              required:
+              - logins
+              properties:
+                logins:
+                  type: array
+                  items:
+                    type: string
+                namespace:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/unblockLogins:
+    post:
+      tags:
+      - UsersManager
+      operationId: unblockLogins
+      summary: Unblock logins for given namespace or unblock logins globally (if no namespace…
+      parameters:
+      - name: logins[]
+        schema:
+          type: array
+          items:
+            type: string
+        in: query
+        required: false
+        description: list of logins to be blocked
+      - name: namespace
+        description: login namespace
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/unblockLogins:
+    post:
+      tags:
+      - UsersManager
+      operationId: unblockLoginsBodyParams
+      summary: Unblock logins for given namespace or unblock logins globally (if no namespace…
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUnblockLogins
+              description: input to unblock logins
+              type: object
+              required:
+              - logins
+              properties:
+                logins:
+                  type: array
+                  items:
+                    type: string
+                namespace:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/unblockLoginsById:
+    post:
+      tags:
+      - UsersManager
+      operationId: unblockLoginsById
+      summary: Unblock logins by id
+      parameters:
+      - name: logins[]
+        description: list of login ids to be unblocked
+        schema:
+          type: array
+          items:
+            type: integer
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/unblockLoginsById:
+    post:
+      tags:
+      - UsersManager
+      operationId: unblockLoginsByIdBodyParams
+      summary: Unblock logins by id.
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUnblockLoginsById
+              description: input to unblock logins by id
+              type: object
+              required:
+              - logins
+              properties:
+                logins:
+                  type: array
+                  items:
+                    type: integer
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getBlockedLoginsPage:
+    post:
+      tags:
+      - UsersManager
+      operationId: getBlockedLoginsPage
+      summary: Get page of blocked logins
+      responses:
+        '200':
+          $ref: '#/components/responses/PaginatedBlockedLoginsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetPaginatedBlockedLogins
+              description: input to getBlockedLoginsPage
+              type: object
+              required:
+              - query
+              properties:
+                query:
+                  $ref: '#/components/schemas/BlockedLoginsPageQuery'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getAllBlockedLoginsInNamespaces:
+    get:
+      tags:
+      - UsersManager
+      operationId: getAllBlockedLoginsInNamespaces
+      summary: Returns all blocked logins in namespaces (if namespace is null, then this login…
+      responses:
+        '200':
+          description: list of all blocked logins in namespaces
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BlockedLogin'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/reserveRandomPassword:
+    post:
+      tags:
+      - UsersManager
+      operationId: reserveRandomPassword
+      summary: Reserves a random password in external authz system.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUsersPage:
+    post:
+      tags:
+      - UsersManager
+      operationId: getUsersPage
+      summary: Get page of users with the given attributes
+      responses:
+        '200':
+          $ref: '#/components/responses/PaginatedRichUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetPaginatedUsers
+              description: input to getPaginatedUsers
+              type: object
+              required:
+              - query
+              - attrNames
+              properties:
+                attrNames:
+                  type: array
+                  items:
+                    type: string
+                query:
+                  $ref: '#/components/schemas/UsersPageQuery'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/generateAccount/name:
+    post:
+      tags:
+      - UsersManager
+      operationId: generateAccountForName
+      summary: Generates user account in a backend system associated with login-namespace in…
+      parameters:
+      - $ref: '#/components/parameters/namespace'
+      - name: name
+        description: name of the account to generate
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/MapStringStringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getUserRelations:
+    get:
+      tags:
+      - UsersManager
+      operationId: getUserRelations
+      summary: Gets map with 2 items which are a list of all vos and a list of all groups…
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/MapStringListOfPerunBeanResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/changeOrganization:
+    post:
+      tags:
+      - UsersManager
+      operationId: changeOrganization
+      summary: Change organization from which user came to organization from user ext source
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: newOrganizationName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: name of new organization which will be set
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/changeOrganizationCustom:
+    post:
+      tags:
+      - UsersManager
+      operationId: changeOrganizationCustom
+      summary: Change organization from which user came to custom organization.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: newOrganizationName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: name of new organization which will be set
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/changeName:
+    post:
+      tags:
+      - UsersManager
+      operationId: changeName
+      summary: Change user's name to user's name from user ext source
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: newUserName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new user's name which will be set
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/changeNameCustom:
+    post:
+      tags:
+      - UsersManager
+      operationId: changeNameCustom
+      summary: Change user's name to custom name.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: titleBefore
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new title before which will be set
+      - name: firstName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new first name which will be set
+      - name: middleName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new middle name which will be set
+      - name: lastName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new last name which will be set
+      - name: titleAfter
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new title after which will be set
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/changeEmail:
+    post:
+      tags:
+      - UsersManager
+      operationId: changeEmail
+      summary: Change user's email to email from user ext source
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: newEmail
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new email which will be set
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/usersManager/changeEmailCustom:
+    post:
+      tags:
+      - UsersManager
+      operationId: changeEmailCustom
+      summary: Change user's email to custom email.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: newEmail
+        schema:
+          type: string
+        in: query
+        required: true
+        description: new email which will be set
+      - name: lang
+        description: language to get confirmation mail in (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      - name: linkPath
+        description: path that is appended to the referer and creates the verification link (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      - name: customUrl
+        description: url to verification link containing path (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      - name: idpFilter
+        description: authentication method appended to query parameters of verification link (optional)
+        schema:
+          type: string
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/getAllowedResources:
+    get:
+      tags:
+      - UsersManager
+      operationId: getAllowedResourcesOnFacility
+      summary: Get all resources on the facility where the user is allowed.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/reserveLogin/user:
+    post:
+      tags:
+      - UsersManager
+      operationId: reserveLoginForUser
+      summary: Reserve login in a namespace for given userId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - login
+              - userId
+              - namespace
+              properties:
+                login:
+                  type: string
+                userId:
+                  type: integer
+                namespace:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/reserveLogin:
+    post:
+      tags:
+      - UsersManager
+      operationId: reserveLogin
+      summary: Reserve login in a namespace for given identifier and issuer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - login
+              - identifier
+              - issuer
+              - namespace
+              properties:
+                login:
+                  type: string
+                identifier:
+                  type: string
+                issuer:
+                  type: string
+                namespace:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/usersManager/deleteReservedLogin:
+    post:
+      tags:
+      - UsersManager
+      operationId: deleteReservedLogin
+      summary: Deletes login reservation for given namespace and login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - login
+              properties:
+                namespace:
+                  type: string
+                login:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  schemas:
+    BlockedLoginsPageQuery:
+      properties:
+        pageSize:
+          type: integer
+        offset:
+          type: integer
+        order:
+          $ref: '#/components/schemas/SortingOrder'
+        sortColumn:
+          $ref: '#/components/schemas/BlockedLoginsOrderColumn'
+        namespaces:
+          type: array
+          items:
+            type: string
+        searchString:
+          type: string
+      required:
+      - pageSize
+      - offset
+      - order
+      - sortColumn
+    Candidate:
+      allOf:
+      - $ref: '#/components/schemas/User'
+      properties:
+        userExtSource:
+          $ref: '#/components/schemas/UserExtSource'
+        additionalUserExtSources:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserExtSource'
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        expectedSyncGroupStatus:
+          type: string
+    UsersOrderColumn:
+      type: string
+      enum:
+      - ID
+      - NAME
+    AttributeDefinition:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        friendlyName:
+          type: string
+        namespace:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        type:
+          type: string
+        displayName:
+          type: string
+        writable:
+          type: boolean
+        unique:
+          type: boolean
+        friendlyNameParameter:
+          type: string
+          readOnly: true
+        baseFriendlyName:
+          type: string
+          readOnly: true
+        entity:
+          type: string
+          readOnly: true
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
+    Vo:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        shortName:
+          type: string
+        uuid:
+          type: string
+          format: uuid
+    ConsentStatus:
+      type: string
+      description: statuses of consents
+      enum:
+      - UNSIGNED
+      - GRANTED
+      - REVOKED
+    RichResource:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      properties:
+        vo:
+          $ref: '#/components/schemas/Vo'
+        facility:
+          $ref: '#/components/schemas/Facility'
+        resourceTags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceTag'
+    UsersPageQuery:
+      properties:
+        pageSize:
+          type: integer
+        offset:
+          type: integer
+        order:
+          $ref: '#/components/schemas/SortingOrder'
+        sortColumn:
+          $ref: '#/components/schemas/UsersOrderColumn'
+        searchString:
+          type: string
+        withoutVo:
+          type: boolean
+        facilityId:
+          type: integer
+        voId:
+          type: integer
+        serviceId:
+          type: integer
+        resourceId:
+          type: integer
+        onlyAllowed:
+          type: boolean
+        consentStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsentStatus'
+      required:
+      - pageSize
+      - offset
+      - order
+      - sortColumn
+    Sponsor:
+      description: represents a Sponsor for some specific member
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        userExtSources:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserExtSource'
+        userAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+        validityTo:
+          type: string
+          description: Date in format yyyy-MM-dd}
+        active:
+          type: boolean
+      required:
+      - user
+      - userExtSources
+      - userAttributes
+      - validityTo
+      - active
+    Resource:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        voId:
+          type: integer
+        facilityId:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+    RichUser:
+      description: user data packed together with all user attributes and UserExtSources
+      allOf:
+      - $ref: '#/components/schemas/User'
+      properties:
+        userExtSources:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UserExtSource'
+        userAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Attribute'
+      required:
+      - userExtSources
+      - userAttributes
+    UserExtSource:
+      description: represents specific user authentication or identification in external source of data
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        login:
+          type: string
+        userId:
+          type: integer
+        loa:
+          type: integer
+        persistent:
+          type: boolean
+        lastAccess:
+          type: string
+          format: timestamp
+          description: SQL timestamp
+          example: '2012-01-01 00:00:00.100000'
+        extSource:
+          $ref: '#/components/schemas/ExtSource'
+      required:
+      - login
+      - extSource
+    RichGroup:
+      allOf:
+      - $ref: '#/components/schemas/Group'
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+    Group:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      type:
+      - object
+      - 'null'
+      properties:
+        name:
+          type: string
+        shortName:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        voId:
+          type: integer
+        parentGroupId:
+          type:
+          - integer
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    ResourceTag:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        tagName:
+          type: string
+        voId:
+          type: integer
+    PaginatedRichUsers:
+      description: represents Paginated&lt;RichUser>
+      properties:
+        offset:
+          type: integer
+        pageSize:
+          type: integer
+        totalCount:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RichUser'
+      required:
+      - offset
+      - pageSize
+      - totalCount
+      - data
+    RichUserExtSource:
+      properties:
+        userExtSource:
+          $ref: '#/components/schemas/UserExtSource'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+      required:
+      - userExtSource
+      - attributes
+    ExtSource:
+      description: represents external source of data for users such as an IdP or an HR database
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    PaginatedBlockedLogins:
+      properties:
+        offset:
+          type: integer
+        pageSize:
+          type: integer
+        totalCount:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockedLogin'
+      required:
+      - offset
+      - pageSize
+      - totalCount
+      - data
+    SortingOrder:
+      type: string
+      enum:
+      - ASCENDING
+      - DESCENDING
+    BlockedLoginsOrderColumn:
+      type: string
+      enum:
+      - LOGIN
+      - NAMESPACE
+    User:
+      description: represents user as a physical person
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        titleBefore:
+          type:
+          - string
+          - 'null'
+        titleAfter:
+          type:
+          - string
+          - 'null'
+        serviceUser:
+          type: boolean
+        sponsoredUser:
+          type: boolean
+        uuid:
+          type: string
+          format: uuid
+        specificUser:
+          type: boolean
+        majorSpecificType:
+          type: string
+    Attribute:
+      allOf:
+      - $ref: '#/components/schemas/AttributeDefinition'
+      properties:
+        valueCreatedAt:
+          type:
+          - string
+          - 'null'
+        valueCreatedBy:
+          type:
+          - string
+          - 'null'
+        valueModifiedAt:
+          type:
+          - string
+          - 'null'
+        valueModifiedBy:
+          type:
+          - string
+          - 'null'
+        value: {}
+    BlockedLogin:
+      description: represent a login block for namespace (or globally)
+      properties:
+        id:
+          type: integer
+        login:
+          type: string
+        namespace:
+          type: string
+  parameters:
+    attrNamesOptional:
+      name: attrNames[]
+      description: list of attribute names List<String> or null
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    extLogin:
+      name: extLogin
+      description: external login of user, e.g. john
+      schema:
+        type: string
+      in: query
+      required: true
+    userId:
+      name: user
+      description: id of User
+      schema:
+        type: integer
+      in: query
+      required: true
+    forceDelete:
+      name: force
+      description: If true, delete entity forcefully.
+      schema:
+        type: boolean
+      in: query
+      required: false
+    voId:
+      name: vo
+      description: id of Vo
+      schema:
+        type: integer
+      in: query
+      required: true
+    specificUserId:
+      name: specificUser
+      description: id of specific User
+      schema:
+        type: integer
+      in: query
+      required: true
+    ids:
+      name: ids[]
+      description: list of ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    attrNames:
+      name: attrNames
+      description: list of attribute names List<String>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+    memberId:
+      name: member
+      description: id of Member
+      schema:
+        type: integer
+      in: query
+      required: true
+    facilityId:
+      name: facility
+      description: id of Facility
+      schema:
+        type: integer
+      in: query
+      required: true
+    namespace:
+      name: namespace
+      description: namespace
+      schema:
+        type: string
+      in: query
+      required: true
+    attributeValue:
+      name: attributeValue
+      description: string value of Attribute
+      schema:
+        type: string
+      in: query
+      required: true
+    userExtSourceId:
+      name: userExtSource
+      description: id of UserExtSource
+      schema:
+        type: integer
+      in: query
+      required: true
+    extSourceName:
+      name: extSourceName
+      description: external source name, e.g. IdP entityId
+      schema:
+        type: string
+      in: query
+      required: true
+    resourceId:
+      name: resource
+      description: id of Resource
+      schema:
+        type: integer
+      in: query
+      required: true
+    searchString:
+      name: searchString
+      description: Text to search by
+      schema:
+        type: string
+      in: query
+      required: true
+    login:
+      name: login
+      description: login
+      schema:
+        type: string
+      in: query
+      required: true
+    attributeId:
+      name: attributeId
+      description: id of AttributeDefinition
+      schema:
+        type: integer
+      in: query
+      required: true
+    attributeName:
+      name: attributeName
+      description: full name of attribute definition (namespace + ':' + friendlyName)
+      schema:
+        type: string
+      in: query
+      required: true
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+  responses:
+    ListOfUserExtSourcesResponse:
+      description: returns List<UserExtSource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/UserExtSource'
+    MapStringStringResponse:
+      description: returns Map<String,String>
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+    RichUserResponse:
+      description: returns RichUser
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RichUser'
+    ListOfSponsorsResponse:
+      description: returns List<Sponsor>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Sponsor'
+    ListOfResourcesResponse:
+      description: returns List<Resource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Resource'
+    PaginatedBlockedLoginsResponse:
+      description: returns Paginated<BlockedLogin>
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginatedBlockedLogins'
+    StringResponse:
+      description: returns String
+      content:
+        application/json:
+          schema:
+            type: string
+    VoidResponse:
+      description: returns nothing
+    ListOfGroupsResponse:
+      description: returns List<Group>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Group'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    UserResponse:
+      description: returns User
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+    PaginatedRichUsersResponse:
+      description: returns Paginated<RichUser>
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginatedRichUsers'
+    ListOfUsersResponse:
+      description: returns List<User>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+    ListOfRichResourcesResponse:
+      description: returns List<RichResource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichResource'
+    MapStringListOfPerunBeanResponse:
+      description: returns Map<String,List<PerunBean>>
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                $ref: '#/components/schemas/PerunBean'
+    ListOfRichUserExtSourcesResponse:
+      description: returns List<RichUserExtSource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichUserExtSource'
+    ListOfRichGroupsResponse:
+      description: returns List<RichGroup>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichGroup'
+    RichUserExtSourceResponse:
+      description: returns richUserExtSource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RichUserExtSource'
+    IntegerResponse:
+      description: returns Integer
+      content:
+        application/json:
+          schema:
+            type: integer
+    BooleanResponse:
+      description: returns Boolean
+      content:
+        application/json:
+          schema:
+            type: boolean
+    ListOfVosResponse:
+      description: returns List<Vo>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Vo'
+    ListOfRichUsersResponse:
+      description: returns List<RichUser>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichUser'
+    ListOfStringsResponse:
+      description: returns List<String>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+    UserExtSourceResponse:
+      description: returns userExtSource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserExtSource'
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

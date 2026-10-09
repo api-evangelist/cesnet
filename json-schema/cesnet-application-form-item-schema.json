@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cesnet/main/json-schema/cesnet-application-form-item-schema.json",
+  "title": "ApplicationFormItem",
+  "x-generated": "2026-10-09",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/ApplicationFormItem",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "shortname": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "updatable": {
+      "type": "boolean"
+    },
+    "type": {
+      "$ref": "#/$defs/Type"
+    },
+    "federationAttribute": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "perunSourceAttribute": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "perunDestinationAttribute": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "regex": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicationTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AppType"
+      }
+    },
+    "ordnum": {
+      "type": "integer"
+    },
+    "i18n": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/ItemTexts"
+      }
+    },
+    "hiddenDependencyItemId": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "disabledDependencyItemId": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "hidden": {
+      "type": "string",
+      "enum": [
+        "NEVER",
+        "ALWAYS",
+        "IF_PREFILLED",
+        "IF_EMPTY"
+      ]
+    },
+    "disabled": {
+      "type": "string",
+      "enum": [
+        "NEVER",
+        "ALWAYS",
+        "IF_PREFILLED",
+        "IF_EMPTY"
+      ]
+    },
+    "forDelete": {
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "AppType": {
+      "type": "string",
+      "enum": [
+        "INITIAL",
+        "EXTENSION",
+        "EMBEDDED"
+      ]
+    },
+    "ItemTexts": {
+      "type": "object",
+      "properties": {
+        "locale": {
+          "type": "string"
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "options": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "help": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "errorMessage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Type": {
+      "type": "string",
+      "description": "type of application form items",
+      "enum": [
+        "HTML_COMMENT",
+        "SUBMIT_BUTTON",
+        "AUTO_SUBMIT_BUTTON",
+        "PASSWORD",
+        "VALIDATED_EMAIL",
+        "TEXTFIELD",
+        "TEXTAREA",
+        "CHECKBOX",
+        "RADIO",
+        "SELECTIONBOX",
+        "COMBOBOX",
+        "USERNAME",
+        "HEADING",
+        "TIMEZONE",
+        "EMBEDDED_GROUP_APPLICATION",
+        "LIST_INPUT_BOX",
+        "MAP_INPUT_BOX"
+      ]
+    }
+  }
+}

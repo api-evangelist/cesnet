@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cesnet/main/json-schema/cesnet-applications-page-query-schema.json",
+  "title": "ApplicationsPageQuery",
+  "x-generated": "2026-10-09",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/ApplicationsPageQuery",
+  "properties": {
+    "pageSize": {
+      "type": "integer"
+    },
+    "offset": {
+      "type": "integer"
+    },
+    "order": {
+      "$ref": "#/$defs/SortingOrder"
+    },
+    "sortColumn": {
+      "$ref": "#/$defs/ApplicationsOrderColumn"
+    },
+    "searchString": {
+      "type": "string"
+    },
+    "includeGroupApplications": {
+      "type": "boolean"
+    },
+    "includeSubGroupApplications": {
+      "type": "boolean"
+    },
+    "getDetails": {
+      "type": "boolean"
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AppState"
+      }
+    },
+    "dateFrom": {
+      "type": "string",
+      "format": "date"
+    },
+    "dateTo": {
+      "type": "string",
+      "format": "date"
+    },
+    "userId": {
+      "type": "integer"
+    },
+    "groupId": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "pageSize",
+    "offset",
+    "order",
+    "sortColumn"
+  ],
+  "$defs": {
+    "AppState": {
+      "type": "string",
+      "enum": [
+        "NEW",
+        "VERIFIED",
+        "APPROVED",
+        "REJECTED"
+      ]
+    },
+    "ApplicationsOrderColumn": {
+      "type": "string",
+      "enum": [
+        "ID",
+        "DATE_CREATED",
+        "TYPE",
+        "STATE",
+        "SUBMITTER",
+        "GROUP_NAME",
+        "MODIFIED_BY"
+      ]
+    },
+    "SortingOrder": {
+      "type": "string",
+      "enum": [
+        "ASCENDING",
+        "DESCENDING"
+      ]
+    }
+  }
+}

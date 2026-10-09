@@ -1,0 +1,67 @@
+generated: '2026-10-09'
+method: searched
+source: https://gitlab.ics.muni.cz/api/v4/projects/perun%2Fperun-idm%2Fperun/releases
+name: CESNET Changelog
+scheme: semver
+sources:
+- api: cesnet:perun-rpc-api
+  url: https://gitlab.ics.muni.cz/perun/perun-idm/perun/-/releases
+  note: Perun releases via semantic-release with conventional commits; the GitHub mirror's Releases page stops at v31.0.0 (2023-11-07) while tags continue.
+- api: cesnet:exafs-api
+  url: https://github.com/CESNET/exafs/blob/main/CHANGELOG.md
+  note: Keep a Changelog format, Semantic Versioning.
+current_version: null
+current_versions:
+  cesnet:perun-rpc-api: v56.0.2
+  cesnet:exafs-api: 1.4.1
+entries:
+- api: cesnet:perun-rpc-api
+  version: v56.0.2
+  date: '2026-09-11'
+  breaking: false
+  highlights: ['core: store auth_time from user_info_endpoint in session', 'fix deserialization of RichGroup']
+- api: cesnet:perun-rpc-api
+  version: v56.0.1
+  date: '2026-09-08'
+  breaking: false
+  highlights: ['revert old json deserializer null behavior']
+- api: cesnet:perun-rpc-api
+  version: v56.0.0
+  date: '2026-08-21'
+  breaking: true
+  highlights: ['processing of any XML with a DOCTYPE tag is now disallowed and will throw an error', 'needs java 25 installed', 'upgrade to tomcat 11 needed']
+- api: cesnet:perun-rpc-api
+  version: v55.0.0
+  date: '2026-08-10'
+  breaking: true
+  highlights: ['deps: needs java 25 installed; upgrade to tomcat 11 needed', 'add hyphens check to einfra login']
+- api: cesnet:perun-rpc-api
+  version: v54.0.0
+  date: '2026-08-03'
+  breaking: true
+  highlights: ['registrar: db update', 'always allow disabled members to extend membership', 'openapi: membership checking methods to openapi']
+- api: cesnet:perun-rpc-api
+  version: v53.2.0
+  date: '2026-07-14'
+  breaking: false
+  highlights: ['core: optimized implementation of getSubjectsByLogins for ExtSourceCSV']
+- api: cesnet:exafs-api
+  version: 1.4.1
+  date: '2026-09-29'
+  breaking: false
+  highlights: ['Fixed HTTP 500 on POST /api/v3/rules/rtbh when an organization had no rule limits stored', 'API rule-limit responses no longer report "Rule limit None reached"']
+- api: cesnet:exafs-api
+  version: 1.4.0
+  date: '2026-09-14'
+  breaking: true
+  highlights: ['Dropped support for Python 3.9 and 3.10; ExaFS now requires Python 3.11 or newer', 'Rule limits were silently not enforced on group update (fixed)']
+- api: cesnet:exafs-api
+  version: 1.3.0
+  date: '2026-04-20'
+  breaking: false
+  highlights: ['Migrated codebase to SQLAlchemy 2.0', 'API rules now apply the same data transformation as the UI, fixing /api/v3/ vs dashboard inconsistency']
+- api: cesnet:exafs-api
+  version: 1.2.2
+  date: '2026-02-19'
+  breaking: false
+  highlights: ['Database migrations tracked in git; db-init.py replaced with migration-based setup']

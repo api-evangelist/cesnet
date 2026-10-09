@@ -1,0 +1,1333 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Notification Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged NotificationManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: NotificationManager
+  description: NotificationManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-NotificationManager.html
+paths:
+  /json/notificationManager/createPerunNotifTemplate:
+    post:
+      tags:
+      - NotificationManager
+      operationId: createPerunNotifTemplate
+      summary: Creates a new PerunNotifTemplate and saves all relations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerunNotifTemplate'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifTemplateResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getPerunNotifTemplateById:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getPerunNotifTemplateById
+      summary: Gets perunNotifTemplate by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifTemplateResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/notificationManager/updatePerunNotifTemplate:
+    post:
+      tags:
+      - NotificationManager
+      operationId: updatePerunNotifTemplate
+      summary: Updates an existing PerunNotifTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerunNotifTemplate'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifTemplateResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/removePerunNotifTemplateById:
+    post:
+      tags:
+      - NotificationManager
+      operationId: removePerunNotifTemplateById
+      summary: Removes a PerunNotifTemplate by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getAllPerunNotifTemplates:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getAllPerunNotifTemplates
+      summary: Returns all PerunNotifTemplates
+      responses:
+        '200':
+          description: returns List<PerunNotifTemplate>
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerunNotifTemplate'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getAllPerunNotifRegexes:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getAllPerunNotifRegexes
+      summary: Returns all PerunNotifRegexes
+      responses:
+        '200':
+          description: returns List<PerunNotifRegex>
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerunNotifRegex'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/notificationManager/createPerunNotifRegex:
+    post:
+      tags:
+      - NotificationManager
+      operationId: createPerunNotifRegex
+      summary: Saves perunNotifRegex to DB and creates id, also saves relation between regex…
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                regex:
+                  $ref: '#/components/schemas/PerunNotifRegex'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifRegexResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getPerunNotifRegexById:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getPerunNotifRegexById
+      summary: Gets perunNotifRegex by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifRegexResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/notificationManager/updatePerunNotifRegex:
+    post:
+      tags:
+      - NotificationManager
+      operationId: updatePerunNotifRegex
+      summary: Updates an existing PerunNotifRegex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                regex:
+                  $ref: '#/components/schemas/PerunNotifRegex'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifRegexResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/removePerunNotifRegexById:
+    post:
+      tags:
+      - NotificationManager
+      operationId: removePerunNotifRegexById
+      summary: Removes a PerunNotifRegex by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/saveTemplateRegexRelation:
+    post:
+      tags:
+      - NotificationManager
+      operationId: saveTemplateRegexRelation
+      summary: Stores relation between template and regex to db
+      parameters:
+      - name: templateId
+        description: Id of the Notif Template
+        schema:
+          type: integer
+        in: query
+        required: true
+      - name: regexId
+        description: Id of the Notif Regex
+        schema:
+          type: integer
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/removePerunNotifTemplateRegexRelation:
+    post:
+      tags:
+      - NotificationManager
+      operationId: removePerunNotifTemplateRegexRelation
+      summary: Removes relation between template and regex
+      parameters:
+      - name: templateId
+        description: Id of the Notif Template
+        schema:
+          type: integer
+        in: query
+        required: true
+      - name: regexId
+        description: Id of the Notif Regex
+        schema:
+          type: integer
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getRelatedRegexesForTemplate:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getRelatedRegexesForTemplate
+      summary: Returns all regexes related to given template
+      parameters:
+      - name: templateId
+        description: Id of the Notif Template
+        schema:
+          type: integer
+        in: query
+        required: true
+      responses:
+        '200':
+          description: returns List<PerunNotifRegex>
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerunNotifRegex'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getAllPerunNotifReceivers:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getAllPerunNotifReceivers
+      summary: Returns all PerunNotifReceivers
+      responses:
+        '200':
+          description: returns List<PerunNotifReceiver>
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerunNotifReceiver'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/notificationManager/createPerunNotifReceiver:
+    post:
+      tags:
+      - NotificationManager
+      operationId: createPerunNotifReceiver
+      summary: Creates perunNotifReceiver with new id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                receiver:
+                  $ref: '#/components/schemas/PerunNotifReceiver'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifReceiverResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getPerunNotifReceiverById:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getPerunNotifReceiverById
+      summary: Gets perunNotifReceiver by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifReceiverResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/notificationManager/updatePerunNotifReceiver:
+    post:
+      tags:
+      - NotificationManager
+      operationId: updatePerunNotifReceiver
+      summary: Updates an existing PerunNotifReceiver
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                receiver:
+                  $ref: '#/components/schemas/PerunNotifReceiver'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifReceiverResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/removePerunNotifReceiverById:
+    post:
+      tags:
+      - NotificationManager
+      operationId: removePerunNotifReceiverById
+      summary: Removes a PerunNotifReceiver by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getAllPerunNotifTemplateMessages:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getAllPerunNotifTemplateMessages
+      summary: Returns all PerunNotifTemplateMessages
+      responses:
+        '200':
+          description: returns List<PerunNotifTemplateMessage>
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerunNotifTemplateMessage'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/notificationManager/createPerunNotifTemplateMessage:
+    post:
+      tags:
+      - NotificationManager
+      operationId: createPerunNotifTemplateMessage
+      summary: Save perunNotifTemplateMessage to db
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  $ref: '#/components/schemas/PerunNotifTemplateMessage'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifTemplateMessageResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/getPerunNotifTemplateMessageById:
+    get:
+      tags:
+      - NotificationManager
+      operationId: getPerunNotifTemplateMessageById
+      summary: Gets perunNotifTemplateMessage by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifTemplateMessageResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/notificationManager/updatePerunNotifTemplateMessage:
+    post:
+      tags:
+      - NotificationManager
+      operationId: updatePerunNotifTemplateMessage
+      summary: Updates perunNotifTemplateMessage in db
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  $ref: '#/components/schemas/PerunNotifTemplateMessage'
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunNotifTemplateMessageResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/notificationManager/removePerunNotifTemplateMessage:
+    post:
+      tags:
+      - NotificationManager
+      operationId: removePerunNotifTemplateMessage
+      summary: Remove perunNotifTemplateMessage from db by id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  schemas:
+    PerunNotifReceiver:
+      description: Represents one receiver of message, is defined in template
+      type: object
+      properties:
+        id:
+          type: integer
+        target:
+          type: string
+        typeOfReceiver:
+          type: string
+        templateId:
+          type: integer
+        locale:
+          type:
+          - string
+          - 'null'
+    PerunNotifRegex:
+      description: Holds a regex definition used to recognize type of message
+      type: object
+      properties:
+        id:
+          type: integer
+        regex:
+          type: string
+        note:
+          type:
+          - string
+          - 'null'
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerunNotifObject'
+    PerunNotifObject:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        properties:
+          type: array
+          items:
+            type: string
+        objectClass:
+          type: string
+    PerunNotifTemplate:
+      description: Represents template for message sent to receivers
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type:
+          - string
+          - 'null'
+        matchingRegexs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerunNotifRegex'
+        receivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerunNotifReceiver'
+        primaryProperties:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        notifyTrigger:
+          type: string
+        perunNotifTemplateMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerunNotifTemplateMessage'
+        oldestMessageTime:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        youngestMessageTime:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        sender:
+          type:
+          - string
+          - 'null'
+        replyTo:
+          type:
+          - string
+          - 'null'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    PerunNotifTemplateMessage:
+      description: Localized freemarker template
+      type: object
+      properties:
+        id:
+          type: integer
+        templateId:
+          type: integer
+        locale:
+          type: string
+        message:
+          type:
+          - string
+          - 'null'
+        subject:
+          type: string
+  responses:
+    PerunNotifRegexResponse:
+      description: returns PerunNotifRegex
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunNotifRegex'
+    PerunNotifTemplateMessageResponse:
+      description: returns PerunNotifTemplateMessage
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunNotifTemplateMessage'
+    VoidResponse:
+      description: returns nothing
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    PerunNotifReceiverResponse:
+      description: returns PerunNotifReceiver
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunNotifReceiver'
+    PerunNotifTemplateResponse:
+      description: returns PerunNotifTemplate
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunNotifTemplate'
+  parameters:
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

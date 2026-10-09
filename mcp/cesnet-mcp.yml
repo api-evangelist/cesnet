@@ -1,0 +1,246 @@
+generated: '2026-10-09'
+method: derived
+status: candidate
+source:
+- openapi/cesnet-perun-rpc-openapi.yml
+- openapi/cesnet-exafs-openapi.yml
+search:
+  performed: '2026-10-09'
+  queries:
+  - CESNET MCP server "Model Context Protocol" Perun OR e-INFRA
+  - 'GitHub repositories search: mcp org:CESNET (0 results)'
+  - 'GitHub repositories search: mcp-server org:CESNET (0 results)'
+  result: No official CESNET, Perun or ExaFS MCP server (hosted or packaged) was found.
+server:
+  name: cesnet-candidate
+  description: Candidate MCP tool set derived by API Evangelist from the Perun RPC and ExaFS OpenAPI contracts. CESNET does
+    not publish an MCP server; nothing here is a running endpoint.
+auth:
+  perun: HTTP Basic or OAuth 2.0 bearer (securitySchemes BasicAuth/BearerAuth); the server URL path segment ba|krb|non|cert|oauth|fed
+    selects the method
+  exafs: x-api-key header exchanged at GET /auth for an x-access-token header
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+tool_count: 29
+tools:
+- name: perun_whoami
+  category: identity
+  description: Gets current user
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getPerunPrincipal
+  method: GET
+  path: /json/authzResolver/getPerunPrincipal
+- name: perun_list_my_vos
+  category: vos
+  description: Return list of all VOs the caller is associated with.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getMyVos
+  method: GET
+  path: /json/vosManager/getVos
+- name: perun_get_vo_by_short_name
+  category: vos
+  description: Returns a VO by its short name.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getVoByShortName
+  method: GET
+  path: /json/vosManager/getVoByShortName
+- name: perun_find_rich_users
+  category: users
+  description: Returns list of RichUsers with attributes who matches the searchString, searching name, email, logins.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: findRichUsers
+  method: GET
+  path: /json/usersManager/findRichUsers
+- name: perun_get_user_by_id
+  category: users
+  description: Returns user by its id
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getUserById
+  method: GET
+  path: /json/usersManager/getUserById
+- name: perun_get_member_by_user
+  category: members
+  description: Returns a Member specified by VO id and User id.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getMemberByUser
+  method: GET
+  path: /json/membersManager/getMemberByUser
+- name: perun_get_vo_members
+  category: members
+  description: Returns members of a VO.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getMembers
+  method: GET
+  path: /json/membersManager/getMembers
+- name: perun_get_group_by_name
+  category: groups
+  description: Returns a group by VO and Group name.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getGroupByName
+  method: GET
+  path: /json/groupsManager/getGroupByName
+- name: perun_get_group_members
+  category: groups
+  description: Returns list of members of a group.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getGroupMembers
+  method: GET
+  path: /json/groupsManager/getGroupMembers
+- name: perun_add_member_to_group
+  category: groups
+  description: Add member to groups. If already a member of a group, the group will be skipped.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: addMember
+  method: POST
+  path: /urlinjsonout/groupsManager/addMember
+- name: perun_remove_member_from_group
+  category: groups
+  description: Removes member from a groups. If a member is not in the group or is indirect, it is skipped without a warning,
+    but the rest of groups are processed.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: removeMember
+  method: POST
+  path: /urlinjsonout/groupsManager/removeMember
+- name: perun_set_member_status
+  category: members
+  description: Set membership status of a member.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: setStatus
+  method: POST
+  path: /urlinjsonout/membersManager/setStatus
+- name: perun_get_facility_by_name
+  category: facilities
+  description: Returns Facility with specified name.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getFacilityByName
+  method: GET
+  path: /json/facilitiesManager/getFacilityByName
+- name: perun_get_facility_resources
+  category: resources
+  description: Returns all resources assigned to a facility.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getAssignedResourcesForFacility
+  method: GET
+  path: /json/facilitiesManager/getAssignedResources
+- name: perun_assign_group_to_resource
+  category: resources
+  description: 'Assigns a group to a resource. Check if attributes for each member from group are valid. Fill members'' attributes
+    with missing value. Work in sync/async mode. Provide options for creating inactive or '
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: assignGroupToResource
+  method: POST
+  path: /urlinjsonout/resourcesManager/assignGroupToResource
+- name: perun_get_resource_groups
+  category: resources
+  description: List all groups associated with the resource and optionally a member.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getAssignedGroups
+  method: GET
+  path: /json/resourcesManager/getAssignedGroups
+- name: perun_get_user_attributes
+  category: attributes
+  description: Get all non-empty attributes associated with the user.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getUserAttributes
+  method: GET
+  path: /json/attributesManager/getAttributes/u
+- name: perun_get_attribute
+  category: attributes
+  description: Returns an Attribute by its name or id.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getAttribute
+  method: GET
+  path: /json/attributesManager/getAttribute/any
+- name: perun_get_facility_services
+  category: services
+  description: List all services associated with the facility (via resource).
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getAssignedServices
+  method: GET
+  path: /json/servicesManager/getAssignedServices/f
+- name: perun_plan_service_propagation
+  category: services
+  description: Plans service propagation on defined facility. Return int 1 = true if it is possible, 0 = false if not
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: planServicePropagation
+  method: POST
+  path: /urlinjsonout/servicesManager/planServicePropagation
+- name: perun_get_facility_state
+  category: tasks
+  description: Return propagation status of facility.
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operationId: getFacilityState
+  method: GET
+  path: /json/tasksManager/getFacilityState
+- name: exafs_get_token
+  category: auth
+  description: Authenticate and get JWT token
+  api: openapi/cesnet-exafs-openapi.yml
+  method: GET
+  path: /auth
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+- name: exafs_list_rules
+  category: rules
+  description: Get all rules
+  api: openapi/cesnet-exafs-openapi.yml
+  method: GET
+  path: /rules
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+- name: exafs_create_ipv4_rule
+  category: rules
+  description: Create IPv4 rule
+  api: openapi/cesnet-exafs-openapi.yml
+  method: POST
+  path: /rules/ipv4
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+- name: exafs_create_ipv6_rule
+  category: rules
+  description: Create IPv6 rule
+  api: openapi/cesnet-exafs-openapi.yml
+  method: POST
+  path: /rules/ipv6
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+- name: exafs_create_rtbh_rule
+  category: rules
+  description: Create RTBH rule
+  api: openapi/cesnet-exafs-openapi.yml
+  method: POST
+  path: /rules/rtbh
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+- name: exafs_delete_ipv4_rule
+  category: rules
+  description: Delete IPv4 rule
+  api: openapi/cesnet-exafs-openapi.yml
+  method: DELETE
+  path: /rules/ipv4/{rule_id}
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+- name: exafs_list_actions
+  category: choices
+  description: Get available actions
+  api: openapi/cesnet-exafs-openapi.yml
+  method: GET
+  path: /actions
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+- name: exafs_list_communities
+  category: choices
+  description: Get available communities
+  api: openapi/cesnet-exafs-openapi.yml
+  method: GET
+  path: /communities
+  operationId: null
+  note: ExaFS Swagger 2.0 defines no operationIds; the overlay overlays/cesnet-exafs-overlay.yaml proposes one.
+notes: 'Both Perun and ExaFS are self-hosted software: any server built from these tools would point at an institution''s
+  own Perun/ExaFS instance (Perun default in spec: api-dev.perun-aai.org). Tool list is a curated subset of 976 Perun + 13
+  ExaFS operations.'

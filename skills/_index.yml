@@ -1,0 +1,43 @@
+generated: '2026-10-09'
+method: generated
+source: Packaged Agent Skills generated from the Perun RPC OpenAPI under openapi/. No provider-published skills or AGENTS.md
+  were found. ExaFS has no skills because its Swagger 2.0 contract defines no operationIds (see overlays/cesnet-exafs-overlay.yaml).
+skills:
+- file: cesnet-perun-check-my-access.md
+  name: cesnet-perun-check-my-access
+  title: Check my Perun identity and roles
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operations:
+  - getPerunPrincipal
+  - getMyVos
+  - getVosWhereUserIsAdmin
+- file: cesnet-perun-add-user-to-group.md
+  name: cesnet-perun-add-user-to-group
+  title: Add an existing user to a VO group
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operations:
+  - getVoByShortName
+  - findRichUsers
+  - getMemberByUser
+  - getGroupByName
+  - addMember
+  - getGroupMembers
+- file: cesnet-perun-grant-group-access-to-facility.md
+  name: cesnet-perun-grant-group-access-to-facility
+  title: Grant a group access to a facility resource
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operations:
+  - getFacilityByName
+  - getAssignedResourcesForFacility
+  - getGroupByName
+  - assignGroupToResource
+  - getAssignedGroups
+- file: cesnet-perun-propagate-facility-services.md
+  name: cesnet-perun-propagate-facility-services
+  title: Push service configuration to a facility
+  api: openapi/cesnet-perun-rpc-openapi.yml
+  operations:
+  - getFacilityByName
+  - getAssignedServices
+  - planServicePropagation
+  - getFacilityState

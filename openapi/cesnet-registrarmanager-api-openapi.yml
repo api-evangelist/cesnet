@@ -1,0 +1,5206 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Registrar Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged RegistrarManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: RegistrarManager
+  description: RegistrarManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-RegistrarManager.html
+paths:
+  /json/registrarManager/checkCheckboxHtml:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: checkCheckboxHtml
+      summary: Check whether input html is safe for our application form item checkbox labels
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCheckCheckboxHtml
+              description: input to checkCheckboxHtml
+              type: object
+              required:
+              - html
+              properties:
+                html:
+                  type: string
+                  description: string containing the html to check for
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/checkHtmlInput:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: checkHtmlInput
+      summary: Checks whether input is valid html according to the rules in our custom html…
+      responses:
+        '200':
+          $ref: '#/components/responses/StringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCheckHtmlInput
+              description: input to checkHtmlInput
+              type: object
+              required:
+              - html
+              properties:
+                html:
+                  type: string
+                  description: input html to check
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/consolidateIdentityUsingToken:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: consolidateIdentityUsingToken
+      summary: Joins current user identity with the one previously provided and referenced by…
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUserExtSourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputConsolidateIdentityUsingToken
+              description: input to consolidateIdentityUsingToken
+              type: object
+              required:
+              - token
+              properties:
+                token:
+                  type: string
+                  description: token to be used for joining identities
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/sendInvitation:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendInvitation
+      summary: Sends invitation email to user which is not member of VO
+      parameters:
+      - name: voId
+        schema:
+          type: number
+        in: query
+        description: id of VO to send invitation into
+      - name: name
+        schema:
+          type: string
+        in: query
+        description: name of person used in invitation email (optional)
+      - name: email
+        schema:
+          type: string
+        in: query
+        required: true
+        description: email address to send invitation to
+      - name: language
+        schema:
+          type: string
+        in: query
+        required: true
+        description: preferred language to use
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/sendInvitationsFromCsv:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendInvitationsFromCsv
+      summary: Send invitations with link to VO / Group application form from provided csv…
+      responses:
+        '200':
+          $ref: '#/components/responses/MapStringStringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputInvitationsFromCsv
+              description: input for sending invitations from csv
+              type: object
+              required:
+              - voId
+              - invitationData
+              properties:
+                invitationData:
+                  type: array
+                  items:
+                    type: string
+                  description: values separated with semicolons
+                voId:
+                  type: number
+                  description: id of VO to send invitation into
+                groupId:
+                  type: number
+                  description: id of Group to send invitation into
+                language:
+                  type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/sendInvitation/g:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendInvitationForGroup
+      summary: Sends invitation email to user which is not member of VO and Group
+      description: Invitation link targets VO application form fist, after submission, Group application form is displayed.
+      parameters:
+      - name: voId
+        schema:
+          type: number
+        in: query
+        description: id of VO to send invitation into
+      - name: groupId
+        schema:
+          type: number
+        in: query
+        description: id of Group to send invitation into
+      - name: name
+        schema:
+          type: string
+        in: query
+        description: name of person used in invitation email (optional)
+      - name: email
+        schema:
+          type: string
+        in: query
+        required: true
+        description: email address to send invitation to
+      - name: language
+        schema:
+          type: string
+        in: query
+        required: true
+        description: preferred language to use
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/sendInvitation/u:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendInvitationToExistingUser
+      summary: Sends invitation email to user which is not member of VO
+      parameters:
+      - name: userId
+        schema:
+          type: number
+        in: query
+        description: id of user to send invitation to
+      - name: voId
+        schema:
+          type: number
+        in: query
+        description: id of VO to send invitation into
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/sendInvitation/u-g:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendInvitationGroupToExistingUser
+      summary: Sends invitation email to user which is not member of Group
+      parameters:
+      - name: userId
+        schema:
+          type: number
+        in: query
+        description: id of user to send invitation to
+      - name: voId
+        schema:
+          type: number
+        in: query
+        description: id of VO to send invitation into
+      - name: groupId
+        schema:
+          type: number
+        in: query
+        description: id of Group to send invitation into
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/buildInviteURL:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: buildInviteURL
+      summary: Creates an invitation link for the given vo/group and namespace (type of…
+      parameters:
+      - name: voId
+        schema:
+          type: number
+        in: query
+        required: true
+        description: id of vo for which the invitation link should be created, parent vo of the group if it should be a group invitation
+      - name: groupId
+        schema:
+          type: number
+        in: query
+        required: false
+        description: id of group for which the invitation link should be created
+      responses:
+        '200':
+          $ref: '#/components/responses/StringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationsForVo:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationsForVo
+      summary: Gets all applications for a given VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - name: state[]
+        schema:
+          type: array
+          items:
+            type: string
+        in: query
+        description: 'list of states: NEW, VERIFIED, APPROVED, REJECTED'
+      - name: dateFrom
+        schema:
+          type: string
+          format: date
+        in: query
+        required: false
+        description: return applications with the same date or newer than this date
+      - name: dateTo
+        schema:
+          type: string
+          format: date
+        in: query
+        required: false
+        description: return applications with the same date or older than this date
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationsPage:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationsPage
+      summary: Get page of applications from the given vo, based on the query attributes
+      responses:
+        '200':
+          $ref: '#/components/responses/PaginatedRichApplicationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetPaginatedApplications
+              description: input to getPaginatedApplications
+              type: object
+              required:
+              - query
+              properties:
+                vo:
+                  type: integer
+                query:
+                  $ref: '#/components/schemas/ApplicationsPageQuery'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationsForGroup:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationsForGroup
+      summary: Gets all applications for a given Group
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - name: state[]
+        schema:
+          type: array
+          items:
+            type: string
+        in: query
+        description: 'list of states: NEW, VERIFIED, APPROVED, REJECTED'
+      - name: dateFrom
+        schema:
+          type: string
+          format: date
+        in: query
+        required: false
+        description: return with the same date or applications newer than this date
+      - name: dateTo
+        schema:
+          type: string
+          format: date
+        in: query
+        required: false
+        description: return applications with the same date or older than this date
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationsForMember:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationsForMember
+      summary: Gets all aplications for a given Member
+      parameters:
+      - $ref: '#/components/parameters/memberId'
+      - $ref: '#/components/parameters/optionalGroupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getOpenApplicationsForUserInVo:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getOpenApplicationsForUserInVo
+      summary: Gets all open applications of the caller in the given VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getPrincipalsReservedLogins:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getPrincipalsReservedLogins
+      summary: Gets logins reserved by the caller in format of `namespace->login`
+      responses:
+        '200':
+          $ref: '#/components/responses/MapStringStringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationById:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationById
+      summary: Returns application object by its id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationDataById:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationDataById
+      summary: Returns data submitted by user in given application (by id)
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationFormItemDataResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/verifyApplication:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: verifyApplication
+      summary: Forcefully marks application as verified (only when application was in NEW…
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/approveApplication:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: approveApplication
+      summary: Manually approves an application
+      description: Expected to be called as a result of direct VO administrator action in the web UI.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/canBeApproved:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: canBeApproved
+      summary: Check if application can be approved based on form module rules.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/CantBeApprovedExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/approveApplications:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: approveApplications
+      summary: Manually approves multiple applications at once
+      description: Expected to be called as a result of direct VO administrator action in the web UI.
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/applicationsOperationResultsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/rejectApplication:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: rejectApplication
+      summary: Manually rejects an application
+      description: Expected to be called as a result of direct VO administrator action in the web UI.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: reason
+        schema:
+          type: string
+        in: query
+        description: description of reason
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/rejectApplications:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: rejectApplications
+      summary: Manually rejects multiple applications at once
+      description: Expected to be called as a result of direct VO administrator action in the web UI.
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      - name: reason
+        schema:
+          type: string
+        in: query
+        description: description of reason
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/applicationsOperationResultsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/deleteApplication:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: deleteApplication
+      summary: Deletes an application
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/deleteApplications:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: deleteApplications
+      summary: Manually deletes multiple applications at once
+      description: Expected to be called as a result of direct VO administrator action in the web UI.
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/applicationsOperationResultsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/sendMessage:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendMessage
+      summary: Re-send mail notification for existing application
+      description: 'Message of specified type is sent only, when application is in expected state related to the notification.
+
+        Note, that some data related to processing application are not available (e.g. list of exceptions during approval), since this method doesn''t perform any action with Application itself.
+
+        Perun admin can send any notification except USER_INVITE type, see #sendInvitation() for this.'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputSendMessage
+              description: input to sendMessage
+              type: object
+              required:
+              - mailType
+              - appId
+              properties:
+                mailType:
+                  $ref: '#/components/schemas/MailType'
+                appId:
+                  type: integer
+                  description: application id
+                reason:
+                  type: string
+                  description: 'you can specify reason for case: mailType == APP_REJECTED_USER'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/sendMessageNewRegistrar:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendMessageNewRegistrar
+      summary: Re-send mail notification for existing New Registrar application
+      description: 'Message of specified type is sent only, when application is in expected state related to the notification.
+
+        Note, that some data related to processing application are not available (e.g. list of exceptions during approval), since this method doesn''t perform any action with Application itself.
+
+        Perun admin can send any notification except USER_INVITE type, see #sendInvitation() for this.'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputSendMessageNewRegistrar
+              description: input to sendMessageNewRegistrar
+              type: object
+              required:
+              - mailType
+              - appId
+              - issuer
+              - identifier
+              properties:
+                mailType:
+                  $ref: '#/components/schemas/MailType'
+                group:
+                  type: integer
+                  description: group id
+                vo:
+                  type: integer
+                  description: vo id
+                user:
+                  type: integer
+                  description: user id
+                issuer:
+                  type: string
+                  description: issuer of the user's identity
+                identifier:
+                  type: string
+                  description: identifier of the user
+                newRegAppId:
+                  type: string
+                  format: uuid
+                  description: application id in new Registrar
+                newRegAppType:
+                  type: string
+                  enum:
+                  - INITIAL
+                  - EXTENSION
+                  description: type of the application from new Registrar
+                reason:
+                  type: string
+                  description: 'you can specify reason for case: mailType == APP_REJECTED_USER'
+                emailItems:
+                  type: object
+                  description: Map of the email items, {formItemDataUUID}->{value}
+                  additionalProperties:
+                    type: string
+                itemsByShortname:
+                  type: object
+                  description: Map of the item data, itemShortname->itemData
+                  additionalProperties:
+                    type: string
+                destinationValues:
+                  type: object
+                  description: Map of the items with a destination attribute, destinationAttribute->itemData
+                  additionalProperties:
+                    type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/sendMessages:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: sendMessages
+      summary: Manually re-sends mail notifications for existing applications
+      description: Expected to be called as a result of direct VO administrator action in the web UI.
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputSendMessages
+              description: input to sendMessages
+              type: object
+              required:
+              - mailType
+              - ids
+              properties:
+                mailType:
+                  $ref: '#/components/schemas/MailType'
+                reason:
+                  type: string
+                  description: 'you can specify reason for case: mailType == APP_REJECTED_USER'
+                ids:
+                  type: array
+                  items:
+                    type: integer
+                  description: An array of integers representing the IDs of applications
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationForm/vo:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getVoApplicationForm
+      summary: Gets an application form for a given VO
+      description: 'There is exactly one form for membership per VO, one form is used for both initial registration and annual account expansion,
+
+        just the form items are marked whether the should be present in one, the other, or both types of application.'
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationFormResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationForm/group:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getGroupApplicationForm
+      summary: Gets an application form for a given Group
+      description: 'There is exactly one form for membership per Group, one form is used for both initial registration and annual account expansion,
+
+        just the form items are marked whether the should be present in one, the other, or both types of application.'
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationFormResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/getFormItemById:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getFormItemById
+      summary: Gets a form item by its id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationFormItemResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/updateFormItemTexts:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: updateFormItemTexts
+      summary: Update label, options, help and error message for specified form item
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateFormItemTexts
+              description: input to updateFormItemTexts
+              type: object
+              properties:
+                formItem:
+                  $ref: '#/components/schemas/ApplicationFormItem'
+                locale:
+                  type:
+                  - string
+                  - 'null'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getFormItems/vo:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getFormItemsForVo
+      summary: Gets all items in VO application form
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationFormItemsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getFormItems/vo-type:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getFormItemsForVoWithType
+      summary: Gets items of specified type in VO application form, for initital registration…
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - name: type
+        schema:
+          type: string
+        in: query
+        description: 'application type: INITIAL or EXTENSION'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationFormItemsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getFormItems/group:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getFormItemsForGroup
+      summary: Gets all items in Group application form
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationFormItemsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getFormItems/group-type:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getFormItemsForGroupWithType
+      summary: Gets items of specified type in Group application form, for initital…
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - name: type
+        schema:
+          type: string
+        in: query
+        description: 'application type: INITIAL, EXTENSION or EMBEDDED'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationFormItemsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/updateFormItems/vo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: updateFormItemsForVo
+      summary: Updates form items sent in list
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateFormItemsForVo
+              description: input to updateFormItemsForVo
+              type: object
+              properties:
+                vo:
+                  type: integer
+                  description: vo id
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ApplicationFormItem'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/updateFormItems/group:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: updateFormItemsForGroup
+      summary: Updates form items sent in list
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateFormItemsForGroup
+              description: input to updateFormItemsForGroup
+              type: object
+              properties:
+                group:
+                  type: integer
+                  description: group id
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ApplicationFormItem'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/updateForm:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: updateForm
+      summary: Updates the form attributes, not the form items
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationFormResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateForm
+              description: input to updateForm
+              type: object
+              properties:
+                form:
+                  $ref: '#/components/schemas/ApplicationForm'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/clearVoForm:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: clearVoForm
+      summary: Resets the vo application form to the state after creation - deletes all form…
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationFormResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/clearGroupForm:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: clearGroupForm
+      summary: Resets the group application form to the state after creation - deletes all…
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationFormResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyForm/voToVo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyFormFromVoToVo
+      summary: Copy all form items from selected VO into another
+      parameters:
+      - name: fromVo
+        schema:
+          type: integer
+        in: query
+        description: source VO
+      - name: toVo
+        schema:
+          type: integer
+        in: query
+        description: destination VO
+      - name: idempotent
+        schema:
+          type: boolean
+        in: query
+        required: false
+        description: when true existing target items are deleted
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyForm/groupToVo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyFormFromGroupToVo
+      summary: Copy all form items from selected Group into VO
+      parameters:
+      - name: fromGroup
+        schema:
+          type: integer
+        in: query
+        description: source group
+      - name: toVo
+        schema:
+          type: integer
+        in: query
+        description: destination VO
+      - name: idempotent
+        schema:
+          type: boolean
+        in: query
+        required: false
+        description: when true existing target items are deleted
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyForm/voToGroup:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyFormFromVoToGroup
+      summary: Copy all form items from selected VO into Group
+      parameters:
+      - name: fromVo
+        schema:
+          type: integer
+        in: query
+        description: source VO
+      - name: toGroup
+        schema:
+          type: integer
+        in: query
+        description: destination group
+      - name: idempotent
+        schema:
+          type: boolean
+        in: query
+        required: false
+        description: when true existing target items are deleted
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyForm/groupToGroup:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyFormFromGroupToGroup
+      summary: Copy all form items from selected Group into another
+      parameters:
+      - name: fromGroup
+        schema:
+          type: integer
+        in: query
+        description: source group
+      - name: toGroup
+        schema:
+          type: integer
+        in: query
+        description: destination group
+      - name: idempotent
+        schema:
+          type: boolean
+        in: query
+        required: false
+        description: when true existing target items are deleted
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationMails/v:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationMailsForVo
+      summary: Returns all mail notifications related to specific app form
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationMailsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getApplicationMails/g:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getApplicationMailsForGroup
+      summary: Returns all mail notifications related to specific app form
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfApplicationMailsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/setSendingEnabled:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: setSendingEnabled
+      summary: Enable or disable sending for list of mail definitions
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputSetSendingEnabled
+              description: input to setSendingEnabled
+              type: object
+              required:
+              - mails
+              - enabled
+              properties:
+                mails:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ApplicationMail'
+                enabled:
+                  type: boolean
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyMails/voToVo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyMailsFromVoToVo
+      summary: Copy all e-mail notifications from selected VO into another
+      parameters:
+      - name: fromVo
+        schema:
+          type: integer
+        in: query
+        description: source VO
+      - name: toVo
+        schema:
+          type: integer
+        in: query
+        description: destination VO
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyMails/groupToVo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyMailsFromGroupToVo
+      summary: Copy all e-mail notifications from selected Group into VO
+      parameters:
+      - name: fromGroup
+        schema:
+          type: integer
+        in: query
+        description: source group
+      - name: toVo
+        schema:
+          type: integer
+        in: query
+        description: destination VO
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyMails/voToGroup:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyMailsFromVoToGroup
+      summary: Copy all e-mail notifications from selected VO into Group
+      parameters:
+      - name: fromVo
+        schema:
+          type: integer
+        in: query
+        description: source VO
+      - name: toGroup
+        schema:
+          type: integer
+        in: query
+        description: destination group
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/copyMails/groupToGroup:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: copyMailsFromGroupToGroup
+      summary: Copy all e-mail notifications from selected Group into another
+      parameters:
+      - name: fromGroup
+        schema:
+          type: integer
+        in: query
+        description: source group
+      - name: toGroup
+        schema:
+          type: integer
+        in: query
+        description: destination group
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/deleteApplicationMail/v:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: deleteApplicationMailForVo
+      summary: Deletes an e-mail notification from DB based on id property
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/deleteApplicationMail/g:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: deleteApplicationMailForGroup
+      summary: Deletes an e-mail notification from DB based on id property
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/updateApplicationMail:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: updateApplicationMail
+      summary: Updates an e-mail notification
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateApplicationMail
+              description: input to updateApplicationMail
+              type: object
+              required:
+              - mail
+              properties:
+                mail:
+                  $ref: '#/components/schemas/ApplicationMail'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/addApplicationMail/v:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: addApplicationMailForVo
+      summary: Add new mail notification
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputAddApplicationMailForVo
+              description: input to addApplicationMailForVo
+              type: object
+              required:
+              - vo
+              - mail
+              properties:
+                vo:
+                  type: integer
+                mail:
+                  $ref: '#/components/schemas/ApplicationMail'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/addApplicationMail/g:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: addApplicationMailForGroup
+      summary: Add new mail notification
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputAddApplicationMailForGroup
+              description: input to addApplicationMailForGroup
+              type: object
+              required:
+              - group
+              - mail
+              properties:
+                group:
+                  type: integer
+                mail:
+                  $ref: '#/components/schemas/ApplicationMail'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/createApplicationForm/vo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: createApplicationFormInVo
+      summary: Create application form for a VO
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/createApplicationForm/group:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: createApplicationFormInGroup
+      summary: Create application form for a group
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/checkForSimilarUsers/authInfo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: checkForSimilarUsersWithAuthInfo
+      summary: Check for similar users by name and email in session (authz) information
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfIdentityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/checkForSimilarUsers/formData:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: checkForSimilarUsersWithFormItemData
+      summary: Check for similar users by name and email in form data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCheckForSimilarUsersWithFormItemData
+              description: input to checkForSimilarUsersWithFormItemData
+              type: object
+              required:
+              - formItems
+              properties:
+                formItems:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ApplicationFormItemData'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfIdentityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/checkForSimilarUsers/new-registrar:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: checkForSimilarUsersWithAppData
+      summary: Check for similar users by name and email in new registrar application data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputCheckForSimilarUsersWithAppData
+              description: input to checkForSimilarUsersWithAppData
+              type: object
+              required:
+              - appData
+              properties:
+                appData:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: 'Map of the application attributes (key: attr name, value: attr value)'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfIdentityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/checkForSimilarRichIdentities:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: checkForSimilarRichIdentities
+      summary: Check for similar users by name and email in session (authz) information
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfEnrichedIdentityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getConsolidatorToken:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getConsolidatorToken
+      summary: Get time-limited token proving user identity in external source (for now 3…
+      description: 'It can be used to join user identity with another by calling consolidateIdentityUsingToken() method and passing the token.
+
+        Please note, that different authz (identity) must be used to perform both calls.'
+      responses:
+        '200':
+          $ref: '#/components/responses/StringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/consolidate:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: consolidate
+      summary: Join user identities by access tokens
+      description: Join user identities by access tokens.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputConsolidate
+              description: input to consolidate
+              type: object
+              required:
+              - accessToken
+              properties:
+                accessToken:
+                  type: string
+                  description: second access token
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/updateFormItemData:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: updateFormItemData
+      summary: Update application form item data value, which was originally submitted by the…
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputFormItemData
+              description: input to updateFormItemData
+              type: object
+              required:
+              - appId
+              - data
+              properties:
+                appId:
+                  type: integer
+                  description: application id
+                data:
+                  $ref: '#/components/schemas/ApplicationFormItemData'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/updateFormItemsData:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: updateFormItemsData
+      summary: Update application form items data, which was originally submitted by the User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputFormItemsData
+              description: input to updateFormItemsData
+              type: object
+              required:
+              - appId
+              - data
+              properties:
+                appId:
+                  type: integer
+                  description: application id
+                data:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ApplicationFormItemData'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/submitApplication:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: submitApplication
+      summary: Creates a new application and if succeeds, trigger validation and approval.
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputSubmitApplication
+              description: input to submitApplication
+              type: object
+              required:
+              - app
+              - data
+              properties:
+                app:
+                  $ref: '#/components/schemas/Application'
+                data:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ApplicationFormItemData'
+                invitationToken:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                  description: uuid token of invitation if application is pre-approved
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getGroupsToAutoRegistration:
+    get:
+      deprecated: true
+      tags:
+      - RegistrarManager
+      operationId: getGroupsToAutoRegistration
+      summary: Returns all groups which can be registered into during vo registration
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getGroupsToAutoRegistration/vo:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getVoGroupsToAutoRegistration
+      summary: Returns all groups which can be registered into during vo registration
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/formItemId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/getGroupsToAutoRegistration/group:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: getSubgroupsToAutoRegistration
+      summary: Returns all groups which can be registered into during group registration
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/formItemId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/deleteGroupsFromAutoRegistration:
+    post:
+      deprecated: true
+      tags:
+      - RegistrarManager
+      operationId: deleteGroupsFromAutoRegistration
+      summary: Deletes groups from a list of groups which can be registered into during vo…
+      parameters:
+      - $ref: '#/components/parameters/groupIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/deleteGroupsFromAutoRegistration/vo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: deleteVoGroupsFromAutoRegistration
+      summary: Deletes groups from a list of groups which can be registered into during vo…
+      parameters:
+      - $ref: '#/components/parameters/groupIds'
+      - $ref: '#/components/parameters/formItemId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/deleteGroupsFromAutoRegistration/group:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: deleteSubgroupsFromAutoRegistration
+      summary: Deletes groups from a list of groups which can be registered into during group…
+      parameters:
+      - $ref: '#/components/parameters/groupIds'
+      - name: registrationGroup
+        description: id of the group to which these groups are associated for the embedded registration
+        schema:
+          type: integer
+        in: query
+        required: true
+      - $ref: '#/components/parameters/formItemId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/addGroupsToAutoRegistration:
+    post:
+      deprecated: true
+      tags:
+      - RegistrarManager
+      operationId: addGroupsToAutoRegistration
+      summary: Adds groups to a list of groups which can be registered into during vo…
+      parameters:
+      - $ref: '#/components/parameters/groupIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/addGroupsToAutoRegistration/vo:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: addVoGroupsToAutoRegistration
+      summary: Adds groups to a list of groups which can be registered into during vo…
+      parameters:
+      - $ref: '#/components/parameters/groupIds'
+      - $ref: '#/components/parameters/formItemId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/registrarManager/addGroupsToAutoRegistration/group:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: addSubgroupsToAutoRegistration
+      summary: Adds groups to a list of groups which can be registered into during group…
+      parameters:
+      - $ref: '#/components/parameters/groupIds'
+      - name: registrationGroup
+        description: id of the group to which these groups are associated for the embedded registration
+        schema:
+          type: integer
+        in: query
+        required: true
+      - $ref: '#/components/parameters/formItemId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/inviteMemberCandidates:
+    post:
+      tags:
+      - RegistrarManager
+      operationId: inviteMemberCandidates
+      summary: Invite member candidates
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputInviteMemberCandidates
+              description: input to invite member candidates
+              type: object
+              required:
+              - vo
+              - candidates
+              - lang
+              properties:
+                vo:
+                  type: integer
+                candidates:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/MemberCandidate'
+                lang:
+                  type: string
+                group:
+                  type: integer
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/invitationFormExists:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: invitationFormExists
+      summary: Checks if invitation form and invitation notification exist
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/optionalGroupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/isInvitationEnabled:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: isInvitationEnabled
+      summary: Checks if invitation via notification is enabled (invitation notification…
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/optionalGroupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/isPreApprovedInvitationEnabled:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: isPreApprovedInvitationEnabled
+      summary: Checks if pre-approved invitation via notification is enabled (pre-approved…
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/registrarManager/isLinkInvitationEnabled:
+    get:
+      tags:
+      - RegistrarManager
+      operationId: isLinkInvitationEnabled
+      summary: Checks if invitation via link is enabled (application form exists and…
+      parameters:
+      - $ref: '#/components/parameters/voId'
+      - $ref: '#/components/parameters/optionalGroupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/BooleanResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  schemas:
+    EnrichedIdentity:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        organization:
+          type: string
+        email:
+          type: string
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrichedExtSource'
+    Candidate:
+      allOf:
+      - $ref: '#/components/schemas/User'
+      properties:
+        userExtSource:
+          $ref: '#/components/schemas/UserExtSource'
+        additionalUserExtSources:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserExtSource'
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        expectedSyncGroupStatus:
+          type: string
+    AttributeDefinition:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        friendlyName:
+          type: string
+        namespace:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        type:
+          type: string
+        displayName:
+          type: string
+        writable:
+          type: boolean
+        unique:
+          type: boolean
+        friendlyNameParameter:
+          type: string
+          readOnly: true
+        baseFriendlyName:
+          type: string
+          readOnly: true
+        entity:
+          type: string
+          readOnly: true
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Vo:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        shortName:
+          type: string
+        uuid:
+          type: string
+          format: uuid
+    PaginatedRichApplications:
+      properties:
+        offset:
+          type: integer
+        pageSize:
+          type: integer
+        totalCount:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RichApplication'
+      required:
+      - offset
+      - pageSize
+      - totalCount
+      - data
+    ApplicationFormItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        shortname:
+          type: string
+        required:
+          type: boolean
+        updatable:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/Type'
+        federationAttribute:
+          type:
+          - string
+          - 'null'
+        perunSourceAttribute:
+          type:
+          - string
+          - 'null'
+        perunDestinationAttribute:
+          type:
+          - string
+          - 'null'
+        regex:
+          type:
+          - string
+          - 'null'
+        applicationTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppType'
+        ordnum:
+          type: integer
+        i18n:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ItemTexts'
+        hiddenDependencyItemId:
+          type:
+          - integer
+          - 'null'
+        disabledDependencyItemId:
+          type:
+          - integer
+          - 'null'
+        hidden:
+          type: string
+          enum:
+          - NEVER
+          - ALWAYS
+          - IF_PREFILLED
+          - IF_EMPTY
+        disabled:
+          type: string
+          enum:
+          - NEVER
+          - ALWAYS
+          - IF_PREFILLED
+          - IF_EMPTY
+        forDelete:
+          type: boolean
+    ApplicationsPageQuery:
+      properties:
+        pageSize:
+          type: integer
+        offset:
+          type: integer
+        order:
+          $ref: '#/components/schemas/SortingOrder'
+        sortColumn:
+          $ref: '#/components/schemas/ApplicationsOrderColumn'
+        searchString:
+          type: string
+        includeGroupApplications:
+          type: boolean
+        includeSubGroupApplications:
+          type: boolean
+        getDetails:
+          type: boolean
+        states:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppState'
+        dateFrom:
+          type: string
+          format: date
+        dateTo:
+          type: string
+          format: date
+        userId:
+          type: integer
+        groupId:
+          type: integer
+      required:
+      - pageSize
+      - offset
+      - order
+      - sortColumn
+    ApplicationsOrderColumn:
+      type: string
+      enum:
+      - ID
+      - DATE_CREATED
+      - TYPE
+      - STATE
+      - SUBMITTER
+      - GROUP_NAME
+      - MODIFIED_BY
+    ApplicationForm:
+      type: object
+      properties:
+        id:
+          type: integer
+        vo:
+          $ref: '#/components/schemas/Vo'
+        group:
+          $ref: '#/components/schemas/Group'
+        automaticApproval:
+          type: boolean
+        automaticApprovalExtension:
+          type: boolean
+        automaticApprovalEmbedded:
+          type: boolean
+        moduleClassNames:
+          type: array
+          items:
+            type: string
+    RichUser:
+      description: user data packed together with all user attributes and UserExtSources
+      allOf:
+      - $ref: '#/components/schemas/User'
+      properties:
+        userExtSources:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UserExtSource'
+        userAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Attribute'
+      required:
+      - userExtSources
+      - userAttributes
+    MailType:
+      type: string
+      enum:
+      - APP_CREATED_USER
+      - APPROVABLE_GROUP_APP_USER
+      - APP_CREATED_VO_ADMIN
+      - MAIL_VALIDATION
+      - APP_APPROVED_USER
+      - APP_REJECTED_USER
+      - APP_ERROR_VO_ADMIN
+      - APP_CHANGES_REQUESTED
+      - USER_INVITE
+      - USER_PRE_APPROVED_INVITE
+    MailText:
+      type: object
+      properties:
+        locale:
+          type: string
+        htmlFormat:
+          type: boolean
+        subject:
+          type: string
+        text:
+          type: string
+    ItemTexts:
+      type: object
+      properties:
+        locale:
+          type: string
+        label:
+          type:
+          - string
+          - 'null'
+        options:
+          type:
+          - string
+          - 'null'
+        help:
+          type:
+          - string
+          - 'null'
+        errorMessage:
+          type:
+          - string
+          - 'null'
+    EnrichedExtSource:
+      properties:
+        extSource:
+          $ref: '#/components/schemas/ExtSource'
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+    UserExtSource:
+      description: represents specific user authentication or identification in external source of data
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        login:
+          type: string
+        userId:
+          type: integer
+        loa:
+          type: integer
+        persistent:
+          type: boolean
+        lastAccess:
+          type: string
+          format: timestamp
+          description: SQL timestamp
+          example: '2012-01-01 00:00:00.100000'
+        extSource:
+          $ref: '#/components/schemas/ExtSource'
+      required:
+      - login
+      - extSource
+    ApplicationFormItemData:
+      type: object
+      properties:
+        id:
+          type: integer
+        formItem:
+          $ref: '#/components/schemas/ApplicationFormItem'
+        shortname:
+          type: string
+        value:
+          type: string
+        assuranceLevel:
+          type: string
+        prefilledValue:
+          type: string
+    Identity:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        organization:
+          type: string
+        email:
+          type: string
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtSource'
+    Group:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      type:
+      - object
+      - 'null'
+      properties:
+        name:
+          type: string
+        shortName:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        voId:
+          type: integer
+        parentGroupId:
+          type:
+          - integer
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    ApplicationMail:
+      type: object
+      properties:
+        id:
+          type: integer
+        appType:
+          $ref: '#/components/schemas/AppType'
+        formId:
+          type: integer
+        mailType:
+          $ref: '#/components/schemas/MailType'
+        send:
+          type: boolean
+        message:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MailText'
+        htmlMessage:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MailText'
+    AppType:
+      type: string
+      enum:
+      - INITIAL
+      - EXTENSION
+      - EMBEDDED
+    CantBeApprovedException:
+      description: thrown by Registrar modules when application shouldn't be approved
+      allOf:
+      - $ref: '#/components/schemas/PerunException'
+      properties:
+        affiliation:
+          type:
+          - string
+          - 'null'
+        applicationId:
+          type: number
+        category:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+        soft:
+          type: boolean
+    AppState:
+      type: string
+      enum:
+      - NEW
+      - VERIFIED
+      - APPROVED
+      - REJECTED
+    MemberCandidate:
+      type: object
+      properties:
+        candidate:
+          $ref: '#/components/schemas/Candidate'
+        member:
+          $ref: '#/components/schemas/Member'
+        richUser:
+          $ref: '#/components/schemas/RichUser'
+    ExtSource:
+      description: represents external source of data for users such as an IdP or an HR database
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    Application:
+      type: object
+      properties:
+        id:
+          type: integer
+        vo:
+          $ref: '#/components/schemas/Vo'
+        group:
+          $ref: '#/components/schemas/Group'
+        type:
+          $ref: '#/components/schemas/AppType'
+        fedInfo:
+          type: string
+        state:
+          $ref: '#/components/schemas/AppState'
+        extSourceName:
+          type: string
+        extSourceType:
+          type: string
+        extSourceLoa:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedBy:
+          type: string
+        modifiedAt:
+          type: string
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByDisplayName:
+          type:
+          - string
+          - 'null'
+        autoApproveError:
+          type: string
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    SortingOrder:
+      type: string
+      enum:
+      - ASCENDING
+      - DESCENDING
+    RichApplication:
+      allOf:
+      - $ref: '#/components/schemas/Application'
+      properties:
+        formData:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicationFormItemData'
+      required:
+      - formData
+    ApplicationOperationResult:
+      type: object
+      properties:
+        applicationId:
+          type: integer
+        error:
+          $ref: '#/components/schemas/PerunException'
+    User:
+      description: represents user as a physical person
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        titleBefore:
+          type:
+          - string
+          - 'null'
+        titleAfter:
+          type:
+          - string
+          - 'null'
+        serviceUser:
+          type: boolean
+        sponsoredUser:
+          type: boolean
+        uuid:
+          type: string
+          format: uuid
+        specificUser:
+          type: boolean
+        majorSpecificType:
+          type: string
+    Type:
+      type: string
+      description: type of application form items
+      enum:
+      - HTML_COMMENT
+      - SUBMIT_BUTTON
+      - AUTO_SUBMIT_BUTTON
+      - PASSWORD
+      - VALIDATED_EMAIL
+      - TEXTFIELD
+      - TEXTAREA
+      - CHECKBOX
+      - RADIO
+      - SELECTIONBOX
+      - COMBOBOX
+      - USERNAME
+      - HEADING
+      - TIMEZONE
+      - EMBEDDED_GROUP_APPLICATION
+      - LIST_INPUT_BOX
+      - MAP_INPUT_BOX
+    Attribute:
+      allOf:
+      - $ref: '#/components/schemas/AttributeDefinition'
+      properties:
+        valueCreatedAt:
+          type:
+          - string
+          - 'null'
+        valueCreatedBy:
+          type:
+          - string
+          - 'null'
+        valueModifiedAt:
+          type:
+          - string
+          - 'null'
+        valueModifiedBy:
+          type:
+          - string
+          - 'null'
+        value: {}
+    Member:
+      description: represents Member of a Virtual Organization
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        userId:
+          type: integer
+        voId:
+          type: integer
+        status:
+          type: string
+        membershipType:
+          type: string
+        dualMembership:
+          type: boolean
+        sourceGroupId:
+          type:
+          - integer
+          - 'null'
+        sponsored:
+          type: boolean
+        groupStatus:
+          type: string
+        groupStatuses:
+          type: object
+          additionalProperties:
+            type: string
+  parameters:
+    voId:
+      name: vo
+      description: id of Vo
+      schema:
+        type: integer
+      in: query
+      required: true
+    formItemId:
+      name: formItem
+      description: id of of the form item
+      schema:
+        type: integer
+      in: query
+      required: true
+    ids:
+      name: ids[]
+      description: list of ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    memberId:
+      name: member
+      description: id of Member
+      schema:
+        type: integer
+      in: query
+      required: true
+    groupId:
+      name: group
+      description: id of Group
+      schema:
+        type: integer
+      in: query
+      required: true
+    optionalGroupId:
+      name: group
+      description: id of Group
+      schema:
+        type: integer
+      in: query
+      required: false
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+    groupIds:
+      name: groups[]
+      description: list of Group ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+  responses:
+    ListOfUserExtSourcesResponse:
+      description: returns List<UserExtSource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/UserExtSource'
+    ApplicationFormItemResponse:
+      description: returns ApplicationFormItem
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApplicationFormItem'
+    MapStringStringResponse:
+      description: returns Map<String,String>
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+    ApplicationFormResponse:
+      description: returns ApplicationForm
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApplicationForm'
+    applicationsOperationResultsResponse:
+      description: returns List<ApplicationOperationResult>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ApplicationOperationResult'
+    ApplicationResponse:
+      description: returns Application
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Application'
+    ListOfApplicationMailsResponse:
+      description: List<ApplicationMail> Application mails
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ApplicationMail'
+    StringResponse:
+      description: returns String
+      content:
+        application/json:
+          schema:
+            type: string
+    VoidResponse:
+      description: returns nothing
+    ListOfGroupsResponse:
+      description: returns List<Group>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Group'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    ListOfIdentityResponse:
+      description: List<Identity> Identities
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Identity'
+    PaginatedRichApplicationsResponse:
+      description: returns Paginated<RichApplication>
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginatedRichApplications'
+    ListOfApplicationsResponse:
+      description: returns List<Application>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Application'
+    ListOfApplicationFormItemsResponse:
+      description: returns List<ApplicationFormItem>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ApplicationFormItem'
+    ListOfEnrichedIdentityResponse:
+      description: List<EnrichedIdentity> Identities
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EnrichedIdentity'
+    BooleanResponse:
+      description: returns Boolean
+      content:
+        application/json:
+          schema:
+            type: boolean
+    IntegerResponse:
+      description: returns Integer
+      content:
+        application/json:
+          schema:
+            type: integer
+    ListOfApplicationFormItemDataResponse:
+      description: returns List<ApplicationFormItemData>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ApplicationFormItemData'
+    CantBeApprovedExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CantBeApprovedException'
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

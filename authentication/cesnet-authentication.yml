@@ -1,0 +1,47 @@
+generated: '2026-10-09'
+method: searched
+source: https://perun-aai.org/documentation/perun-rpc-api
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: API key for initial authentication
+  sources:
+  - openapi/cesnet-exafs-openapi.yml
+- name: TokenAuth
+  type: apiKey
+  in: header
+  parameter: x-access-token
+  description: auth token received from /auth endpoint
+  sources:
+  - openapi/cesnet-exafs-openapi.yml
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication with username and password
+  sources:
+  - openapi/cesnet-perun-rpc-openapi.yml
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+  sources:
+  - openapi/cesnet-perun-rpc-openapi.yml
+docs: https://perun-aai.org/documentation/perun-rpc-api
+docs_urls:
+- https://perun-aai.org/documentation/perun-rpc-api
+- https://github.com/CESNET/exafs/blob/main/docs/AUTH.md
+notes:
+  cesnet:perun-rpc-api: '"Authentication of person / component making a request is done by Apache web server and depends on it''s current configuration. Perun can internally handle identity provided by
+    Kerberos, Shibboleth IdP, Certificate or REMOTE_USER like Apache config. It also supports OIDC authentication using device codeflow." The URL path segment selects the method: fed (Shibboleth IDP), krb
+    (Kerberos), cert (Certificate), oauth (OIDC), non (without authorization); the OpenAPI server variable adds ba (HTTP Basic). Kerberos, X.509 client certificates and SAML federation are not expressible
+    as OpenAPI schemes and are documented only in prose. CSRF token (XSRF-TOKEN cookie / X-XSRF-TOKEN header) required for state-changing calls on shared GUI+API domains, not with OIDC.'
+  cesnet:exafs-api: Machine API key sent as x-api-key to GET /auth returns a token used as x-access-token. Per CHANGELOG, machine API keys are tied to an existing user (create a service user for machine
+    access) and carry an expiration date. The web UI (not the API) uses Shibboleth SSO, header-based auth proxy, or local single-user mode (docs/AUTH.md).

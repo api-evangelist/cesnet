@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cesnet/main/json-schema/cesnet-perun-notif-template-schema.json",
+  "title": "PerunNotifTemplate",
+  "description": "Represents template for message sent to receivers",
+  "x-generated": "2026-10-09",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PerunNotifTemplate",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "matchingRegexs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PerunNotifRegex"
+      }
+    },
+    "receivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PerunNotifReceiver"
+      }
+    },
+    "primaryProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "notifyTrigger": {
+      "type": "string"
+    },
+    "perunNotifTemplateMessages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PerunNotifTemplateMessage"
+      }
+    },
+    "oldestMessageTime": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "youngestMessageTime": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "sender": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "replyTo": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$defs": {
+    "PerunNotifObject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "objectClass": {
+          "type": "string"
+        }
+      }
+    },
+    "PerunNotifReceiver": {
+      "description": "Represents one receiver of message, is defined in template",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "target": {
+          "type": "string"
+        },
+        "typeOfReceiver": {
+          "type": "string"
+        },
+        "templateId": {
+          "type": "integer"
+        },
+        "locale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "PerunNotifRegex": {
+      "description": "Holds a regex definition used to recognize type of message",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "regex": {
+          "type": "string"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PerunNotifObject"
+          }
+        }
+      }
+    },
+    "PerunNotifTemplateMessage": {
+      "description": "Localized freemarker template",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "templateId": {
+          "type": "integer"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "message": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subject": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

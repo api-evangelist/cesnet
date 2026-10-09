@@ -1,0 +1,666 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Searcher API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged Searcher across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: Searcher
+  description: Searcher RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-Searcher.html
+paths:
+  /json/searcher/getUsers:
+    post:
+      tags:
+      - Searcher
+      operationId: getUsersSearcher
+      summary: Get list of users who have attributes with specific values
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetUsers
+              description: Input to getUsers
+              type: object
+              required:
+              - attributesWithSearchingValues
+              properties:
+                attributesWithSearchingValues:
+                  type: object
+                  description: Map of attribute names with searching values Map<sting,string>
+                  additionalProperties:
+                    type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/searcher/getMembersByUserAttributes:
+    post:
+      tags:
+      - Searcher
+      operationId: getMembersByUserAttributes
+      summary: Get list of members who have attributes with specific values
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfMembersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetMembersByUserAttributes
+              description: Input to getMembersByUserAttributes
+              type: object
+              required:
+              - vo
+              - userAttributesWithSearchingValues
+              properties:
+                vo:
+                  type: integer
+                  description: vo id
+                userAttributesWithSearchingValues:
+                  type: object
+                  description: Map of attribute names with searching values Map<string,string>
+                  additionalProperties:
+                    type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/searcher/getMembers:
+    post:
+      tags:
+      - Searcher
+      operationId: getMembersSearcher
+      summary: Get list of members who have attributes with specific values
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfMembersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetMembersSearcher
+              description: Input to getMembersSearcher
+              type: object
+              required:
+              - vo
+              - attributesWithSearchingValues
+              properties:
+                vo:
+                  type: integer
+                  description: vo id
+                attributesWithSearchingValues:
+                  type: object
+                  description: Map of user and member attribute names with searching values Map<string,string>
+                  additionalProperties:
+                    type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/searcher/getFacilities:
+    post:
+      tags:
+      - Searcher
+      operationId: getFacilities
+      summary: Get list of facilities who have attributes with specific values
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetFacilities
+              description: Input to getFacilities
+              type: object
+              required:
+              - attributesWithSearchingValues
+              properties:
+                attributesWithSearchingValues:
+                  type: object
+                  description: Map of attribute names with searching values Map<sting,string>
+                  additionalProperties:
+                    type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/searcher/getResources/attributes:
+    post:
+      tags:
+      - Searcher
+      operationId: getAttributesResources
+      summary: Get list of resources who have attributes with specific values
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetResources
+              description: Input to getResources
+              type: object
+              required:
+              - attributesWithSearchingValues
+              properties:
+                attributesWithSearchingValues:
+                  type: object
+                  description: Map of attribute names with searching values Map<sting,string>
+                  additionalProperties:
+                    type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/searcher/getResources/attributes-match:
+    post:
+      tags:
+      - Searcher
+      operationId: getAttributesMatchResources
+      summary: Get list of resources that have attributes with partially matched values if…
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputGetMatchResources
+              description: Input to getResources
+              type: object
+              required:
+              - allowPartialMatchForString
+              - attributesWithSearchingValues
+              properties:
+                allowPartialMatchForString:
+                  type: boolean
+                  description: True if partial match is allowed
+                attributesWithSearchingValues:
+                  type: object
+                  description: Map of attribute names with searching values Map<sting,string>
+                  additionalProperties:
+                    type: string
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/searcher/globalSearch:
+    get:
+      tags:
+      - Searcher
+      operationId: globalSearch
+      summary: Performs global search
+      parameters:
+      - $ref: '#/components/parameters/searchString'
+      responses:
+        '200':
+          $ref: '#/components/responses/MapStringListOfPerunBeanResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  responses:
+    ListOfFacilitiesResponse:
+      description: returns List<Facility>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Facility'
+    MapStringListOfPerunBeanResponse:
+      description: returns Map<String,List<PerunBean>>
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                $ref: '#/components/schemas/PerunBean'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    ListOfResourcesResponse:
+      description: returns List<Resource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Resource'
+    ListOfMembersResponse:
+      description: returns List<Member>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Member'
+    ListOfUsersResponse:
+      description: returns List<User>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+  schemas:
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    Resource:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        voId:
+          type: integer
+        facilityId:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+    User:
+      description: represents user as a physical person
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        titleBefore:
+          type:
+          - string
+          - 'null'
+        titleAfter:
+          type:
+          - string
+          - 'null'
+        serviceUser:
+          type: boolean
+        sponsoredUser:
+          type: boolean
+        uuid:
+          type: string
+          format: uuid
+        specificUser:
+          type: boolean
+        majorSpecificType:
+          type: string
+    Member:
+      description: represents Member of a Virtual Organization
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        userId:
+          type: integer
+        voId:
+          type: integer
+        status:
+          type: string
+        membershipType:
+          type: string
+        dualMembership:
+          type: boolean
+        sourceGroupId:
+          type:
+          - integer
+          - 'null'
+        sponsored:
+          type: boolean
+        groupStatus:
+          type: string
+        groupStatuses:
+          type: object
+          additionalProperties:
+            type: string
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+  parameters:
+    searchString:
+      name: searchString
+      description: Text to search by
+      schema:
+        type: string
+      in: query
+      required: true
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

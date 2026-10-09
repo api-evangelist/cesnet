@@ -1,0 +1,10 @@
+generated: '2026-10-09'
+method: none
+source: https://github.com/CESNET/exafs
+name: CESNET Plans and Pricing
+plan_count: 0
+plans: []
+audience: unclear
+pricing_basis: none
+published: false
+note: No pricing page exists for either API. Perun and ExaFS are open-source software that institutions self-host (ExaFS PyPI license MIT); CESNET's own services are delivered to its member institutions, not sold as priced API plans.

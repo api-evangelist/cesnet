@@ -1,0 +1,29 @@
+generated: '2026-10-09'
+method: searched
+source: https://perun-aai.org/documentation/perun-rpc-api
+name: Perun RPC API error model
+format: custom
+envelope:
+  api: cesnet:perun-rpc-api
+  schema: PerunException
+  fields:
+  - errorId
+  - name
+  - message
+  transport: '"If OK, all requests to Perun API returns 200 return code. When processing of your request throws an exception in java code, response is still 200, but it''s body is replaced with serialized
+    Exception object. Any other return code signalize problem with a server (not found, internal error etc.)."'
+  note: The OpenAPI models this as the ExceptionResponse response (application/json, PerunException); `name` carries the Java exception class name. Clients must inspect the body, not the status, to detect
+    failure.
+problems:
+- status: 200
+  title: Serialized Perun exception
+  type: PerunException
+  description: Business/authorization error thrown inside Perun, returned with HTTP 200 and a PerunException body (errorId, name, message).
+  remediation: Check `name` for the exception class and `message` for detail; report `errorId` to the instance operator.
+- status: 200
+  title: Application cannot be approved
+  type: CantBeApprovedException
+  description: Registrar-specific exception schema declared in the contract (CantBeApprovedExceptionResponse).
+  remediation: Resolve the condition named in the message before approving the application.
+csrf_failure: On domains where GUI and API share a host, a state-changing request whose XSRF-TOKEN cookie, X-XSRF-TOKEN header and session value do not match gets "corresponding error message"; the docs
+  do not state its status code.

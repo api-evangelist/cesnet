@@ -1,0 +1,8 @@
+Contact: mailto:csirt@muni.cz
+Contact: https://csirt.muni.cz/
+Contact: tel:+420549494242
+Expires: 2027-09-18T19:29:47
+Encryption: openpgp4fpr:E40F4E57BCE826A8FCF6AD0F6D25E8BBE3439FE2
+Preferred-Languages: en, cs, sk
+Policy: https://security.muni.cz/en/responsible_disclosure
+Acknowledgments: https://security.muni.cz/en/responsible_disclosure#ack

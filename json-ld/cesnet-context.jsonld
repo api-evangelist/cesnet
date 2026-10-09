@@ -1,0 +1,1105 @@
+{
+  "@context": {
+    "@vocab": "https://cesnet.cz/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "cesnet": "https://cesnet.cz/schema#",
+    "RegistrarApplicationInput": "cesnet:RegistrarApplicationInput",
+    "vo": {
+      "@id": "cesnet:vo",
+      "@type": "xsd:integer"
+    },
+    "group": {
+      "@id": "cesnet:group",
+      "@type": "xsd:integer"
+    },
+    "attributes": {
+      "@id": "cesnet:attributes"
+    },
+    "oidcAttributes": {
+      "@id": "cesnet:oidcAttributes"
+    },
+    "PerunException": "cesnet:PerunException",
+    "errorId": {
+      "@id": "cesnet:errorId",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "cesnet:name",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "cesnet:message",
+      "@type": "xsd:string"
+    },
+    "CantBeApprovedException": "cesnet:CantBeApprovedException",
+    "affiliation": {
+      "@id": "cesnet:affiliation",
+      "@type": "xsd:string"
+    },
+    "applicationId": {
+      "@id": "cesnet:applicationId",
+      "@type": "xsd:decimal"
+    },
+    "category": {
+      "@id": "cesnet:category",
+      "@type": "xsd:string"
+    },
+    "reason": {
+      "@id": "cesnet:reason",
+      "@type": "xsd:string"
+    },
+    "soft": {
+      "@id": "cesnet:soft",
+      "@type": "xsd:boolean"
+    },
+    "PerunBean": "cesnet:PerunBean",
+    "id": {
+      "@id": "cesnet:id",
+      "@type": "xsd:integer"
+    },
+    "beanName": {
+      "@id": "cesnet:beanName",
+      "@type": "xsd:string"
+    },
+    "Auditable": "cesnet:Auditable",
+    "createdAt": {
+      "@id": "cesnet:createdAt",
+      "@type": "xsd:string"
+    },
+    "createdBy": {
+      "@id": "cesnet:createdBy",
+      "@type": "xsd:string"
+    },
+    "modifiedAt": {
+      "@id": "cesnet:modifiedAt",
+      "@type": "xsd:string"
+    },
+    "modifiedBy": {
+      "@id": "cesnet:modifiedBy",
+      "@type": "xsd:string"
+    },
+    "createdByUid": {
+      "@id": "cesnet:createdByUid",
+      "@type": "xsd:integer"
+    },
+    "modifiedByUid": {
+      "@id": "cesnet:modifiedByUid",
+      "@type": "xsd:integer"
+    },
+    "User": "cesnet:User",
+    "firstName": {
+      "@id": "cesnet:firstName",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "cesnet:lastName",
+      "@type": "xsd:string"
+    },
+    "middleName": {
+      "@id": "cesnet:middleName",
+      "@type": "xsd:string"
+    },
+    "titleBefore": {
+      "@id": "cesnet:titleBefore",
+      "@type": "xsd:string"
+    },
+    "titleAfter": {
+      "@id": "cesnet:titleAfter",
+      "@type": "xsd:string"
+    },
+    "serviceUser": {
+      "@id": "cesnet:serviceUser",
+      "@type": "xsd:boolean"
+    },
+    "sponsoredUser": {
+      "@id": "cesnet:sponsoredUser",
+      "@type": "xsd:boolean"
+    },
+    "uuid": {
+      "@id": "cesnet:uuid",
+      "@type": "xsd:string"
+    },
+    "specificUser": {
+      "@id": "cesnet:specificUser",
+      "@type": "xsd:boolean"
+    },
+    "majorSpecificType": {
+      "@id": "cesnet:majorSpecificType",
+      "@type": "xsd:string"
+    },
+    "RichUser": "cesnet:RichUser",
+    "userExtSources": {
+      "@id": "cesnet:userExtSources",
+      "@container": "@list"
+    },
+    "userAttributes": {
+      "@id": "cesnet:userAttributes",
+      "@container": "@list"
+    },
+    "PaginatedRichUsers": "cesnet:PaginatedRichUsers",
+    "offset": {
+      "@id": "cesnet:offset",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "cesnet:pageSize",
+      "@type": "xsd:integer"
+    },
+    "totalCount": {
+      "@id": "cesnet:totalCount",
+      "@type": "xsd:integer"
+    },
+    "data": {
+      "@id": "cesnet:data",
+      "@container": "@list"
+    },
+    "Sponsor": "cesnet:Sponsor",
+    "user": {
+      "@id": "cesnet:user",
+      "@type": "@id"
+    },
+    "validityTo": {
+      "@id": "cesnet:validityTo",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "cesnet:active",
+      "@type": "xsd:boolean"
+    },
+    "Member": "cesnet:Member",
+    "userId": {
+      "@id": "cesnet:userId",
+      "@type": "xsd:integer"
+    },
+    "voId": {
+      "@id": "cesnet:voId",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "cesnet:status",
+      "@type": "xsd:string"
+    },
+    "membershipType": {
+      "@id": "cesnet:membershipType",
+      "@type": "xsd:string"
+    },
+    "dualMembership": {
+      "@id": "cesnet:dualMembership",
+      "@type": "xsd:boolean"
+    },
+    "sourceGroupId": {
+      "@id": "cesnet:sourceGroupId",
+      "@type": "xsd:integer"
+    },
+    "sponsored": {
+      "@id": "cesnet:sponsored",
+      "@type": "xsd:boolean"
+    },
+    "groupStatus": {
+      "@id": "cesnet:groupStatus",
+      "@type": "xsd:string"
+    },
+    "groupStatuses": {
+      "@id": "cesnet:groupStatuses"
+    },
+    "AssignedMember": "cesnet:AssignedMember",
+    "richMember": {
+      "@id": "cesnet:richMember",
+      "@type": "@id"
+    },
+    "RichMember": "cesnet:RichMember",
+    "memberAttributes": {
+      "@id": "cesnet:memberAttributes",
+      "@container": "@list"
+    },
+    "PaginatedRichMembers": "cesnet:PaginatedRichMembers",
+    "GraphFileFormat": "cesnet:GraphFileFormat",
+    "GraphDTO": "cesnet:GraphDTO",
+    "graph": {
+      "@id": "cesnet:graph",
+      "@type": "xsd:string"
+    },
+    "format": {
+      "@id": "cesnet:format",
+      "@type": "@id"
+    },
+    "SortingOrder": "cesnet:SortingOrder",
+    "MembersOrderColumn": "cesnet:MembersOrderColumn",
+    "MemberGroupStatus": "cesnet:MemberGroupStatus",
+    "MembersPageQuery": "cesnet:MembersPageQuery",
+    "order": {
+      "@id": "cesnet:order",
+      "@type": "@id"
+    },
+    "sortColumn": {
+      "@id": "cesnet:sortColumn",
+      "@type": "@id"
+    },
+    "searchString": {
+      "@id": "cesnet:searchString",
+      "@type": "xsd:string"
+    },
+    "statuses": {
+      "@id": "cesnet:statuses",
+      "@container": "@list"
+    },
+    "groupId": {
+      "@id": "cesnet:groupId",
+      "@type": "xsd:integer"
+    },
+    "UsersOrderColumn": "cesnet:UsersOrderColumn",
+    "UsersPageQuery": "cesnet:UsersPageQuery",
+    "withoutVo": {
+      "@id": "cesnet:withoutVo",
+      "@type": "xsd:boolean"
+    },
+    "facilityId": {
+      "@id": "cesnet:facilityId",
+      "@type": "xsd:integer"
+    },
+    "serviceId": {
+      "@id": "cesnet:serviceId",
+      "@type": "xsd:integer"
+    },
+    "resourceId": {
+      "@id": "cesnet:resourceId",
+      "@type": "xsd:integer"
+    },
+    "onlyAllowed": {
+      "@id": "cesnet:onlyAllowed",
+      "@type": "xsd:boolean"
+    },
+    "consentStatuses": {
+      "@id": "cesnet:consentStatuses",
+      "@container": "@list"
+    },
+    "BlockedLogin": "cesnet:BlockedLogin",
+    "login": {
+      "@id": "cesnet:login",
+      "@type": "xsd:string"
+    },
+    "namespace": {
+      "@id": "cesnet:namespace",
+      "@type": "xsd:string"
+    },
+    "PaginatedBlockedLogins": "cesnet:PaginatedBlockedLogins",
+    "BlockedLoginsOrderColumn": "cesnet:BlockedLoginsOrderColumn",
+    "BlockedLoginsPageQuery": "cesnet:BlockedLoginsPageQuery",
+    "namespaces": {
+      "@id": "cesnet:namespaces",
+      "@container": "@list"
+    },
+    "UserExtSource": "cesnet:UserExtSource",
+    "loa": {
+      "@id": "cesnet:loa",
+      "@type": "xsd:integer"
+    },
+    "persistent": {
+      "@id": "cesnet:persistent",
+      "@type": "xsd:boolean"
+    },
+    "lastAccess": {
+      "@id": "cesnet:lastAccess",
+      "@type": "xsd:string"
+    },
+    "extSource": {
+      "@id": "cesnet:extSource",
+      "@type": "@id"
+    },
+    "ExtSource": "cesnet:ExtSource",
+    "type": {
+      "@id": "cesnet:type",
+      "@type": "xsd:string"
+    },
+    "EnrichedExtSource": "cesnet:EnrichedExtSource",
+    "AttributeDefinition": "cesnet:AttributeDefinition",
+    "friendlyName": {
+      "@id": "cesnet:friendlyName",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "cesnet:description",
+      "@type": "xsd:string"
+    },
+    "displayName": {
+      "@id": "cesnet:displayName",
+      "@type": "xsd:string"
+    },
+    "writable": {
+      "@id": "cesnet:writable",
+      "@type": "xsd:boolean"
+    },
+    "unique": {
+      "@id": "cesnet:unique",
+      "@type": "xsd:boolean"
+    },
+    "friendlyNameParameter": {
+      "@id": "cesnet:friendlyNameParameter",
+      "@type": "xsd:string"
+    },
+    "baseFriendlyName": {
+      "@id": "cesnet:baseFriendlyName",
+      "@type": "xsd:string"
+    },
+    "entity": {
+      "@id": "cesnet:entity",
+      "@type": "xsd:string"
+    },
+    "Attribute": "cesnet:Attribute",
+    "valueCreatedAt": {
+      "@id": "cesnet:valueCreatedAt",
+      "@type": "xsd:string"
+    },
+    "valueCreatedBy": {
+      "@id": "cesnet:valueCreatedBy",
+      "@type": "xsd:string"
+    },
+    "valueModifiedAt": {
+      "@id": "cesnet:valueModifiedAt",
+      "@type": "xsd:string"
+    },
+    "valueModifiedBy": {
+      "@id": "cesnet:valueModifiedBy",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "cesnet:value"
+    },
+    "AttributeRules": "cesnet:AttributeRules",
+    "attributePolicyCollections": {
+      "@id": "cesnet:attributePolicyCollections",
+      "@container": "@list"
+    },
+    "criticalActions": {
+      "@id": "cesnet:criticalActions"
+    },
+    "AuditEvent": "cesnet:AuditEvent",
+    "attribute": {
+      "@id": "cesnet:attribute",
+      "@type": "@id"
+    },
+    "source": {
+      "@id": "cesnet:source",
+      "@type": "@id"
+    },
+    "facility": {
+      "@id": "cesnet:facility",
+      "@type": "@id"
+    },
+    "parentGroup": {
+      "@id": "cesnet:parentGroup",
+      "@type": "@id"
+    },
+    "member": {
+      "@id": "cesnet:member",
+      "@type": "@id"
+    },
+    "resource": {
+      "@id": "cesnet:resource",
+      "@type": "@id"
+    },
+    "service": {
+      "@id": "cesnet:service",
+      "@type": "@id"
+    },
+    "userExtSource": {
+      "@id": "cesnet:userExtSource",
+      "@type": "@id"
+    },
+    "AuditMessage": "cesnet:AuditMessage",
+    "event": {
+      "@id": "cesnet:event",
+      "@type": "@id"
+    },
+    "actor": {
+      "@id": "cesnet:actor",
+      "@type": "xsd:string"
+    },
+    "PaginatedAuditMessages": "cesnet:PaginatedAuditMessages",
+    "AuditMessagesPageQuery": "cesnet:AuditMessagesPageQuery",
+    "selectedEvents": {
+      "@id": "cesnet:selectedEvents",
+      "@container": "@list"
+    },
+    "AttributeAction": "cesnet:AttributeAction",
+    "RoleObject": "cesnet:RoleObject",
+    "AttributePolicy": "cesnet:AttributePolicy",
+    "role": {
+      "@id": "cesnet:role",
+      "@type": "xsd:string"
+    },
+    "object": {
+      "@id": "cesnet:object",
+      "@type": "@id"
+    },
+    "policyCollectionId": {
+      "@id": "cesnet:policyCollectionId",
+      "@type": "xsd:integer"
+    },
+    "AttributePolicyCollection": "cesnet:AttributePolicyCollection",
+    "attributeId": {
+      "@id": "cesnet:attributeId",
+      "@type": "xsd:integer"
+    },
+    "action": {
+      "@id": "cesnet:action",
+      "@type": "@id"
+    },
+    "policies": {
+      "@id": "cesnet:policies",
+      "@container": "@list"
+    },
+    "Facility": "cesnet:Facility",
+    "RichFacility": "cesnet:RichFacility",
+    "facilityOwners": {
+      "@id": "cesnet:facilityOwners",
+      "@container": "@list"
+    },
+    "FacilityWithAttributes": "cesnet:FacilityWithAttributes",
+    "Host": "cesnet:Host",
+    "hostname": {
+      "@id": "cesnet:hostname",
+      "@type": "xsd:string"
+    },
+    "EnrichedResource": "cesnet:EnrichedResource",
+    "EnrichedGroup": "cesnet:EnrichedGroup",
+    "GroupResourceStatus": "cesnet:GroupResourceStatus",
+    "AssignedResource": "cesnet:AssignedResource",
+    "enrichedResource": {
+      "@id": "cesnet:enrichedResource",
+      "@type": "@id"
+    },
+    "failureCause": {
+      "@id": "cesnet:failureCause",
+      "@type": "xsd:string"
+    },
+    "resourceTags": {
+      "@id": "cesnet:resourceTags",
+      "@container": "@list"
+    },
+    "autoAssignSubgroups": {
+      "@id": "cesnet:autoAssignSubgroups",
+      "@type": "xsd:boolean"
+    },
+    "AssignedGroup": "cesnet:AssignedGroup",
+    "enrichedGroup": {
+      "@id": "cesnet:enrichedGroup",
+      "@type": "@id"
+    },
+    "EnrichedHost": "cesnet:EnrichedHost",
+    "host": {
+      "@id": "cesnet:host",
+      "@type": "@id"
+    },
+    "hostAttributes": {
+      "@id": "cesnet:hostAttributes",
+      "@container": "@list"
+    },
+    "EnrichedFacility": "cesnet:EnrichedFacility",
+    "owners": {
+      "@id": "cesnet:owners",
+      "@container": "@list"
+    },
+    "destinations": {
+      "@id": "cesnet:destinations",
+      "@container": "@list"
+    },
+    "hosts": {
+      "@id": "cesnet:hosts",
+      "@container": "@list"
+    },
+    "EnrichedVo": "cesnet:EnrichedVo",
+    "memberVos": {
+      "@id": "cesnet:memberVos",
+      "@container": "@list"
+    },
+    "parentVos": {
+      "@id": "cesnet:parentVos",
+      "@container": "@list"
+    },
+    "ConsentHub": "cesnet:ConsentHub",
+    "enforceConsents": {
+      "@id": "cesnet:enforceConsents",
+      "@type": "xsd:boolean"
+    },
+    "facilities": {
+      "@id": "cesnet:facilities",
+      "@container": "@list"
+    },
+    "PublicationSystem": "cesnet:PublicationSystem",
+    "url": {
+      "@id": "cesnet:url",
+      "@type": "xsd:string"
+    },
+    "username": {
+      "@id": "cesnet:username",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "cesnet:password",
+      "@type": "xsd:string"
+    },
+    "loginNamespace": {
+      "@id": "cesnet:loginNamespace",
+      "@type": "xsd:string"
+    },
+    "Publication": "cesnet:Publication",
+    "authors": {
+      "@id": "cesnet:authors",
+      "@container": "@list"
+    },
+    "externalId": {
+      "@id": "cesnet:externalId",
+      "@type": "xsd:integer"
+    },
+    "publicationSystemId": {
+      "@id": "cesnet:publicationSystemId",
+      "@type": "xsd:integer"
+    },
+    "title": {
+      "@id": "cesnet:title",
+      "@type": "xsd:string"
+    },
+    "year": {
+      "@id": "cesnet:year",
+      "@type": "xsd:integer"
+    },
+    "main": {
+      "@id": "cesnet:main",
+      "@type": "xsd:string"
+    },
+    "isbn": {
+      "@id": "cesnet:isbn",
+      "@type": "xsd:string"
+    },
+    "doi": {
+      "@id": "cesnet:doi",
+      "@type": "xsd:string"
+    },
+    "categoryId": {
+      "@id": "cesnet:categoryId",
+      "@type": "xsd:integer"
+    },
+    "rank": {
+      "@id": "cesnet:rank",
+      "@type": "xsd:decimal"
+    },
+    "locked": {
+      "@id": "cesnet:locked",
+      "@type": "xsd:boolean"
+    },
+    "createdDate": {
+      "@id": "cesnet:createdDate",
+      "@type": "xsd:date"
+    },
+    "PublicationForGUI": "cesnet:PublicationForGUI",
+    "pubSystemName": {
+      "@id": "cesnet:pubSystemName",
+      "@type": "xsd:string"
+    },
+    "categoryName": {
+      "@id": "cesnet:categoryName",
+      "@type": "xsd:string"
+    },
+    "thanks": {
+      "@id": "cesnet:thanks",
+      "@container": "@list"
+    },
+    "Category": "cesnet:Category",
+    "Thanks": "cesnet:Thanks",
+    "publicationId": {
+      "@id": "cesnet:publicationId",
+      "@type": "xsd:integer"
+    },
+    "ownerId": {
+      "@id": "cesnet:ownerId",
+      "@type": "xsd:integer"
+    },
+    "ThanksForGUI": "cesnet:ThanksForGUI",
+    "ownerName": {
+      "@id": "cesnet:ownerName",
+      "@type": "xsd:string"
+    },
+    "Authorship": "cesnet:Authorship",
+    "Author": "cesnet:Author",
+    "authorships": {
+      "@id": "cesnet:authorships",
+      "@container": "@list"
+    },
+    "OwnerType": "cesnet:OwnerType",
+    "Owner": "cesnet:Owner",
+    "contact": {
+      "@id": "cesnet:contact",
+      "@type": "xsd:string"
+    },
+    "PerunPolicy": "cesnet:PerunPolicy",
+    "policyName": {
+      "@id": "cesnet:policyName",
+      "@type": "xsd:string"
+    },
+    "includePolicies": {
+      "@id": "cesnet:includePolicies",
+      "@container": "@list"
+    },
+    "perunRoles": {
+      "@id": "cesnet:perunRoles",
+      "@container": "@list"
+    },
+    "RoleManagementRules": "cesnet:RoleManagementRules",
+    "roleName": {
+      "@id": "cesnet:roleName",
+      "@type": "xsd:string"
+    },
+    "primaryObject": {
+      "@id": "cesnet:primaryObject",
+      "@type": "xsd:string"
+    },
+    "privilegedRolesToManage": {
+      "@id": "cesnet:privilegedRolesToManage",
+      "@container": "@list"
+    },
+    "privilegedRolesToRead": {
+      "@id": "cesnet:privilegedRolesToRead",
+      "@container": "@list"
+    },
+    "entitiesToManage": {
+      "@id": "cesnet:entitiesToManage"
+    },
+    "assignedObjects": {
+      "@id": "cesnet:assignedObjects"
+    },
+    "assignableToAttributes": {
+      "@id": "cesnet:assignableToAttributes",
+      "@type": "xsd:boolean"
+    },
+    "skipMFA": {
+      "@id": "cesnet:skipMFA",
+      "@type": "xsd:boolean"
+    },
+    "NamespaceRules": "cesnet:NamespaceRules",
+    "defaultEmail": {
+      "@id": "cesnet:defaultEmail",
+      "@type": "xsd:string"
+    },
+    "csvGenHeader": {
+      "@id": "cesnet:csvGenHeader",
+      "@type": "xsd:string"
+    },
+    "csvGenPlaceholder": {
+      "@id": "cesnet:csvGenPlaceholder",
+      "@type": "xsd:string"
+    },
+    "csvGenHeaderDescription": {
+      "@id": "cesnet:csvGenHeaderDescription",
+      "@type": "xsd:string"
+    },
+    "namespaceName": {
+      "@id": "cesnet:namespaceName",
+      "@type": "xsd:string"
+    },
+    "requiredAttributes": {
+      "@id": "cesnet:requiredAttributes",
+      "@container": "@list"
+    },
+    "optionalAttributes": {
+      "@id": "cesnet:optionalAttributes",
+      "@container": "@list"
+    },
+    "Group": "cesnet:Group",
+    "shortName": {
+      "@id": "cesnet:shortName",
+      "@type": "xsd:string"
+    },
+    "parentGroupId": {
+      "@id": "cesnet:parentGroupId",
+      "@type": "xsd:integer"
+    },
+    "RichGroup": "cesnet:RichGroup",
+    "PaginatedRichGroups": "cesnet:PaginatedRichGroups",
+    "GroupsOrderColumn": "cesnet:GroupsOrderColumn",
+    "GroupsPageQuery": "cesnet:GroupsPageQuery",
+    "memberId": {
+      "@id": "cesnet:memberId",
+      "@type": "xsd:integer"
+    },
+    "roles": {
+      "@id": "cesnet:roles",
+      "@container": "@list"
+    },
+    "types": {
+      "@id": "cesnet:types",
+      "@container": "@list"
+    },
+    "RoleAssignmentType": "cesnet:RoleAssignmentType",
+    "ConsentStatus": "cesnet:ConsentStatus",
+    "Consent": "cesnet:Consent",
+    "consentHub": {
+      "@id": "cesnet:consentHub",
+      "@type": "@id"
+    },
+    "Resource": "cesnet:Resource",
+    "RichResource": "cesnet:RichResource",
+    "ResourceTag": "cesnet:ResourceTag",
+    "tagName": {
+      "@id": "cesnet:tagName",
+      "@type": "xsd:string"
+    },
+    "Vo": "cesnet:Vo",
+    "VoAdminRoles": "cesnet:VoAdminRoles",
+    "GroupAdminRoles": "cesnet:GroupAdminRoles",
+    "VoMemberStatuses": "cesnet:VoMemberStatuses",
+    "Service": "cesnet:Service",
+    "delay": {
+      "@id": "cesnet:delay",
+      "@type": "xsd:integer"
+    },
+    "recurrence": {
+      "@id": "cesnet:recurrence",
+      "@type": "xsd:integer"
+    },
+    "enabled": {
+      "@id": "cesnet:enabled",
+      "@type": "xsd:boolean"
+    },
+    "script": {
+      "@id": "cesnet:script",
+      "@type": "xsd:string"
+    },
+    "useExpiredMembers": {
+      "@id": "cesnet:useExpiredMembers",
+      "@type": "xsd:boolean"
+    },
+    "useExpiredVoMembers": {
+      "@id": "cesnet:useExpiredVoMembers",
+      "@type": "xsd:boolean"
+    },
+    "useBannedMembers": {
+      "@id": "cesnet:useBannedMembers",
+      "@type": "xsd:boolean"
+    },
+    "DestinationType": "cesnet:DestinationType",
+    "DestinationPropagationType": "cesnet:DestinationPropagationType",
+    "Destination": "cesnet:Destination",
+    "destination": {
+      "@id": "cesnet:destination",
+      "@type": "xsd:string"
+    },
+    "propagationType": {
+      "@id": "cesnet:propagationType",
+      "@type": "@id"
+    },
+    "RichDestination": "cesnet:RichDestination",
+    "blocked": {
+      "@id": "cesnet:blocked",
+      "@type": "xsd:boolean"
+    },
+    "lastSuccessfulPropagation": {
+      "@id": "cesnet:lastSuccessfulPropagation",
+      "@type": "xsd:string"
+    },
+    "lastAttemptedPropagation": {
+      "@id": "cesnet:lastAttemptedPropagation",
+      "@type": "xsd:string"
+    },
+    "ApplicationForm": "cesnet:ApplicationForm",
+    "automaticApproval": {
+      "@id": "cesnet:automaticApproval",
+      "@type": "xsd:boolean"
+    },
+    "automaticApprovalExtension": {
+      "@id": "cesnet:automaticApprovalExtension",
+      "@type": "xsd:boolean"
+    },
+    "automaticApprovalEmbedded": {
+      "@id": "cesnet:automaticApprovalEmbedded",
+      "@type": "xsd:boolean"
+    },
+    "moduleClassNames": {
+      "@id": "cesnet:moduleClassNames",
+      "@container": "@list"
+    },
+    "Type": "cesnet:Type",
+    "ItemTexts": "cesnet:ItemTexts",
+    "locale": {
+      "@id": "cesnet:locale",
+      "@type": "xsd:string"
+    },
+    "label": {
+      "@id": "cesnet:label",
+      "@type": "xsd:string"
+    },
+    "options": {
+      "@id": "cesnet:options",
+      "@type": "xsd:string"
+    },
+    "help": {
+      "@id": "cesnet:help",
+      "@type": "xsd:string"
+    },
+    "errorMessage": {
+      "@id": "cesnet:errorMessage",
+      "@type": "xsd:string"
+    },
+    "ApplicationFormItem": "cesnet:ApplicationFormItem",
+    "shortname": {
+      "@id": "cesnet:shortname",
+      "@type": "xsd:string"
+    },
+    "required": {
+      "@id": "cesnet:required",
+      "@type": "xsd:boolean"
+    },
+    "updatable": {
+      "@id": "cesnet:updatable",
+      "@type": "xsd:boolean"
+    },
+    "federationAttribute": {
+      "@id": "cesnet:federationAttribute",
+      "@type": "xsd:string"
+    },
+    "perunSourceAttribute": {
+      "@id": "cesnet:perunSourceAttribute",
+      "@type": "xsd:string"
+    },
+    "perunDestinationAttribute": {
+      "@id": "cesnet:perunDestinationAttribute",
+      "@type": "xsd:string"
+    },
+    "regex": {
+      "@id": "cesnet:regex",
+      "@type": "xsd:string"
+    },
+    "applicationTypes": {
+      "@id": "cesnet:applicationTypes",
+      "@container": "@list"
+    },
+    "ordnum": {
+      "@id": "cesnet:ordnum",
+      "@type": "xsd:integer"
+    },
+    "i18n": {
+      "@id": "cesnet:i18n"
+    },
+    "hiddenDependencyItemId": {
+      "@id": "cesnet:hiddenDependencyItemId",
+      "@type": "xsd:integer"
+    },
+    "disabledDependencyItemId": {
+      "@id": "cesnet:disabledDependencyItemId",
+      "@type": "xsd:integer"
+    },
+    "hidden": {
+      "@id": "cesnet:hidden",
+      "@type": "xsd:string"
+    },
+    "disabled": {
+      "@id": "cesnet:disabled",
+      "@type": "xsd:string"
+    },
+    "forDelete": {
+      "@id": "cesnet:forDelete",
+      "@type": "xsd:boolean"
+    },
+    "ApplicationFormItemData": "cesnet:ApplicationFormItemData",
+    "formItem": {
+      "@id": "cesnet:formItem",
+      "@type": "@id"
+    },
+    "assuranceLevel": {
+      "@id": "cesnet:assuranceLevel",
+      "@type": "xsd:string"
+    },
+    "prefilledValue": {
+      "@id": "cesnet:prefilledValue",
+      "@type": "xsd:string"
+    },
+    "AppType": "cesnet:AppType",
+    "AppState": "cesnet:AppState",
+    "Application": "cesnet:Application",
+    "fedInfo": {
+      "@id": "cesnet:fedInfo",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "cesnet:state",
+      "@type": "@id"
+    },
+    "extSourceName": {
+      "@id": "cesnet:extSourceName",
+      "@type": "xsd:string"
+    },
+    "extSourceType": {
+      "@id": "cesnet:extSourceType",
+      "@type": "xsd:string"
+    },
+    "extSourceLoa": {
+      "@id": "cesnet:extSourceLoa",
+      "@type": "xsd:integer"
+    },
+    "modifiedByDisplayName": {
+      "@id": "cesnet:modifiedByDisplayName",
+      "@type": "xsd:string"
+    },
+    "autoApproveError": {
+      "@id": "cesnet:autoApproveError",
+      "@type": "xsd:string"
+    },
+    "RichApplication": "cesnet:RichApplication",
+    "formData": {
+      "@id": "cesnet:formData",
+      "@container": "@list"
+    },
+    "PaginatedRichApplications": "cesnet:PaginatedRichApplications",
+    "ApplicationsPageQuery": "cesnet:ApplicationsPageQuery",
+    "includeGroupApplications": {
+      "@id": "cesnet:includeGroupApplications",
+      "@type": "xsd:boolean"
+    },
+    "includeSubGroupApplications": {
+      "@id": "cesnet:includeSubGroupApplications",
+      "@type": "xsd:boolean"
+    },
+    "getDetails": {
+      "@id": "cesnet:getDetails",
+      "@type": "xsd:boolean"
+    },
+    "states": {
+      "@id": "cesnet:states",
+      "@container": "@list"
+    },
+    "dateFrom": {
+      "@id": "cesnet:dateFrom",
+      "@type": "xsd:date"
+    },
+    "dateTo": {
+      "@id": "cesnet:dateTo",
+      "@type": "xsd:date"
+    },
+    "ApplicationsOrderColumn": "cesnet:ApplicationsOrderColumn",
+    "MailType": "cesnet:MailType",
+    "InvitationStatus": "cesnet:InvitationStatus",
+    "Invitation": "cesnet:Invitation",
+    "senderId": {
+      "@id": "cesnet:senderId",
+      "@type": "xsd:integer"
+    },
+    "receiverName": {
+      "@id": "cesnet:receiverName",
+      "@type": "xsd:string"
+    },
+    "receiverEmail": {
+      "@id": "cesnet:receiverEmail",
+      "@type": "xsd:string"
+    },
+    "redirectUrl": {
+      "@id": "cesnet:redirectUrl",
+      "@type": "xsd:string"
+    },
+    "token": {
+      "@id": "cesnet:token",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "cesnet:language",
+      "@type": "xsd:string"
+    },
+    "expiration": {
+      "@id": "cesnet:expiration",
+      "@type": "xsd:string"
+    },
+    "InvitationWithSender": "cesnet:InvitationWithSender",
+    "senderName": {
+      "@id": "cesnet:senderName",
+      "@type": "xsd:string"
+    },
+    "senderEmail": {
+      "@id": "cesnet:senderEmail",
+      "@type": "xsd:string"
+    },
+    "PaginatedInvitationsWithSender": "cesnet:PaginatedInvitationsWithSender",
+    "InvitationsOrderColumn": "cesnet:InvitationsOrderColumn",
+    "InvitationsPageQuery": "cesnet:InvitationsPageQuery",
+    "expirationFrom": {
+      "@id": "cesnet:expirationFrom",
+      "@type": "xsd:date"
+    },
+    "expirationTo": {
+      "@id": "cesnet:expirationTo",
+      "@type": "xsd:date"
+    },
+    "PerunPrincipal": "cesnet:PerunPrincipal",
+    "authzInitialized": {
+      "@id": "cesnet:authzInitialized",
+      "@type": "xsd:boolean"
+    },
+    "additionalInformations": {
+      "@id": "cesnet:additionalInformations"
+    },
+    "Ban": "cesnet:Ban",
+    "BanOnResource": "cesnet:BanOnResource",
+    "BanOnVo": "cesnet:BanOnVo",
+    "EnrichedBanOnVo": "cesnet:EnrichedBanOnVo",
+    "ban": {
+      "@id": "cesnet:ban",
+      "@type": "@id"
+    },
+    "BanOnFacility": "cesnet:BanOnFacility",
+    "EnrichedBanOnResource": "cesnet:EnrichedBanOnResource",
+    "EnrichedBanOnFacility": "cesnet:EnrichedBanOnFacility",
+    "RichUserExtSource": "cesnet:RichUserExtSource",
+    "Candidate": "cesnet:Candidate",
+    "additionalUserExtSources": {
+      "@id": "cesnet:additionalUserExtSources",
+      "@container": "@list"
+    },
+    "expectedSyncGroupStatus": {
+      "@id": "cesnet:expectedSyncGroupStatus",
+      "@type": "xsd:string"
+    },
+    "MemberCandidate": "cesnet:MemberCandidate",
+    "candidate": {
+      "@id": "cesnet:candidate",
+      "@type": "@id"
+    },
+    "richUser": {
+      "@id": "cesnet:richUser",
+      "@type": "@id"
+    },
+    "ServiceForGUI": "cesnet:ServiceForGUI",
+    "allowedOnFacility": {
+      "@id": "cesnet:allowedOnFacility",
+      "@type": "xsd:boolean"
+    },
+    "GenDataNode": "cesnet:GenDataNode",
+    "children": {
+      "@id": "cesnet:children"
+    },
+    "members": {
+      "@id": "cesnet:members"
+    },
+    "HashedGenData": "cesnet:HashedGenData",
+    "hierarchy": {
+      "@id": "cesnet:hierarchy"
+    },
+    "IdmObject": "cesnet:IdmObject",
+    "idmObjectType": {
+      "@id": "cesnet:idmObjectType",
+      "@type": "xsd:string"
+    },
+    "objectId": {
+      "@id": "cesnet:objectId",
+      "@type": "xsd:string"
+    },
+    "TaskStatus": "cesnet:TaskStatus"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "CESNET API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects CESNET's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-09) from openapi/cesnet-exafs-openapi.yml, openapi/cesnet-perun-rpc-openapi.yml.",
+  "dcterms:created": "2026-10-09",
+  "dcterms:source": [
+    "openapi/cesnet-exafs-openapi.yml",
+    "openapi/cesnet-perun-rpc-openapi.yml"
+  ]
+}

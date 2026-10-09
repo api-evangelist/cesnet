@@ -1,0 +1,490 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Utils API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged Utils across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: Utils
+  description: various utilities
+paths:
+  /:
+    get:
+      tags:
+      - Utils
+      operationId: getPerunRPCVersion
+      summary: Gets Perun runtime status
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'OK! Version: 3.8.6, User: makub@META, extSource: META'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/utils/getPerunStatus:
+    get:
+      tags:
+      - Utils
+      operationId: getPerunStatus
+      summary: Gets Perun runtime status
+      description: 'Returns list of strings which looks like this
+
+        "Version of Perun: 3.8.6",
+
+        "Version of PerunDB: 3.1.55",
+
+        "Version of Servlet: Apache Tomcat/9.0.16 (Debian)",
+
+        "Version of DB-driver: PostgreSQL JDBC Driver-42.2.8",
+
+        "Version of DB: PostgreSQL-12.0 (Debian 12.0-2.pgdg100+1)",
+
+        "Version of Java platform: 11.0.5",
+
+        "AuditerConsumer: ''127.0.0.1:6071'' with last processed id=''23463958''",
+
+        "AuditerConsumer: ''ldapcConsumer'' with last processed id=''23463958''",
+
+        "AuditerConsumer: ''notifications'' with last processed id=''23463952''",
+
+        "LastMessageId: 23463958",
+
+        "Timestamp: 2019-11-14 10:12:30.99"'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfStringsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/utils/getPerunStatistics:
+    get:
+      tags:
+      - Utils
+      operationId: getPerunStatistics
+      summary: Gets Perun runtime statistics
+      description: 'Returns list of strings which looks like this
+
+        "Timestamp: ''2019-11-14 10:46:39.613''",
+
+        "USERS: ''39927''",
+
+        "FACILITIES: ''552''",
+
+        "DESTINATIONS: ''2568''",
+
+        "VOS: ''341''",
+
+        "RESOURCES: ''2560''",
+
+        "GROUPS: ''2300''",
+
+        "AUDITMESSAGES: ''7333237''"'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfStringsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/utils/getPerunSystemTimeInMillis:
+    get:
+      tags:
+      - Utils
+      operationId: getPerunSystemTimeInMillis
+      summary: Gets Perun system time in milliseconds since the epoch
+      responses:
+        '200':
+          $ref: '#/components/responses/LongResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/utils/getGuiConfiguration:
+    get:
+      tags:
+      - Utils
+      operationId: getGuiConfiguration
+      summary: Gets perun-web-gui.properties as Map
+      responses:
+        '200':
+          $ref: '#/components/responses/MapStringStringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/utils/getAppsConfig:
+    get:
+      tags:
+      - Utils
+      operationId: getAppsConfig
+      summary: Gets configuration of perun apps brandings and apps' domains
+      description: Returns object of type PerunAppsConfig
+      responses:
+        '200':
+          $ref: '#/components/responses/PerunAppsConfigResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/utils/getNewGuiAlert:
+    get:
+      tags:
+      - Utils
+      operationId: getNewGuiAlert
+      summary: Gets new GUI alert (banner html content) for the brand of incoming request
+      description: Returns new GUI alert
+      responses:
+        '200':
+          $ref: '#/components/responses/StringResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  schemas:
+    Brand:
+      type: object
+      properties:
+        name:
+          type: string
+        oldGuiDomain:
+          type: string
+        newApps:
+          $ref: '#/components/schemas/NewApps'
+        vos:
+          type: array
+          items:
+            type: string
+        oldGuiAlert:
+          type: string
+    NewApps:
+      type: object
+      properties:
+        api:
+          type: string
+        admin:
+          type: string
+        consolidator:
+          type: string
+        linker:
+          type: string
+        profile:
+          type: string
+        pwdReset:
+          type: string
+        publications:
+          type: string
+    PerunAppsConfig:
+      type: object
+      properties:
+        brands:
+          type: array
+          items:
+            $ref: '#/components/schemas/Brand'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+  responses:
+    StringResponse:
+      description: returns String
+      content:
+        application/json:
+          schema:
+            type: string
+    ListOfStringsResponse:
+      description: returns List<String>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+    MapStringStringResponse:
+      description: returns Map<String,String>
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    LongResponse:
+      description: returns Long
+      content:
+        application/json:
+          schema:
+            type: integer
+            format: int64
+    PerunAppsConfigResponse:
+      description: returns configuration of perun apps brandings and apps' domains
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunAppsConfig'
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

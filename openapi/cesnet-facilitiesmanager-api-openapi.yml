@@ -1,0 +1,5804 @@
+openapi: 3.2.0
+info:
+  title: Cesnet Facilities Manager API
+  version: 0.0.0
+  contact:
+    url: https://perun-aai.org
+    email: perun@cesnet.cz
+  description: 'Operations tagged FacilitiesManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://{server}/{authentication}/rpc
+  description: Perun RPC server
+  variables:
+    server:
+      default: api-dev.perun-aai.org
+      description: DNS name of a Perun server
+    authentication:
+      default: ba
+      description: 'way of authentication:
+
+        ba - HTTP Basic Auth
+
+        krb - Kerberos
+
+        non - no authentication
+
+        cert - X509 client certificate
+
+        oauth - OAuth 2.0 bearer access token
+
+        fed - SAML federation
+
+        '
+      enum:
+      - ba
+      - krb
+      - non
+      - cert
+      - oauth
+      - fed
+security:
+- BasicAuth: []
+- BearerAuth: []
+tags:
+- name: FacilitiesManager
+  description: FacilitiesManager RPC API in Perun
+  externalDocs:
+    url: https://perun-aai.org/documentation/technical-documentation/rpc-api/rpc-javadoc-FacilitiesManager.html
+paths:
+  /json/facilitiesManager/getFacilityById:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityById
+      summary: Returns Facility with specified id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/FacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilityByName:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityByName
+      summary: Returns Facility with specified name
+      parameters:
+      - $ref: '#/components/parameters/name'
+      responses:
+        '200':
+          $ref: '#/components/responses/FacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilitiesByIds:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilitiesByIds
+      summary: Returns list of Facilities by their ids
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedUsers:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedUsers
+      summary: Returns all assigned users on the facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - name: service
+        description: id of Service
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedUsers/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedUsersByFacilityName
+      summary: Returns all assigned users on the facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - name: service
+        description: id of Service
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getRichFacilities:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getRichFacilities
+      summary: Gets all possible rich facilities with all their owners
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilitiesByDestination:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilitiesByDestination
+      summary: Searches for the Facilities by theirs destination
+      parameters:
+      - $ref: '#/components/parameters/destinationName'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilitiesByAttribute:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilitiesByAttribute
+      summary: Returns all facilities that have the attribute 'attributeName' with the string…
+      description: Searching only def and opt attributes. Large attributes are not supported.
+      parameters:
+      - $ref: '#/components/parameters/attributeName'
+      - $ref: '#/components/parameters/attributeValue'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilitiesByAttributeWithAttributes:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilitiesByAttributeWithAttributes
+      summary: Searches (partially!) for facilities with the attribute 'attributeName' and its…
+      parameters:
+      - $ref: '#/components/parameters/attributeName'
+      - $ref: '#/components/parameters/attributeValue'
+      - $ref: '#/components/parameters/attrNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesWithAttributesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilities:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAllFacilities
+      summary: Get all facilities
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilitiesCount:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilitiesCount
+      summary: Gets count of all facilities
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getEnrichedFacilities:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getEnrichedFacilities
+      summary: Gets all enriched facilities user has access rights to
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfEnrichedFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getOwners:
+    get:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityOwners
+      summary: Returns owners of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfOwnersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getOwners/f-name:
+    get:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityOwnersByFacilityName
+      summary: Returns owners of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfOwnersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwner:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwner
+      summary: Adds owner of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwners:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwners
+      summary: Adds owners of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwner/f-o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwnerByFacilityNameOwnerName
+      summary: Adds owner of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerName'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwners/f-o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwnersByFacilityNameOwnerName
+      summary: Adds owners of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwner/f-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwnerByFacilityName
+      summary: Adds owner of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwners/f-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwnersByFacilityName
+      summary: Adds owners of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwner/o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwnerByOwnerName
+      summary: Adds owner of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerName'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addOwners/o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityOwnersByOwnerName
+      summary: Adds owners of a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwner:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwner
+      summary: Removes owner from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwners:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwners
+      summary: Removes owners from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwner/f-o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwnerByFacilityNameOwnerName
+      summary: Removes owner from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerName'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwners/f-o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwnersByFacilityNameOwnerName
+      summary: Removes owners from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwner/f-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwnerByFacilityName
+      summary: Removes owner from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwners/f-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwnersByFacilityName
+      summary: Removes owners from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/ownerIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwner/o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwnerByOwnerName
+      summary: Removes owner from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerName'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeOwners/o-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityOwnersByOwnerName
+      summary: Removes owners from a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/ownerNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/getAllowedVos:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedVos
+      summary: Return all VO which can use a facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfVosResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/getAllowedVos/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedVosByFacilityName
+      summary: Return all VO which can use a facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfVosResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAllowedGroups:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedGroups
+      summary: Get all allowed groups on the Facility, optionally filtered by Vo or Service or…
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - name: vo
+        description: id of Vo
+        schema:
+          type: integer
+        in: query
+        required: false
+      - name: service
+        description: id of Service
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAllowedGroups/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedGroupsByFacilityName
+      summary: Get all allowed groups on the Facility, optionally filtered by Vo or Service or…
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - name: vo
+        description: id of Vo
+        schema:
+          type: integer
+        in: query
+        required: false
+      - name: service
+        description: id of Service
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAllowedRichGroupsWithAttributes:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedRichGroupsWithAttributes
+      summary: Get all allowed RichGroups on the Facility with specified set of attributes…
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/attrNames'
+      - name: vo
+        description: id of Vo
+        schema:
+          type: integer
+        in: query
+        required: false
+      - name: service
+        description: id of Service
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAllowedRichGroupsWithAttributes/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedRichGroupsWithAttributesByFacilityName
+      summary: Get all allowed RichGroups on the Facility with specified set of attributes…
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/attrNames'
+      - name: vo
+        description: id of Vo
+        schema:
+          type: integer
+        in: query
+        required: false
+      - name: service
+        description: id of Service
+        schema:
+          type: integer
+        in: query
+        required: false
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedResources:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedResourcesForFacility
+      summary: Returns all resources assigned to a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedResources/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedResourcesForFacilityByFacilityName
+      summary: Returns all resources assigned to a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedResourcesByAssignedService:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedResourcesByAssignedServiceForFacility
+      summary: Returns resources with specific service assigned to the facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedRichResources:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedRichResourcesForFacility
+      summary: Returns all rich resources assigned to a facility with VO property filled
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedRichResources/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedRichResourcesForFacilityByFacilityName
+      summary: Returns all rich resources assigned to a facility with VO property filled
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedRichResources/f-s:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedRichResourcesForFacilityAndService
+      summary: Returns all rich resources assigned to a facility and service with VO property…
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfRichResourcesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/createFacility:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: createFacility
+      summary: Creates a facility. Caller is automatically set as facility manager
+      parameters:
+      - $ref: '#/components/parameters/name'
+      - name: description
+        required: false
+        in: query
+        schema:
+          type: string
+        description: optional description of a facility
+      responses:
+        '200':
+          $ref: '#/components/responses/FacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/deleteFacility:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: deleteFacility
+      summary: Deletes a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/forceDelete'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/deleteFacility/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: deleteFacilityByFacilityName
+      summary: Deletes a facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/updateFacility:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: updateFacility
+      summary: Updates a facility
+      responses:
+        '200':
+          $ref: '#/components/responses/FacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateFacility
+              description: input to updateFacility
+              type: object
+              required:
+              - facility
+              properties:
+                facility:
+                  $ref: '#/components/schemas/Facility'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getOwnerFacilities:
+    get:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: getOwnerFacilities
+      summary: Returns list of all facilities owned by the owner
+      parameters:
+      - $ref: '#/components/parameters/ownerId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getHosts:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getHosts
+      summary: Returns Hosts of a Facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfHostsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getHosts/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getHostsByFacilityName
+      summary: Returns Hosts of a Facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfHostsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getHostById:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getHostById
+      summary: Returns a host by its id
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/HostResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getHostsByHostname:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getHostsByHostname
+      summary: Returns hosts by hostname. (from all facilities)
+      parameters:
+      - name: hostname
+        required: true
+        in: query
+        schema:
+          type: string
+        description: name of a host
+      responses:
+        '200':
+          $ref: '#/components/responses/HostResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getEnrichedHosts:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getEnrichedHosts
+      summary: Return all enriched hosts of given facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/attrNames'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfEnrichedHostsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilityForHost:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityForHost
+      summary: Return facility which has the host
+      parameters:
+      - $ref: '#/components/parameters/hostId'
+      responses:
+        '200':
+          $ref: '#/components/responses/FacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getHostsCount:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getHostsCount
+      summary: Count hosts of Facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getHostsCount/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getHostsCountByFacilityName
+      summary: Count hosts of Facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/IntegerResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addHosts:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addHosts
+      summary: Adds hosts to the Facility
+      description: InvalidHostnameException is thrown when any host has invalid hostname.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/hostnames'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfHostsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addHosts/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addHostsByFacilityName
+      summary: Adds hosts to the Facility
+      description: InvalidHostnameException is thrown when any host has invalid hostname.
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/hostnames'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfHostsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeHosts:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeHosts
+      summary: Remove hosts from a Facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/listOfHostIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeHosts/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeHostsByFacilityName
+      summary: Remove hosts from a Facility
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/listOfHostIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addHost:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addHost
+      summary: Adds a host to the Facility
+      description: InvalidHostnameException is thrown when host has invalid hostname.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - name: hostname
+        description: DNS name of host
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfHostsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addHost/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addHostByFacilityName
+      summary: Adds a host to the Facility
+      description: InvalidHostnameException is thrown when host has invalid hostname.
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - name: hostname
+        description: DNS name of host
+        schema:
+          type: string
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfHostsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeHost:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeHost
+      summary: Removes a host
+      parameters:
+      - $ref: '#/components/parameters/hostId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeHostByHostname:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeHostByHostname
+      summary: Remove host from the Facility based on hostname.
+      parameters:
+      - name: hostname
+        schema:
+          type: string
+        in: query
+        required: true
+        description: specific hostname
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedFacilities/service:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedFacilitiesByService
+      summary: Get facilities where the service is defined
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedFacilities/group:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedFacilitiesByGroup
+      summary: Get facilities which are assigned to a Group (via resource)
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedFacilities/member:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedFacilitiesByMember
+      summary: Get facilities where the member is assigned.
+      parameters:
+      - $ref: '#/components/parameters/memberId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAssignedFacilities/user:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAssignedFacilitiesByUser
+      summary: Get facilities where the user is assigned.
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addAdmin/user:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityAdminUser
+      summary: Adds a user as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addAdmin/user/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityAdminUserByFacilityName
+      summary: Adds a user as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addAdmin/group:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityAdminGroup
+      summary: Adds a group as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/authorizedGroup'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/addAdmin/group/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: addFacilityAdminGroupByFacilityName
+      summary: Adds a group as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/authorizedGroup'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeAdmin/user:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityAdminUser
+      summary: Removes a user as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeAdmin/user/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityAdminUserByFacilityName
+      summary: Removes a user as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeAdmin/group:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityAdminGroup
+      summary: Removes a group as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/authorizedGroup'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeAdmin/group/f-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityAdminGroupByFacilityName
+      summary: Removes a group as a Facility admin
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - $ref: '#/components/parameters/authorizedGroup'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAdmins:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityAdminUsers
+      description: 'Get list of all facility administrators for supported role and given facility.
+
+        If onlyDirectAdmins is true, return only direct admins of the group for supported role.
+
+        Includes users who are VALID members of administrator groups.
+
+        Supported roles: FacilityAdmin'
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - name: onlyDirectAdmins
+        schema:
+          type: boolean
+        in: query
+        required: true
+        description: if true, get only direct facility administrators (if false, get both direct and indirect)
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      summary: Get facility admin users
+      x-summary-source: derived
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAdmins/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityAdminUsersByFacilityName
+      description: 'Get list of all facility administrators for supported role and given facility.
+
+        If onlyDirectAdmins is true, return only direct admins of the group for supported role.
+
+        Includes users who are VALID members of administrator groups.
+
+        Supported roles: FacilityAdmin'
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - name: onlyDirectAdmins
+        schema:
+          type: boolean
+        in: query
+        required: true
+        description: if true, get only direct facility administrators (if false, get both direct and indirect)
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      summary: Get facility admin users by facility name
+      x-summary-source: derived
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAdminGroups:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityAdminGroups
+      summary: Get all Facility group admins
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAdminGroups/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityAdminGroupsByFacilityName
+      summary: Get all Facility group admins
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfGroupsResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilitiesWhereUserIsAdmin:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilitiesWhereUserIsAdmin
+      summary: Returns list of Facilities, where the user is a direct Administrator or a VALID…
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getFacilitiesByHostName:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilitiesByHostName
+      summary: Return all facilities where exists host with the specific hostname
+      parameters:
+      - name: hostname
+        schema:
+          type: string
+        in: query
+        required: true
+        description: specific hostname
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAllowedUsers/v-f-s:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedUsersOfFacility
+      summary: Return all allowed users on the facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - name: vo
+        schema:
+          type: integer
+        in: query
+        description: VO id, if provided, filter out users who aren't in specific VO
+      - name: service
+        schema:
+          type: integer
+        in: query
+        description: Service id, if provided, filter out users who aren't allowed to use the service on the facility
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getAllowedUsers/v-f-s/f-name:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getAllowedUsersOfFacilityByFacilityName
+      summary: Return all allowed users on the facility.
+      parameters:
+      - $ref: '#/components/parameters/facilityName'
+      - name: vo
+        schema:
+          type: integer
+        in: query
+        description: VO id, if provided, filter out users who aren't in specific VO
+      - name: service
+        schema:
+          type: integer
+        in: query
+        description: Service id, if provided, filter out users who aren't allowed to use the service on the facility
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfUsersResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyOwners:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: copyOwners
+      summary: Copy owners from source facility to destination facility.
+      parameters:
+      - name: srcFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: source facility id
+      - name: destFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: destination facility id
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyOwners/src-dest-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: copyOwnersBySourceDestinationNames
+      summary: Copy owners from source facility to destination facility.
+      parameters:
+      - name: srcFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: source facility name
+      - name: destFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: destination facility name
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyOwners/src-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: copyOwnersBySourceName
+      summary: Copy owners from source facility to destination facility.
+      parameters:
+      - name: srcFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: source facility name
+      - name: destFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: destination facility id
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyOwners/dest-name:
+    post:
+      deprecated: true
+      tags:
+      - FacilitiesManager
+      operationId: copyOwnersByDestinationName
+      summary: Copy owners from source facility to destination facility.
+      parameters:
+      - name: srcFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: source facility id
+      - name: destFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: destination facility name
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyManagers:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyManagers
+      summary: Copy managers from source facility to destination facility.
+      parameters:
+      - name: srcFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: source facility id
+      - name: destFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: destination facility id
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyManagers/src-dest-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyManagersBySourceDestinationNames
+      summary: Copy managers from source facility to destination facility.
+      parameters:
+      - name: srcFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: source facility name
+      - name: destFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: destination facility name
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyManagers/src-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyManagersBySourceName
+      summary: Copy managers from source facility to destination facility.
+      parameters:
+      - name: srcFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: source facility name
+      - name: destFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: destination facility id
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyManagers/dest-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyManagersByDestinationName
+      summary: Copy managers from source facility to destination facility.
+      parameters:
+      - name: srcFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: source facility id
+      - name: destFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: destination facility name
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyAttributes:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyAttributes
+      summary: Copy attributes (settings) from source facility to destination facility.
+      parameters:
+      - name: srcFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: source facility id
+      - name: destFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: destination facility id
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyAttributes/src-dest-names:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyAttributesBySourceDestinationNames
+      summary: Copy attributes (settings) from source facility to destination facility.
+      parameters:
+      - name: srcFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: source facility name
+      - name: destFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: destination facility name
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyAttributes/src-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyAttributesBySourceName
+      summary: Copy attributes (settings) from source facility to destination facility.
+      parameters:
+      - name: srcFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: source facility name
+      - name: destFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: destination facility id
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/copyAttributes/dest-name:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: copyAttributesByDestinationName
+      summary: Copy attributes (settings) from source facility to destination facility.
+      parameters:
+      - name: srcFacility
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: source facility id
+      - name: destFacilityName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: destination facility name
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/setBan:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: setFacilityBan
+      summary: Set ban for user on facility
+      responses:
+        '200':
+          $ref: '#/components/responses/BanOnFacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputSetBanForUserOnFacility
+              description: input to setBanForUserOnFacility
+              type: object
+              required:
+              - banOnFacility
+              properties:
+                banOnFacility:
+                  $ref: '#/components/schemas/BanOnFacility'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getBanById:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityBanById
+      summary: Get Ban for user on facility by it's id
+      parameters:
+      - name: banId
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: BanOnFacility id
+      responses:
+        '200':
+          $ref: '#/components/responses/BanOnFacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getBan:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getFacilityBan
+      summary: Get ban by userId and facilityId
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/BanOnFacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getBansForUser:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getBansForUser
+      summary: Get all bans for user on any facility
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfBanOnFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getBansForFacility:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getBansForFacility
+      summary: Get all bans for user on the facility
+      parameters:
+      - name: facilityId
+        description: id of Facility
+        schema:
+          type: integer
+        in: query
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfBanOnFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getEnrichedBansForFacility:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getEnrichedBansForFacility
+      summary: Get all enriched bans on the facility
+      parameters:
+      - $ref: '#/components/parameters/facilityId'
+      - $ref: '#/components/parameters/attrNamesOptional'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfEnrichedBansOnFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/getEnrichedBansForUser:
+    get:
+      tags:
+      - FacilitiesManager
+      operationId: getEnricheFacilitydBansForUser
+      summary: Get all user's enriched bans on assigned facilities
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/attrNamesOptional'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListOfEnrichedBansOnFacilitiesResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /json/facilitiesManager/updateBan:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: updateFacilityBan
+      summary: Update existing ban (description, validation timestamp)
+      responses:
+        '200':
+          $ref: '#/components/responses/BanOnFacilityResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: InputUpdateBanForFacility
+              description: input to updateBanForFacility
+              type: object
+              required:
+              - banOnFacility
+              properties:
+                banOnFacility:
+                  $ref: '#/components/schemas/BanOnFacility'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeBan/byId:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeFacilityBanById
+      summary: Remove specific ban by it's id
+      parameters:
+      - name: banId
+        schema:
+          type: integer
+        in: query
+        required: true
+        description: BanOnFacility id
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+  /urlinjsonout/facilitiesManager/removeBan/byUserIdFacilityId:
+    post:
+      tags:
+      - FacilitiesManager
+      operationId: removeBanByUserIdFacilityId
+      summary: Remove specific ban by userId and facilityId
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/facilityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidResponse'
+        default:
+          $ref: '#/components/responses/ExceptionResponse'
+    servers:
+    - url: https://{server}/{authentication}/rpc
+      description: Perun RPC server
+      variables:
+        server:
+          default: api-dev.perun-aai.org
+          description: DNS name of a Perun server
+        authentication:
+          default: ba
+          description: 'way of authentication:
+
+            ba - HTTP Basic Auth
+
+            krb - Kerberos
+
+            non - no authentication
+
+            cert - X509 client certificate
+
+            oauth - OAuth 2.0 bearer access token
+
+            fed - SAML federation
+
+            '
+          enum:
+          - ba
+          - krb
+          - non
+          - cert
+          - oauth
+          - fed
+components:
+  parameters:
+    attrNamesOptional:
+      name: attrNames[]
+      description: list of attribute names List<String> or null
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    serviceId:
+      name: service
+      description: id of Service
+      schema:
+        type: integer
+      in: query
+      required: true
+    userId:
+      name: user
+      description: id of User
+      schema:
+        type: integer
+      in: query
+      required: true
+    authorizedGroup:
+      name: authorizedGroup
+      description: Group id
+      schema:
+        type: integer
+      in: query
+      required: true
+    forceDelete:
+      name: force
+      description: If true, delete entity forcefully.
+      schema:
+        type: boolean
+      in: query
+      required: false
+    ids:
+      name: ids[]
+      description: list of ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    memberId:
+      name: member
+      description: id of Member
+      schema:
+        type: integer
+      in: query
+      required: true
+    facilityId:
+      name: facility
+      description: id of Facility
+      schema:
+        type: integer
+      in: query
+      required: true
+    attrNames:
+      name: attrNames
+      description: list of attribute names List<String>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+    hostnames:
+      name: hostnames[]
+      description: list of host names List<String>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+    ownerIds:
+      name: owners[]
+      description: list of owner ids
+      schema:
+        type: array
+        items:
+          type: integer
+      in: query
+      required: true
+    ownerNames:
+      name: ownerNames[]
+      description: list of owner names
+      schema:
+        type: array
+        items:
+          type: string
+      in: query
+      required: true
+    listOfHostIds:
+      name: hosts[]
+      description: list of host ids List<Integer>
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+    groupId:
+      name: group
+      description: id of Group
+      schema:
+        type: integer
+      in: query
+      required: true
+    attributeValue:
+      name: attributeValue
+      description: string value of Attribute
+      schema:
+        type: string
+      in: query
+      required: true
+    facilityName:
+      name: facility
+      description: name of Facility
+      schema:
+        type: string
+      in: query
+      required: true
+    ownerName:
+      name: owner
+      description: name of Owner
+      schema:
+        type: string
+      in: query
+      required: true
+    hostId:
+      name: host
+      description: id of Host
+      schema:
+        type: integer
+      in: query
+      required: true
+    ownerId:
+      name: owner
+      description: id of Owner
+      schema:
+        type: integer
+      in: query
+      required: true
+    destinationName:
+      name: destination
+      description: string name of destination
+      schema:
+        type: string
+      in: query
+      required: true
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+    attributeName:
+      name: attributeName
+      description: full name of attribute definition (namespace + ':' + friendlyName)
+      schema:
+        type: string
+      in: query
+      required: true
+    name:
+      name: name
+      description: name of entity
+      schema:
+        type: string
+      in: query
+      required: true
+  responses:
+    ListOfFacilitiesResponse:
+      description: returns List<Facility>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Facility'
+    ListOfResourcesResponse:
+      description: returns List<Resource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Resource'
+    ListOfEnrichedHostsResponse:
+      description: ' returns List<EnrichedHost>'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EnrichedHost'
+    VoidResponse:
+      description: returns nothing
+    ListOfGroupsResponse:
+      description: returns List<Group>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Group'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    FacilityResponse:
+      description: returns Facility
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Facility'
+    ListOfUsersResponse:
+      description: returns List<User>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+    ListOfFacilitiesWithAttributesResponse:
+      description: returns List<FacilityWithAttributes>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/FacilityWithAttributes'
+    ListOfBanOnFacilitiesResponse:
+      description: return List<BanOnFacility>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BanOnFacility'
+    ListOfRichResourcesResponse:
+      description: returns List<RichResource>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichResource'
+    ListOfRichGroupsResponse:
+      description: returns List<RichGroup>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichGroup'
+    ListOfEnrichedBansOnFacilitiesResponse:
+      description: return List<EnrichedBanOnFacility>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EnrichedBanOnFacility'
+    IntegerResponse:
+      description: returns Integer
+      content:
+        application/json:
+          schema:
+            type: integer
+    ListOfOwnersResponse:
+      description: returns List<Owner>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Owner'
+    ListOfVosResponse:
+      description: returns List<Vo>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Vo'
+    BanOnFacilityResponse:
+      description: returns banOnFacility
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BanOnFacility'
+    ListOfRichFacilitiesResponse:
+      description: returns List<RichFacility>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/RichFacility'
+    HostResponse:
+      description: returns Host
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Host'
+    ListOfEnrichedFacilitiesResponse:
+      description: returns List<EnrichedFacility>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EnrichedFacility'
+    ListOfHostsResponse:
+      description: returns List<Host>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Host'
+  schemas:
+    OwnerType:
+      description: enumeration of types of Owners
+      type: string
+      enum:
+      - technical
+      - administrative
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    AttributeDefinition:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        friendlyName:
+          type: string
+        namespace:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        type:
+          type: string
+        displayName:
+          type: string
+        writable:
+          type: boolean
+        unique:
+          type: boolean
+        friendlyNameParameter:
+          type: string
+          readOnly: true
+        baseFriendlyName:
+          type: string
+          readOnly: true
+        entity:
+          type: string
+          readOnly: true
+    Host:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        hostname:
+          type: string
+    EnrichedFacility:
+      type: object
+      properties:
+        facility:
+          $ref: '#/components/schemas/Facility'
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/Owner'
+        destinations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Destination'
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    Vo:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        shortName:
+          type: string
+        uuid:
+          type: string
+          format: uuid
+    RichResource:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      properties:
+        vo:
+          $ref: '#/components/schemas/Vo'
+        facility:
+          $ref: '#/components/schemas/Facility'
+        resourceTags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceTag'
+    Owner:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        contact:
+          type: string
+        type:
+          $ref: '#/components/schemas/OwnerType'
+    Resource:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        voId:
+          type: integer
+        facilityId:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+    DestinationType:
+      type: string
+      description: type of destination, i.e. way of delivery of service settings
+      enum:
+      - host
+      - url
+      - user@host
+      - user@host:port
+      - service-specific
+      - user@host-windows
+      - host-windows-proxy
+      - s3
+      - s3-json
+      - url-json
+    RichUser:
+      description: user data packed together with all user attributes and UserExtSources
+      allOf:
+      - $ref: '#/components/schemas/User'
+      properties:
+        userExtSources:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UserExtSource'
+        userAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Attribute'
+      required:
+      - userExtSources
+      - userAttributes
+    Destination:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        destination:
+          type: string
+        type:
+          $ref: '#/components/schemas/DestinationType'
+        propagationType:
+          $ref: '#/components/schemas/DestinationPropagationType'
+    BanOnFacility:
+      allOf:
+      - $ref: '#/components/schemas/Ban'
+      properties:
+        userId:
+          type: integer
+        facilityId:
+          type: integer
+    Ban:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        validityTo:
+          type: string
+        description:
+          type: string
+    FacilityWithAttributes:
+      type: object
+      properties:
+        facility:
+          $ref: '#/components/schemas/Facility'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+      required:
+      - facility
+      - attributes
+    UserExtSource:
+      description: represents specific user authentication or identification in external source of data
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        login:
+          type: string
+        userId:
+          type: integer
+        loa:
+          type: integer
+        persistent:
+          type: boolean
+        lastAccess:
+          type: string
+          format: timestamp
+          description: SQL timestamp
+          example: '2012-01-01 00:00:00.100000'
+        extSource:
+          $ref: '#/components/schemas/ExtSource'
+      required:
+      - login
+      - extSource
+    RichGroup:
+      allOf:
+      - $ref: '#/components/schemas/Group'
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+    Group:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      type:
+      - object
+      - 'null'
+      properties:
+        name:
+          type: string
+        shortName:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        voId:
+          type: integer
+        parentGroupId:
+          type:
+          - integer
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
+    RichFacility:
+      allOf:
+      - $ref: '#/components/schemas/Facility'
+      properties:
+        facilityOwners:
+          type: array
+          items:
+            $ref: '#/components/schemas/Owner'
+      required:
+      - facilityOwners
+    ResourceTag:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        tagName:
+          type: string
+        voId:
+          type: integer
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    EnrichedHost:
+      type: object
+      properties:
+        host:
+          $ref: '#/components/schemas/Host'
+        hostAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+    ExtSource:
+      description: represents external source of data for users such as an IdP or an HR database
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    EnrichedBanOnFacility:
+      type: object
+      properties:
+        facility:
+          $ref: '#/components/schemas/Facility'
+        user:
+          $ref: '#/components/schemas/RichUser'
+        ban:
+          $ref: '#/components/schemas/BanOnFacility'
+    User:
+      description: represents user as a physical person
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        titleBefore:
+          type:
+          - string
+          - 'null'
+        titleAfter:
+          type:
+          - string
+          - 'null'
+        serviceUser:
+          type: boolean
+        sponsoredUser:
+          type: boolean
+        uuid:
+          type: string
+          format: uuid
+        specificUser:
+          type: boolean
+        majorSpecificType:
+          type: string
+    DestinationPropagationType:
+      type: string
+      description: type of propagation of service settings to a destination
+      enum:
+      - PARALLEL
+      - SERIAL
+      - DUMMY
+    Attribute:
+      allOf:
+      - $ref: '#/components/schemas/AttributeDefinition'
+      properties:
+        valueCreatedAt:
+          type:
+          - string
+          - 'null'
+        valueCreatedBy:
+          type:
+          - string
+          - 'null'
+        valueModifiedAt:
+          type:
+          - string
+          - 'null'
+        valueModifiedBy:
+          type:
+          - string
+          - 'null'
+        value: {}
+  securitySchemes:
+    BasicAuth:
+      description: HTTP Basic authentication with username and password
+      type: http
+      scheme: basic
+    BearerAuth:
+      description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
+      type: http
+      scheme: bearer
+x-refined-from:
+- cesnet-perun-rpc-openapi.yml
+- cesnet-perun-rpc-openapi.yml

@@ -1,0 +1,14 @@
+# harvested from https://github.com/CESNET/perun/blob/fde3db50b38f793c941b3cb1fc99ec1b24b8bd88/ruleset-vacuum.yaml on 2026-10-09 — a Spectral ruleset published in the provider's own GitHub repository (CESNET/perun); found by GitHub code search, fetched verbatim
+x-method: harvested
+x-stamped: 2026-10-09
+x-source-url: https://github.com/CESNET/perun/blob/fde3db50b38f793c941b3cb1fc99ec1b24b8bd88/ruleset-vacuum.yaml
+extends: [[spectral:oas, recommended], [vacuum:owasp, all]]
+rules:
+    owasp-array-limit: false
+    owasp-integer-format: false
+    owasp-integer-limit: false
+    owasp-no-http-basic: "warn"
+    owasp-no-numeric-ids: false
+    owasp-rate-limit: false
+    owasp-string-limit: false
+    owasp-string-restricted: false

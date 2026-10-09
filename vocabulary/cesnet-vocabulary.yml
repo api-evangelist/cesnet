@@ -1,0 +1,416 @@
+generated: '2026-10-09'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/cesnet-exafs-openapi.yml
+- openapi/cesnet-perun-rpc-openapi.yml
+vocabulary:
+  name: CESNET Domain Vocabulary
+  description: 'Terms declared by CESNET''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-09'
+  terms:
+  - term: Authorization
+    definition: Endpoints for obtaining and managing API tokens.
+    tags:
+    - Resource Group
+    source: openapi/cesnet-exafs-openapi.yml
+  - term: Rules
+    definition: Endpoints for managing IPv4, IPv6, and RTBH rules.
+    tags:
+    - Resource Group
+    source: openapi/cesnet-exafs-openapi.yml
+  - term: Choices
+    definition: Choices for rule actions and communities.
+    tags:
+    - Resource Group
+    source: openapi/cesnet-exafs-openapi.yml
+  - term: Utils
+    definition: various utilities
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: AuthzResolver
+    definition: AuthzResolver RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: AuditMessagesManager
+    definition: AuditMessage RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: CabinetManager
+    definition: CabinetManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: UsersManager
+    definition: UsersManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: MembersManager
+    definition: MembersManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: FacilitiesManager
+    definition: FacilitiesManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: OwnersManager
+    definition: OwnersManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: AttributesManager
+    definition: AttributesManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: GroupsManager
+    definition: GroupsManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: ResourcesManager
+    definition: ResourcesManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: VosManager
+    definition: VosManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: TasksManager
+    definition: TasksManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: RTMessagesManager
+    definition: RTMessagesManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: IntegrationManager
+    definition: IntegrationManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: Searcher
+    definition: Searcher RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: ConsentsManager
+    definition: ConsentsManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: InvitationsManager
+    definition: InvitationsManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: DatabaseManager
+    definition: DatabaseManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: ExtSourcesManager
+    definition: ExtSourcesManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: RegistrarManager
+    definition: RegistrarManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: ServicesManager
+    definition: ServicesManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: ConfigManager
+    definition: ConfigManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: NotificationManager
+    definition: NotificationManager RPC API in Perun
+    tags:
+    - Resource Group
+    source: openapi/cesnet-perun-rpc-openapi.yml
+  - term: RegistrarApplicationInput
+    definition: input for registrar application endpoints
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/RegistrarApplicationInput
+  - term: PerunException
+    definition: exception thrown from inside of Perun
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PerunException
+  - term: CantBeApprovedException
+    definition: thrown by Registrar modules when application shouldn't be approved
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/CantBeApprovedException
+  - term: PerunBean
+    definition: identifiable entity in Perun, common ancestor of all entity classes
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PerunBean
+  - term: Auditable
+    definition: represents audit information
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Auditable
+  - term: User
+    definition: represents user as a physical person
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/User
+  - term: RichUser
+    definition: user data packed together with all user attributes and UserExtSources
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/RichUser
+  - term: PaginatedRichUsers
+    definition: represents Paginated&lt;RichUser>
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PaginatedRichUsers
+  - term: Sponsor
+    definition: represents a Sponsor for some specific member
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Sponsor
+  - term: Member
+    definition: represents Member of a Virtual Organization
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Member
+  - term: AssignedMember
+    definition: represents a member of a group assigned to a resource
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AssignedMember
+  - term: RichMember
+    definition: Member data packed with member and user attributes, User and UserExtSources
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/RichMember
+  - term: PaginatedRichMembers
+    definition: 'Object declared by the contract with fields: offset, pageSize, totalCount, data.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PaginatedRichMembers
+  - term: GraphFileFormat
+    definition: currently supported formats are DOT and TGF
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/GraphFileFormat
+  - term: GraphDTO
+    definition: 'Object declared by the contract with fields: graph, format.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/GraphDTO
+  - term: SortingOrder
+    definition: 'Enumeration declared by the contract with values: ASCENDING, DESCENDING.'
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/SortingOrder
+  - term: MembersOrderColumn
+    definition: 'Enumeration declared by the contract with values: ID, NAME, EMAIL, GROUP_STATUS, STATUS, ORGANIZATION.'
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/MembersOrderColumn
+  - term: MemberGroupStatus
+    definition: statuses of a member in a group
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/MemberGroupStatus
+  - term: MembersPageQuery
+    definition: 'Object declared by the contract with fields: pageSize, offset, order, sortColumn, searchString, statuses, groupId, groupStatuses.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/MembersPageQuery
+  - term: UsersOrderColumn
+    definition: 'Enumeration declared by the contract with values: ID, NAME.'
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/UsersOrderColumn
+  - term: UsersPageQuery
+    definition: 'Object declared by the contract with fields: pageSize, offset, order, sortColumn, searchString, withoutVo, facilityId, voId,
+      serviceId, resourceId, onlyAllowed, consentStatuses.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/UsersPageQuery
+  - term: BlockedLogin
+    definition: represent a login block for namespace (or globally)
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/BlockedLogin
+  - term: PaginatedBlockedLogins
+    definition: 'Object declared by the contract with fields: offset, pageSize, totalCount, data.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PaginatedBlockedLogins
+  - term: BlockedLoginsOrderColumn
+    definition: 'Enumeration declared by the contract with values: LOGIN, NAMESPACE.'
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/BlockedLoginsOrderColumn
+  - term: BlockedLoginsPageQuery
+    definition: 'Object declared by the contract with fields: pageSize, offset, order, sortColumn, namespaces, searchString.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/BlockedLoginsPageQuery
+  - term: UserExtSource
+    definition: represents specific user authentication or identification in external source of data
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/UserExtSource
+  - term: ExtSource
+    definition: represents external source of data for users such as an IdP or an HR database
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/ExtSource
+  - term: EnrichedExtSource
+    definition: 'Object declared by the contract with fields: extSource, attributes.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/EnrichedExtSource
+  - term: AttributeDefinition
+    definition: 'Object declared by the contract with fields: friendlyName, namespace, description, type, displayName, writable, unique, friendlyNameParameter,
+      baseFriendlyName, entity.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AttributeDefinition
+  - term: Attribute
+    definition: 'Object declared by the contract with fields: valueCreatedAt, valueCreatedBy, valueModifiedAt, valueModifiedBy, value.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Attribute
+  - term: AttributeRules
+    definition: 'Object declared by the contract with fields: attributePolicyCollections, criticalActions.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AttributeRules
+  - term: AuditEvent
+    definition: 'Object declared by the contract with fields: attribute, extSource, source, facility, group, parentGroup, member, resource, service,
+      user, userExtSource, vo. (2 more)'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AuditEvent
+  - term: AuditMessage
+    definition: 'Object declared by the contract with fields: event, id, actor, createdAt, createdByUid.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AuditMessage
+  - term: PaginatedAuditMessages
+    definition: 'Object declared by the contract with fields: offset, pageSize, totalCount, data.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PaginatedAuditMessages
+  - term: AuditMessagesPageQuery
+    definition: 'Object declared by the contract with fields: pageSize, offset, order, selectedEvents.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AuditMessagesPageQuery
+  - term: AttributeAction
+    definition: Represents types of actions that users can perform upon attributes.
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AttributeAction
+  - term: RoleObject
+    definition: Represents objects, upon which Perun roles can be set, e.g. role RESOURCEADMIN can be set upon Resource, Vo, Facility or no object
+      (None).
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/RoleObject
+  - term: AttributePolicy
+    definition: 'Object declared by the contract with fields: id, role, object, policyCollectionId.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AttributePolicy
+  - term: AttributePolicyCollection
+    definition: 'Object declared by the contract with fields: id, attributeId, action, policies.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AttributePolicyCollection
+  - term: Facility
+    definition: 'Object declared by the contract with fields: name, description, uuid.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Facility
+  - term: RichFacility
+    definition: 'Object declared by the contract with fields: facilityOwners.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/RichFacility
+  - term: FacilityWithAttributes
+    definition: 'Object declared by the contract with fields: facility, attributes.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/FacilityWithAttributes
+  - term: Host
+    definition: 'Object declared by the contract with fields: hostname.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/Host
+  - term: EnrichedResource
+    definition: 'Object declared by the contract with fields: resource, attributes.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/EnrichedResource
+  - term: EnrichedGroup
+    definition: 'Object declared by the contract with fields: group, attributes.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/EnrichedGroup
+  - term: GroupResourceStatus
+    definition: status of the group-resource assignment
+    tags:
+    - Enumeration
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/GroupResourceStatus
+  - term: AssignedResource
+    definition: 'Object declared by the contract with fields: enrichedResource, status, sourceGroupId, failureCause, facility, resourceTags, autoAssignSubgroups.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AssignedResource
+  - term: AssignedGroup
+    definition: 'Object declared by the contract with fields: enrichedGroup, status, sourceGroupId, failureCause, autoAssignSubgroups.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/AssignedGroup
+  - term: EnrichedHost
+    definition: 'Object declared by the contract with fields: host, hostAttributes.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/EnrichedHost
+  - term: EnrichedFacility
+    definition: 'Object declared by the contract with fields: facility, owners, destinations, hosts.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/EnrichedFacility
+  - term: EnrichedVo
+    definition: 'Object declared by the contract with fields: vo, memberVos, parentVos.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/EnrichedVo
+  - term: ConsentHub
+    definition: 'Object declared by the contract with fields: name, enforceConsents, facilities.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/ConsentHub
+  - term: PublicationSystem
+    definition: 'Object declared by the contract with fields: friendlyName, url, username, password, loginNamespace, type.'
+    tags:
+    - Object
+    source: openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/PublicationSystem

@@ -1,0 +1,23 @@
+generated: '2026-10-09'
+method: searched
+source: https://raw.githubusercontent.com/CESNET/perun/main/perun-rpc/README.md
+name: Perun CLI
+description: Perun can be managed using CLI tools (Perl scripts) in the perun-cli module of the Perun repository; each script wraps Perun RPC manager methods.
+repository: https://github.com/CESNET/perun/tree/main/perun-cli
+install:
+- method: source
+  steps:
+  - apt-get install libswitch-perl liblwp-authen-negotiate-perl libjson-any-perl libtext-asciitable-perl libterm-readkey-perl libwww-perl libcrypt-ssleay-perl libtext-unidecode-perl libdate-calc-perl libnet-ldap-perl libjson-perl libyaml-perl qrencode
+  - export PERL5LIB="[folder_with_cli_tools]"
+configuration:
+- PERUN_URL="https://[instance_url]/[krb/cert/fed]/rpc/"
+- PERUN_USER="[login]/[password]"
+- PERUN_RPC_TYPE="Perun RPC"
+- PERUN_OIDC=1 and PERUN_OIDC_CONFIG (OIDC device-code login; endpoints in perun-cli/Perun/auth/oidc_config.yml)
+commands:
+  count: 266
+  note: 266 files in perun-cli/ on the GitHub mirror (scripts plus the Perun/ module dir), named after RPC operations.
+  examples: [listOfVos, addVoMember, addGroupMember, addFacilityDestination, assignServiceToResource, anonymizeUser, changePassword, oidcAuthentication, revokeOidcToken]
+key_flows:
+- Test connection with ./listOfVos
+- OIDC login with ./oidcAuthentication; revoke with ./revokeOidcToken

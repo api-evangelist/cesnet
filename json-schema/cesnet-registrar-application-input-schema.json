@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cesnet/main/json-schema/cesnet-registrar-application-input-schema.json",
+  "title": "RegistrarApplicationInput",
+  "description": "input for registrar application endpoints",
+  "x-generated": "2026-10-09",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cesnet-perun-rpc-openapi.yml#/components/schemas/RegistrarApplicationInput",
+  "type": "object",
+  "required": [
+    "vo",
+    "attributes",
+    "oidcAttributes"
+  ],
+  "properties": {
+    "vo": {
+      "type": "integer",
+      "description": "ID of the Virtual Organization"
+    },
+    "group": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "ID of the Group to add the member to (optional, null for VO applications)"
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Map of the application attributes (key: attr name, value: attr value)"
+    },
+    "oidcAttributes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Map of OIDC attributes (must contain iss and sub claims)"
+    }
+  }
+}
