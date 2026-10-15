@@ -16,3 +16,79 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: cesnet-edugain
+  label: eduGAIN
+  partner_name: eduGAIN
+  category: research and education identity federation
+  type: register
+  channel: standard-directory
+  evidence: https://technical.edugain.org/api.php?action=list_entities&type=idp&format=json
+  source: edge
+  relationship: network-participant
+  contract_reference:
+    network: eduGAIN (GÉANT interfederation)
+    spec_file: null
+    roles:
+    - identity-provider
+    - service-provider
+    role: identity-and-service-provider
+    federations:
+    - EDUID-CZ
+    matched_by: domain:cesnet.cz
+    entities:
+    - entity_id: https://whoami.cesnet.cz/idp/shibboleth
+      role: identity-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '4'
+      - '11'
+      - '61'
+      - '76'
+      sirtfi: true
+      coco: false
+    - entity_id: https://filesender.cesnet.cz/saml/sp
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories: null
+      sirtfi: false
+      coco: true
+    - entity_id: https://filesender2.cesnet.cz/saml/sp
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories: null
+      sirtfi: false
+      coco: true
+    - entity_id: https://login.einfra.cesnet.cz/proxy/
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '5'
+      - '76'
+      sirtfi: true
+      coco: true
+    - entity_id: https://meta.cesnet.cz/sp/shibboleth
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '5'
+      - '76'
+      - '91'
+      sirtfi: true
+      coco: true
+    - entity_id: https://nerd.cesnet.cz/shibboleth
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '1'
+      sirtfi: false
+      coco: true
+    detected_by: sweep-higher-ed.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null

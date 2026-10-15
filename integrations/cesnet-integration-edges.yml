@@ -2,6 +2,8 @@ generated: '2026-10-14'
 method: searched
 checked:
 - grafana-com/integrations/grafana-com-integration-edges.yml
+- https://technical.edugain.org/api.php?action=list_entities&type=idp&format=json
+- https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
 source:
 - grafana-com/integrations/grafana-com-integration-edges.yml
 edges:
@@ -24,3 +26,78 @@ edges:
   category: Application
   badges:
   - signature:community
+- partner_name: eduGAIN
+  partner: null
+  type: register
+  channel: standard-directory
+  relationship: network-participant
+  direction: partner-built
+  evidence: https://technical.edugain.org/api.php?action=list_entities&type=idp&format=json
+  category: research and education identity federation
+  contract_reference:
+    network: eduGAIN (GÉANT interfederation)
+    spec_file: null
+    roles:
+    - identity-provider
+    - service-provider
+    role: identity-and-service-provider
+    federations:
+    - EDUID-CZ
+    matched_by: domain:cesnet.cz
+    entities:
+    - entity_id: https://whoami.cesnet.cz/idp/shibboleth
+      role: identity-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '4'
+      - '11'
+      - '61'
+      - '76'
+      sirtfi: true
+      coco: false
+    - entity_id: https://filesender.cesnet.cz/saml/sp
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories: null
+      sirtfi: false
+      coco: true
+    - entity_id: https://filesender2.cesnet.cz/saml/sp
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories: null
+      sirtfi: false
+      coco: true
+    - entity_id: https://login.einfra.cesnet.cz/proxy/
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '5'
+      - '76'
+      sirtfi: true
+      coco: true
+    - entity_id: https://meta.cesnet.cz/sp/shibboleth
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '5'
+      - '76'
+      - '91'
+      sirtfi: true
+      coco: true
+    - entity_id: https://nerd.cesnet.cz/shibboleth
+      role: service-provider
+      federation: EDUID-CZ
+      display_name: CESNET
+      entity_categories:
+      - '1'
+      sirtfi: false
+      coco: true
+    detected_by: sweep-higher-ed.py
+    detected: '2026-10-15'
+  detected_by: sweep-higher-ed.py
+  first_seen: '2026-10-15'
