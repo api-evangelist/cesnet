@@ -7,25 +7,6 @@ checked:
 source:
 - grafana-com/integrations/grafana-com-integration-edges.yml
 edges:
-- partner_name: Grafana (own)
-  partner: grafana-com
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://grafana.com/grafana/plugins/cesnet-dp3-app/
-  mirror_of: grafana-com/integrations/grafana-com-integration-edges.yml
-  apps:
-  - DP³
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Application
-  badges:
-  - signature:community
 - partner_name: eduGAIN
   partner: null
   type: register
@@ -101,3 +82,22 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-higher-ed.py
   first_seen: '2026-10-15'
+- partner_name: Grafana (own)
+  partner: grafana-com
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://grafana.com/grafana/plugins/cesnet-dp3-app/
+  mirror_of: grafana-com/integrations/grafana-com-integration-edges.yml
+  apps:
+  - DP³
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Application
+  badges:
+  - signature:community
