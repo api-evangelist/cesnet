@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Cesnet Tasks Manager API
   version: 0.0.0
+  title: Perun RPC Tasks Manager API
+  description: Perun Remote Procedure Calls Application Programming Interface
   contact:
     url: https://perun-aai.org
     email: perun@cesnet.cz
-  description: 'Operations tagged TasksManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{server}/{authentication}/rpc
   description: Perun RPC server
@@ -60,37 +60,6 @@ paths:
           $ref: '#/components/responses/TaskResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/listAllTasks:
     get:
       tags:
@@ -102,37 +71,6 @@ paths:
           $ref: '#/components/responses/ListOfTasksResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/listAllTasksForFacility:
     get:
       tags:
@@ -146,37 +84,6 @@ paths:
           $ref: '#/components/responses/ListOfTasksResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/isThereSuchTask:
     get:
       tags:
@@ -191,37 +98,6 @@ paths:
           $ref: '#/components/responses/IntegerResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/countTasks:
     get:
       tags:
@@ -233,37 +109,6 @@ paths:
           $ref: '#/components/responses/IntegerResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskResults:
     get:
       tags:
@@ -275,37 +120,6 @@ paths:
           $ref: '#/components/responses/ListOfTaskResultsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskResultsByTask:
     get:
       tags:
@@ -319,37 +133,6 @@ paths:
           $ref: '#/components/responses/ListOfTaskResultsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskResultsForGUIByTaskOnlyNewest:
     get:
       tags:
@@ -363,37 +146,6 @@ paths:
           $ref: '#/components/responses/ListOfTaskResultsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskResultsForGUIByTaskAndDestination:
     get:
       tags:
@@ -408,37 +160,6 @@ paths:
           $ref: '#/components/responses/ListOfTaskResultsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskResultsForGUIByTask:
     get:
       tags:
@@ -452,37 +173,6 @@ paths:
           $ref: '#/components/responses/ListOfTaskResultsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskResultById:
     get:
       tags:
@@ -496,37 +186,6 @@ paths:
           $ref: '#/components/responses/TaskResultResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskById:
     get:
       tags:
@@ -540,37 +199,6 @@ paths:
           $ref: '#/components/responses/TaskResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getFacilityState:
     get:
       tags:
@@ -584,37 +212,6 @@ paths:
           $ref: '#/components/responses/FacilityStateResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getAllFacilitiesStates:
     get:
       tags:
@@ -628,37 +225,6 @@ paths:
           $ref: '#/components/responses/ListOfFacilityStatesResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getAllResourcesState:
     get:
       tags:
@@ -677,37 +243,6 @@ paths:
           $ref: '#/components/responses/ListOfResourceStatesResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getTaskResultsForDestinations:
     get:
       tags:
@@ -728,37 +263,6 @@ paths:
           $ref: '#/components/responses/ListOfTaskResultsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/getFacilityServicesState:
     get:
       tags:
@@ -772,37 +276,6 @@ paths:
           $ref: '#/components/responses/ListOfServiceStatesResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/deleteTask:
     post:
       tags:
@@ -828,37 +301,6 @@ paths:
                 task:
                   type: integer
                   description: task id
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/deleteTaskResultById:
     post:
       tags:
@@ -884,37 +326,6 @@ paths:
                 taskResultId:
                   type: integer
                   description: task result id
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/tasksManager/deleteTaskResultsByIds:
     post:
       tags:
@@ -935,37 +346,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/deleteTaskResults/id:
     post:
       tags:
@@ -995,37 +375,6 @@ paths:
                 destinationId:
                   type: integer
                   description: destination id
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/deleteTaskResults/name:
     post:
       tags:
@@ -1059,37 +408,6 @@ paths:
                 destinationType:
                   type: string
                   description: destination type
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/tasksManager/suspendTasksPropagation:
     post:
       tags:
@@ -1108,37 +426,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/tasksManager/isSuspendedTasksPropagation:
     get:
       tags:
@@ -1150,37 +437,6 @@ paths:
           $ref: '#/components/responses/BooleanResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/tasksManager/resumeTasksPropagation:
     post:
       tags:
@@ -1199,89 +455,120 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
 components:
-  parameters:
-    serviceId:
-      name: service
-      description: id of Service
-      schema:
-        type: integer
-      in: query
-      required: true
-    optionalVoId:
-      name: vo
-      description: id of Vo
-      schema:
-        type: integer
-      in: query
-      required: false
-    facilityId:
-      name: facility
-      description: id of Facility
-      schema:
-        type: integer
-      in: query
-      required: true
-    destinationId:
-      name: destination
-      description: id of Destination
-      schema:
-        type: integer
-      in: query
-      required: true
-    taskResultId:
-      name: taskResult
-      description: TaskResult id
-      schema:
-        type: integer
-      required: true
-      in: query
-    taskId:
-      name: task
-      description: Task id
-      schema:
-        type: integer
-      required: true
-      in: query
-    id:
-      name: id
-      description: numeric id
-      schema:
-        type: integer
-      in: query
-      required: true
   schemas:
+    FacilityState:
+      type: object
+      properties:
+        facility:
+          $ref: '#/components/schemas/Facility'
+        state:
+          $ref: '#/components/schemas/FacilityPropagationState'
+        results:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FacilityPropagationState'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
+    DestinationPropagationType:
+      type: string
+      description: type of propagation of service settings to a destination
+      enum:
+      - PARALLEL
+      - SERIAL
+      - DUMMY
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Resource:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        voId:
+          type: integer
+        facilityId:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+    Service:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        delay:
+          type: integer
+        recurrence:
+          type: integer
+        enabled:
+          type: boolean
+        script:
+          type: string
+        useExpiredMembers:
+          type: boolean
+        useExpiredVoMembers:
+          type: boolean
+        useBannedMembers:
+          type: boolean
+    DestinationType:
+      type: string
+      description: type of destination, i.e. way of delivery of service settings
+      enum:
+      - host
+      - url
+      - user@host
+      - user@host:port
+      - service-specific
+      - user@host-windows
+      - host-windows-proxy
+      - s3
+      - s3-json
+      - url-json
+    FacilityPropagationState:
+      type: string
+      enum:
+      - OK
+      - ERROR
+      - PROCESSING
+      - NOT_DETERMINED
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
     TaskResult:
       allOf:
       - $ref: '#/components/schemas/PerunBean'
@@ -1306,54 +593,29 @@ components:
           $ref: '#/components/schemas/Destination'
         service:
           $ref: '#/components/schemas/Service'
-    Facility:
+    TaskStatus:
+      type: string
+      enum:
+      - WAITING
+      - PLANNED
+      - GENERATING
+      - GENERROR
+      - GENERATED
+      - SENDING
+      - DONE
+      - SENDERROR
+      - ERROR
+      - WARNING
+    Destination:
       allOf:
       - $ref: '#/components/schemas/Auditable'
       properties:
-        name:
+        destination:
           type: string
-        description:
-          type:
-          - string
-          - 'null'
-        uuid:
-          type: string
-          format: uuid
-    PerunBean:
-      description: identifiable entity in Perun, common ancestor of all entity classes
-      type: object
-      properties:
-        id:
-          type: integer
-        beanName:
-          type: string
-      required:
-      - id
-      - beanName
-      discriminator:
-        propertyName: beanName
-    Service:
-      allOf:
-      - $ref: '#/components/schemas/Auditable'
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        delay:
-          type: integer
-        recurrence:
-          type: integer
-        enabled:
-          type: boolean
-        script:
-          type: string
-        useExpiredMembers:
-          type: boolean
-        useExpiredVoMembers:
-          type: boolean
-        useBannedMembers:
-          type: boolean
+        type:
+          $ref: '#/components/schemas/DestinationType'
+        propagationType:
+          $ref: '#/components/schemas/DestinationPropagationType'
     TaskResultStatus:
       type: string
       enum:
@@ -1361,13 +623,6 @@ components:
       - ERROR
       - DENIED
       - WARNING
-    FacilityPropagationState:
-      type: string
-      enum:
-      - OK
-      - ERROR
-      - PROCESSING
-      - NOT_DETERMINED
     ServiceState:
       type: object
       properties:
@@ -1386,79 +641,6 @@ components:
           readOnly: true
         hasDestinations:
           type: boolean
-    Resource:
-      allOf:
-      - $ref: '#/components/schemas/Auditable'
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        voId:
-          type: integer
-        facilityId:
-          type: integer
-        uuid:
-          type: string
-          format: uuid
-    DestinationType:
-      type: string
-      description: type of destination, i.e. way of delivery of service settings
-      enum:
-      - host
-      - url
-      - user@host
-      - user@host:port
-      - service-specific
-      - user@host-windows
-      - host-windows-proxy
-      - s3
-      - s3-json
-      - url-json
-    Destination:
-      allOf:
-      - $ref: '#/components/schemas/Auditable'
-      properties:
-        destination:
-          type: string
-        type:
-          $ref: '#/components/schemas/DestinationType'
-        propagationType:
-          $ref: '#/components/schemas/DestinationPropagationType'
-    FacilityState:
-      type: object
-      properties:
-        facility:
-          $ref: '#/components/schemas/Facility'
-        state:
-          $ref: '#/components/schemas/FacilityPropagationState'
-        results:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/FacilityPropagationState'
-    TaskStatus:
-      type: string
-      enum:
-      - WAITING
-      - PLANNED
-      - GENERATING
-      - GENERROR
-      - GENERATED
-      - SENDING
-      - DONE
-      - SENDERROR
-      - ERROR
-      - WARNING
-    PerunException:
-      description: exception thrown from inside of Perun
-      type: object
-      properties:
-        errorId:
-          type: string
-        name:
-          type: string
-        message:
-          type: string
     Task:
       type: object
       properties:
@@ -1498,6 +680,15 @@ components:
           type: boolean
         propagationForced:
           type: boolean
+    ResourceState:
+      type: object
+      properties:
+        resource:
+          $ref: '#/components/schemas/Resource'
+        taskList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
     Auditable:
       description: represents audit information
       allOf:
@@ -1527,77 +718,57 @@ components:
           type:
           - integer
           - 'null'
-    ResourceState:
-      type: object
-      properties:
-        resource:
-          $ref: '#/components/schemas/Resource'
-        taskList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task'
-    DestinationPropagationType:
-      type: string
-      description: type of propagation of service settings to a destination
-      enum:
-      - PARALLEL
-      - SERIAL
-      - DUMMY
+  parameters:
+    taskResultId:
+      name: taskResult
+      description: TaskResult id
+      schema:
+        type: integer
+      required: true
+      in: query
+    optionalVoId:
+      name: vo
+      description: id of Vo
+      schema:
+        type: integer
+      in: query
+      required: false
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+    serviceId:
+      name: service
+      description: id of Service
+      schema:
+        type: integer
+      in: query
+      required: true
+    facilityId:
+      name: facility
+      description: id of Facility
+      schema:
+        type: integer
+      in: query
+      required: true
+    taskId:
+      name: task
+      description: Task id
+      schema:
+        type: integer
+      required: true
+      in: query
+    destinationId:
+      name: destination
+      description: id of Destination
+      schema:
+        type: integer
+      in: query
+      required: true
   responses:
-    TaskResultResponse:
-      description: Task result
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TaskResult'
-    ListOfResourceStatesResponse:
-      description: List<ResourceState> Propagation status
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ResourceState'
-    TaskResponse:
-      description: Task
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Task'
-    VoidResponse:
-      description: returns nothing
-    ExceptionResponse:
-      description: exception occurred
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PerunException'
-    FacilityStateResponse:
-      description: Facility state
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FacilityState'
-    ListOfTaskResultsResponse:
-      description: List<TaskResult> Task results
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/TaskResult'
-    IntegerResponse:
-      description: returns Integer
-      content:
-        application/json:
-          schema:
-            type: integer
-    BooleanResponse:
-      description: returns Boolean
-      content:
-        application/json:
-          schema:
-            type: boolean
     ListOfTasksResponse:
       description: List<Task> Tasks
       content:
@@ -1606,14 +777,22 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Task'
-    ListOfFacilityStatesResponse:
-      description: List<FacilityState> Propagation status
+    ListOfResourceStatesResponse:
+      description: List<ResourceState> Propagation status
       content:
         application/json:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/FacilityState'
+              $ref: '#/components/schemas/ResourceState'
+    VoidResponse:
+      description: returns nothing
+    IntegerResponse:
+      description: returns Integer
+      content:
+        application/json:
+          schema:
+            type: integer
     ListOfServiceStatesResponse:
       description: List<ServiceState> serviceStates
       content:
@@ -1622,6 +801,52 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ServiceState'
+    ListOfTaskResultsResponse:
+      description: List<TaskResult> Task results
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/TaskResult'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    TaskResultResponse:
+      description: Task result
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TaskResult'
+    TaskResponse:
+      description: Task
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Task'
+    ListOfFacilityStatesResponse:
+      description: List<FacilityState> Propagation status
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/FacilityState'
+    BooleanResponse:
+      description: returns Boolean
+      content:
+        application/json:
+          schema:
+            type: boolean
+    FacilityStateResponse:
+      description: Facility state
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FacilityState'
   securitySchemes:
     BasicAuth:
       description: HTTP Basic authentication with username and password
@@ -1631,6 +856,3 @@ components:
       description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
       type: http
       scheme: bearer
-x-refined-from:
-- cesnet-perun-rpc-openapi.yml
-- cesnet-perun-rpc-openapi.yml

@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Cesnet Audit Messages Manager API
   version: 0.0.0
+  title: Perun RPC Audit Messages Manager API
+  description: Perun Remote Procedure Calls Application Programming Interface
   contact:
     url: https://perun-aai.org
     email: perun@cesnet.cz
-  description: 'Operations tagged AuditMessagesManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{server}/{authentication}/rpc
   description: Perun RPC server
@@ -64,37 +64,6 @@ paths:
           $ref: '#/components/responses/ListOfAuditMessagesResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/getMessagesByCount:
     get:
       tags:
@@ -113,37 +82,6 @@ paths:
           $ref: '#/components/responses/ListOfAuditMessagesResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/getMessagesByIdAndCount:
     get:
       tags:
@@ -168,37 +106,6 @@ paths:
           $ref: '#/components/responses/ListOfAuditMessagesResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/getMessagesPage:
     post:
       tags:
@@ -223,37 +130,6 @@ paths:
               properties:
                 query:
                   $ref: '#/components/schemas/AuditMessagesPageQuery'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/pollConsumerMessages:
     get:
       tags:
@@ -267,37 +143,6 @@ paths:
           $ref: '#/components/responses/ListOfAuditMessagesResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/auditMessagesManager/setLastProcessedId:
     post:
       tags:
@@ -317,37 +162,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/auditMessagesManager/createAuditerConsumer:
     post:
       tags:
@@ -361,37 +175,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/getAllAuditerConsumers:
     get:
       tags:
@@ -409,37 +192,6 @@ paths:
                   type: integer
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/getLastMessageId:
     get:
       tags:
@@ -451,37 +203,6 @@ paths:
           $ref: '#/components/responses/IntegerResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/getAuditerMessagesCount:
     get:
       tags:
@@ -493,37 +214,6 @@ paths:
           $ref: '#/components/responses/IntegerResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/auditMessagesManager/log:
     post:
       tags:
@@ -542,37 +232,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/auditMessagesManager/findAllPossibleEvents:
     get:
       tags:
@@ -584,102 +243,35 @@ paths:
           $ref: '#/components/responses/ListOfStringsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
 components:
-  responses:
-    PaginatedMessagesResponse:
-      description: returns Paginated<AuditMessage>
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PaginatedAuditMessages'
-    VoidResponse:
-      description: returns nothing
-    ExceptionResponse:
-      description: exception occurred
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PerunException'
-    ListOfAuditMessagesResponse:
-      description: returns List<AuditMessage>
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/AuditMessage'
-    IntegerResponse:
-      description: returns Integer
-      content:
-        application/json:
-          schema:
-            type: integer
-    ListOfStringsResponse:
-      description: returns List<String>
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              type: string
+  parameters:
+    consumerName:
+      name: consumerName
+      description: name of the audit message consumer
+      schema:
+        type: string
+      in: query
+      required: true
   schemas:
-    Facility:
+    ExtSource:
+      description: represents external source of data for users such as an IdP or an HR database
       allOf:
       - $ref: '#/components/schemas/Auditable'
       properties:
         name:
           type: string
-        description:
-          type:
-          - string
-          - 'null'
-        uuid:
+        type:
           type: string
-          format: uuid
-    PerunBean:
-      description: identifiable entity in Perun, common ancestor of all entity classes
+    PerunException:
+      description: exception thrown from inside of Perun
       type: object
       properties:
-        id:
-          type: integer
-        beanName:
+        errorId:
           type: string
-      required:
-      - id
-      - beanName
-      discriminator:
-        propertyName: beanName
+        name:
+          type: string
+        message:
+          type: string
     AttributeDefinition:
       allOf:
       - $ref: '#/components/schemas/Auditable'
@@ -709,14 +301,48 @@ components:
         entity:
           type: string
           readOnly: true
-    Vo:
+    PaginatedAuditMessages:
+      properties:
+        offset:
+          type: integer
+        pageSize:
+          type: integer
+        totalCount:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditMessage'
+      required:
+      - offset
+      - pageSize
+      - totalCount
+      - data
+    PerunBean:
+      description: identifiable entity in Perun, common ancestor of all entity classes
+      type: object
+      properties:
+        id:
+          type: integer
+        beanName:
+          type: string
+      required:
+      - id
+      - beanName
+      discriminator:
+        propertyName: beanName
+    Resource:
       allOf:
       - $ref: '#/components/schemas/Auditable'
       properties:
         name:
           type: string
-        shortName:
+        description:
           type: string
+        voId:
+          type: integer
+        facilityId:
+          type: integer
         uuid:
           type: string
           format: uuid
@@ -742,38 +368,36 @@ components:
           type: boolean
         useBannedMembers:
           type: boolean
-    Resource:
+    AuditMessagesPageQuery:
+      properties:
+        pageSize:
+          type: integer
+        offset:
+          type: integer
+        order:
+          $ref: '#/components/schemas/SortingOrder'
+        selectedEvents:
+          type: array
+          items:
+            type: string
+      required:
+      - pageSize
+      - offset
+      - order
+      - selectedEvents
+    Facility:
       allOf:
       - $ref: '#/components/schemas/Auditable'
       properties:
         name:
           type: string
         description:
-          type: string
-        voId:
-          type: integer
-        facilityId:
-          type: integer
+          type:
+          - string
+          - 'null'
         uuid:
           type: string
           format: uuid
-    PaginatedAuditMessages:
-      properties:
-        offset:
-          type: integer
-        pageSize:
-          type: integer
-        totalCount:
-          type: integer
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditMessage'
-      required:
-      - offset
-      - pageSize
-      - totalCount
-      - data
     UserExtSource:
       description: represents specific user authentication or identification in external source of data
       allOf:
@@ -797,6 +421,17 @@ components:
       required:
       - login
       - extSource
+    Vo:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        shortName:
+          type: string
+        uuid:
+          type: string
+          format: uuid
     Group:
       allOf:
       - $ref: '#/components/schemas/Auditable'
@@ -821,115 +456,6 @@ components:
         uuid:
           type: string
           format: uuid
-    AuditMessage:
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/AuditEvent'
-        id:
-          type: integer
-        actor:
-          type: string
-        createdAt:
-          type: string
-        createdByUid:
-          type: integer
-    PerunException:
-      description: exception thrown from inside of Perun
-      type: object
-      properties:
-        errorId:
-          type: string
-        name:
-          type: string
-        message:
-          type: string
-    AuditEvent:
-      type: object
-      properties:
-        attribute:
-          $ref: '#/components/schemas/AttributeDefinition'
-        extSource:
-          $ref: '#/components/schemas/ExtSource'
-        source:
-          $ref: '#/components/schemas/ExtSource'
-        facility:
-          $ref: '#/components/schemas/Facility'
-        group:
-          $ref: '#/components/schemas/Group'
-        parentGroup:
-          $ref: '#/components/schemas/Group'
-        member:
-          $ref: '#/components/schemas/Member'
-        resource:
-          $ref: '#/components/schemas/Resource'
-        service:
-          $ref: '#/components/schemas/Service'
-        user:
-          $ref: '#/components/schemas/User'
-        userExtSource:
-          $ref: '#/components/schemas/UserExtSource'
-        vo:
-          $ref: '#/components/schemas/Vo'
-        name:
-          type: string
-        message:
-          type: string
-    ExtSource:
-      description: represents external source of data for users such as an IdP or an HR database
-      allOf:
-      - $ref: '#/components/schemas/Auditable'
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-    Auditable:
-      description: represents audit information
-      allOf:
-      - $ref: '#/components/schemas/PerunBean'
-      properties:
-        createdAt:
-          type:
-          - string
-          - 'null'
-        createdBy:
-          type:
-          - string
-          - 'null'
-        modifiedAt:
-          type:
-          - string
-          - 'null'
-        modifiedBy:
-          type:
-          - string
-          - 'null'
-        createdByUid:
-          type:
-          - integer
-          - 'null'
-        modifiedByUid:
-          type:
-          - integer
-          - 'null'
-    AuditMessagesPageQuery:
-      properties:
-        pageSize:
-          type: integer
-        offset:
-          type: integer
-        order:
-          $ref: '#/components/schemas/SortingOrder'
-        selectedEvents:
-          type: array
-          items:
-            type: string
-      required:
-      - pageSize
-      - offset
-      - order
-      - selectedEvents
     SortingOrder:
       type: string
       enum:
@@ -998,14 +524,116 @@ components:
           type: object
           additionalProperties:
             type: string
-  parameters:
-    consumerName:
-      name: consumerName
-      description: name of the audit message consumer
-      schema:
-        type: string
-      in: query
-      required: true
+    Auditable:
+      description: represents audit information
+      allOf:
+      - $ref: '#/components/schemas/PerunBean'
+      properties:
+        createdAt:
+          type:
+          - string
+          - 'null'
+        createdBy:
+          type:
+          - string
+          - 'null'
+        modifiedAt:
+          type:
+          - string
+          - 'null'
+        modifiedBy:
+          type:
+          - string
+          - 'null'
+        createdByUid:
+          type:
+          - integer
+          - 'null'
+        modifiedByUid:
+          type:
+          - integer
+          - 'null'
+    AuditMessage:
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/AuditEvent'
+        id:
+          type: integer
+        actor:
+          type: string
+        createdAt:
+          type: string
+        createdByUid:
+          type: integer
+    AuditEvent:
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/AttributeDefinition'
+        extSource:
+          $ref: '#/components/schemas/ExtSource'
+        source:
+          $ref: '#/components/schemas/ExtSource'
+        facility:
+          $ref: '#/components/schemas/Facility'
+        group:
+          $ref: '#/components/schemas/Group'
+        parentGroup:
+          $ref: '#/components/schemas/Group'
+        member:
+          $ref: '#/components/schemas/Member'
+        resource:
+          $ref: '#/components/schemas/Resource'
+        service:
+          $ref: '#/components/schemas/Service'
+        user:
+          $ref: '#/components/schemas/User'
+        userExtSource:
+          $ref: '#/components/schemas/UserExtSource'
+        vo:
+          $ref: '#/components/schemas/Vo'
+        name:
+          type: string
+        message:
+          type: string
+  responses:
+    ListOfAuditMessagesResponse:
+      description: returns List<AuditMessage>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AuditMessage'
+    VoidResponse:
+      description: returns nothing
+    IntegerResponse:
+      description: returns Integer
+      content:
+        application/json:
+          schema:
+            type: integer
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    PaginatedMessagesResponse:
+      description: returns Paginated<AuditMessage>
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginatedAuditMessages'
+    ListOfStringsResponse:
+      description: returns List<String>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
   securitySchemes:
     BasicAuth:
       description: HTTP Basic authentication with username and password
@@ -1015,6 +643,3 @@ components:
       description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
       type: http
       scheme: bearer
-x-refined-from:
-- cesnet-perun-rpc-openapi.yml
-- cesnet-perun-rpc-openapi.yml

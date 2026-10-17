@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Cesnet RT Messages Manager API
   version: 0.0.0
+  title: Perun RPC RT Messages Manager API
+  description: Perun Remote Procedure Calls Application Programming Interface
   contact:
     url: https://perun-aai.org
     email: perun@cesnet.cz
-  description: 'Operations tagged RTMessagesManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{server}/{authentication}/rpc
   description: Perun RPC server
@@ -76,37 +76,6 @@ paths:
           $ref: '#/components/responses/RTMessageResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/rtMessagesManager/sentMessageToRT/m-q:
     post:
       tags:
@@ -143,37 +112,6 @@ paths:
           $ref: '#/components/responses/RTMessageResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/rtMessagesManager/sentMessageToRT/v-q:
     post:
       tags:
@@ -210,37 +148,6 @@ paths:
           $ref: '#/components/responses/RTMessageResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/rtMessagesManager/sentMessageToRT/v:
     post:
       tags:
@@ -271,39 +178,15 @@ paths:
           $ref: '#/components/responses/RTMessageResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
 components:
   schemas:
+    RTMessage:
+      type: object
+      properties:
+        memberPreferredEmail:
+          type: string
+        ticketNumber:
+          type: integer
     PerunException:
       description: exception thrown from inside of Perun
       type: object
@@ -314,26 +197,19 @@ components:
           type: string
         message:
           type: string
-    RTMessage:
-      type: object
-      properties:
-        memberPreferredEmail:
-          type: string
-        ticketNumber:
-          type: integer
   responses:
-    ExceptionResponse:
-      description: exception occurred
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PerunException'
     RTMessageResponse:
       description: Confirmation with e-mail address the ticket was created for
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RTMessage'
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
   securitySchemes:
     BasicAuth:
       description: HTTP Basic authentication with username and password
@@ -343,6 +219,3 @@ components:
       description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
       type: http
       scheme: bearer
-x-refined-from:
-- cesnet-perun-rpc-openapi.yml
-- cesnet-perun-rpc-openapi.yml

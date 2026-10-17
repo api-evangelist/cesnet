@@ -1,10 +1,8 @@
 {
   "provider": "cesnet",
   "sources": [
-    "_original/cesnet-exafs-swagger.yml",
-    "_original/cesnet-perun-rpc-openapi.yml",
-    "cesnet-exafs-openapi.yml",
-    "cesnet-perun-rpc-openapi.yml"
+    "_original/cesnet-exafs-openapi.yml",
+    "_original/cesnet-perun-rpc-openapi.yml"
   ],
   "outputs": [
     "cesnet-authorization-api-openapi.yml",
@@ -35,46 +33,45 @@
     "cesnet-utils-api-openapi.yml",
     "cesnet-vosmanager-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/cesnet-exafs-openapi.yml",
-    "archived openapi/cesnet-perun-rpc-openapi.yml"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
+    "2 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "cesnet-exafs-swagger.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "cesnet-perun-rpc-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "cesnet-exafs-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
     "cesnet-perun-rpc-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "tag 'Authorization' spans 2 source specs (cesnet-exafs-swagger.yml, cesnet-exafs-openapi.yml): per-path servers applied",
-    "tag 'Choices' spans 2 source specs (cesnet-exafs-swagger.yml, cesnet-exafs-openapi.yml): per-path servers applied",
-    "tag 'Rules' spans 2 source specs (cesnet-exafs-swagger.yml, cesnet-exafs-openapi.yml): per-path servers applied",
-    "tag 'AttributesManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'AuditMessagesManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'AuthzResolver' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'CabinetManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'ConfigManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'ConsentsManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'DatabaseManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'ExtSourcesManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'FacilitiesManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'GroupsManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'IntegrationManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'InvitationsManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'MembersManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'NotificationManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'OwnersManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'RTMessagesManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'RegistrarManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'ResourcesManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'Searcher' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'ServicesManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'TasksManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'UsersManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'Utils' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "tag 'VosManager' spans 2 source specs (cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml): per-path servers applied",
-    "apis.yml register: written (+27 apis, 27 total)"
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "_original/cesnet-perun-rpc-openapi_2.yml: archived document superseded by a larger archived document",
+    "_original/cesnet-exafs-swagger.yml: archived document superseded by a larger archived document",
+    "cesnet-attributesmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-auditmessagesmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-authzresolver-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-cabinetmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-choices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-configmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-consentsmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-databasemanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-extsourcesmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-facilitiesmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-groupsmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-integrationmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-invitationsmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-membersmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-notificationmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-ownersmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-registrarmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-resourcesmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-rtmessagesmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-searcher-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-servicesmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-tasksmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-usersmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-utils-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cesnet-vosmanager-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

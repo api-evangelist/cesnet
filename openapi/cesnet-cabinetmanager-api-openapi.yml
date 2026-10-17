@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Cesnet Cabinet Manager API
   version: 0.0.0
+  title: Perun RPC Cabinet Manager API
+  description: Perun Remote Procedure Calls Application Programming Interface
   contact:
     url: https://perun-aai.org
     email: perun@cesnet.cz
-  description: 'Operations tagged CabinetManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{server}/{authentication}/rpc
   description: Perun RPC server
@@ -57,37 +57,6 @@ paths:
           $ref: '#/components/responses/ListOfPublicationSystemsResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/cabinetManager/deletePublicationSystem:
     post:
       tags:
@@ -101,37 +70,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/createPublicationSystem:
     post:
       tags:
@@ -156,37 +94,6 @@ paths:
               properties:
                 pubsys:
                   $ref: '#/components/schemas/PublicationSystem'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/updatePublicationSystem:
     post:
       tags:
@@ -211,37 +118,6 @@ paths:
               properties:
                 pubsys:
                   $ref: '#/components/schemas/PublicationSystem'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/getCategories:
     get:
       tags:
@@ -253,37 +129,6 @@ paths:
           $ref: '#/components/responses/ListOfCategoryResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/createCategory/cat:
     post:
       tags:
@@ -308,37 +153,6 @@ paths:
               properties:
                 category:
                   $ref: '#/components/schemas/Category'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/createCategory/n-r:
     post:
       tags:
@@ -369,37 +183,6 @@ paths:
                   type: number
                   format: double
                   description: the rank of the category
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/updateCategory:
     post:
       tags:
@@ -424,37 +207,6 @@ paths:
               properties:
                 category:
                   $ref: '#/components/schemas/Category'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/cabinetManager/deleteCategory:
     post:
       tags:
@@ -468,37 +220,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/createThanks:
     post:
       tags:
@@ -523,37 +244,6 @@ paths:
               properties:
                 thanks:
                   $ref: '#/components/schemas/Thanks'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/cabinetManager/deleteThanks:
     post:
       tags:
@@ -567,37 +257,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/getRichThanksByPublicationId:
     get:
       tags:
@@ -611,37 +270,6 @@ paths:
           $ref: '#/components/responses/ListOfThanksForGUIResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/createAuthorship:
     post:
       tags:
@@ -666,37 +294,6 @@ paths:
               properties:
                 authorship:
                   $ref: '#/components/schemas/Authorship'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/cabinetManager/deleteAuthorship:
     post:
       tags:
@@ -716,37 +313,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/getRank:
     get:
       tags:
@@ -760,37 +326,6 @@ paths:
           $ref: '#/components/responses/DoubleResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findAuthorsByPublicationId:
     get:
       tags:
@@ -804,37 +339,6 @@ paths:
           $ref: '#/components/responses/ListOfAuthorResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findAllAuthors:
     get:
       tags:
@@ -846,37 +350,6 @@ paths:
           $ref: '#/components/responses/ListOfAuthorResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findNewAuthors:
     get:
       tags:
@@ -890,37 +363,6 @@ paths:
           $ref: '#/components/responses/ListOfAuthorResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/createPublication:
     post:
       tags:
@@ -945,37 +387,6 @@ paths:
               properties:
                 publication:
                   $ref: '#/components/schemas/Publication'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/updatePublication:
     post:
       tags:
@@ -1000,37 +411,6 @@ paths:
               properties:
                 publication:
                   $ref: '#/components/schemas/Publication'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /urlinjsonout/cabinetManager/deletePublication:
     post:
       tags:
@@ -1044,37 +424,6 @@ paths:
           $ref: '#/components/responses/VoidResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findPublicationById:
     get:
       tags:
@@ -1088,37 +437,6 @@ paths:
           $ref: '#/components/responses/PublicationForGUIResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findPublicationsByGUIFilter:
     get:
       tags:
@@ -1170,37 +488,6 @@ paths:
           $ref: '#/components/responses/ListOfPublicationForGUIResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findPublicationsByFilter:
     get:
       tags:
@@ -1231,37 +518,6 @@ paths:
           $ref: '#/components/responses/ListOfPublicationResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/lockPublications:
     post:
       tags:
@@ -1291,37 +547,6 @@ paths:
                     $ref: '#/components/schemas/Publication'
                 lock:
                   type: boolean
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findExternalPublications:
     get:
       tags:
@@ -1353,37 +578,6 @@ paths:
           $ref: '#/components/responses/ListOfPublicationResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/cabinetManager/findSimilarPublications:
     get:
       tags:
@@ -1399,111 +593,33 @@ paths:
           $ref: '#/components/responses/ListOfPublicationForGUIResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
 components:
-  parameters:
-    userId:
-      name: user
-      description: id of User
-      schema:
-        type: integer
-      in: query
-      required: true
-    publicationId:
-      name: publicationId
-      description: id of publication
-      schema:
-        type: integer
-      in: query
-      required: true
-    title:
-      name: title
-      description: Title
-      schema:
-        type: string
-      in: query
-      required: false
-    doi:
-      name: doi
-      description: DOI
-      schema:
-        type: string
-      in: query
-      required: false
-    isbn:
-      name: isbn
-      description: ISBN
-      schema:
-        type: string
-      in: query
-      required: false
-    searchString:
-      name: searchString
-      description: Text to search by
-      schema:
-        type: string
-      in: query
-      required: true
-    id:
-      name: id
-      description: numeric id
-      schema:
-        type: integer
-      in: query
-      required: true
   schemas:
-    Author:
+    Authorship:
       allOf:
       - $ref: '#/components/schemas/PerunBean'
       properties:
-        firstName:
+        publicationId:
+          type: integer
+        userId:
+          type: integer
+        createdBy:
           type: string
-        lastName:
+        createdDate:
           type: string
-        middleName:
+          format: date
+        createdByUid:
+          type: integer
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
           type: string
-        titleBefore:
+        name:
           type: string
-        titleAfter:
+        message:
           type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attribute'
-        authorships:
-          type: array
-          items:
-            $ref: '#/components/schemas/Authorship'
     AttributeDefinition:
       allOf:
       - $ref: '#/components/schemas/Auditable'
@@ -1546,18 +662,6 @@ components:
       - beanName
       discriminator:
         propertyName: beanName
-    PublicationForGUI:
-      allOf:
-      - $ref: '#/components/schemas/Publication'
-      properties:
-        pubSystemName:
-          type: string
-        categoryName:
-          type: string
-        thanks:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThanksForGUI'
     Publication:
       allOf:
       - $ref: '#/components/schemas/PerunBean'
@@ -1594,6 +698,39 @@ components:
         createdDate:
           type: string
           format: date
+    Attribute:
+      allOf:
+      - $ref: '#/components/schemas/AttributeDefinition'
+      properties:
+        valueCreatedAt:
+          type:
+          - string
+          - 'null'
+        valueCreatedBy:
+          type:
+          - string
+          - 'null'
+        valueModifiedAt:
+          type:
+          - string
+          - 'null'
+        valueModifiedBy:
+          type:
+          - string
+          - 'null'
+        value: {}
+    PublicationForGUI:
+      allOf:
+      - $ref: '#/components/schemas/Publication'
+      properties:
+        pubSystemName:
+          type: string
+        categoryName:
+          type: string
+        thanks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThanksForGUI'
     PublicationSystem:
       allOf:
       - $ref: '#/components/schemas/PerunBean'
@@ -1625,16 +762,6 @@ components:
         createdDate:
           type: string
           format: date
-    PerunException:
-      description: exception thrown from inside of Perun
-      type: object
-      properties:
-        errorId:
-          type: string
-        name:
-          type: string
-        message:
-          type: string
     Category:
       allOf:
       - $ref: '#/components/schemas/PerunBean'
@@ -1644,21 +771,12 @@ components:
         rank:
           type: number
           format: double
-    Authorship:
+    ThanksForGUI:
       allOf:
-      - $ref: '#/components/schemas/PerunBean'
+      - $ref: '#/components/schemas/Thanks'
       properties:
-        publicationId:
-          type: integer
-        userId:
-          type: integer
-        createdBy:
+        ownerName:
           type: string
-        createdDate:
-          type: string
-          format: date
-        createdByUid:
-          type: integer
     Auditable:
       description: represents audit information
       allOf:
@@ -1688,109 +806,29 @@ components:
           type:
           - integer
           - 'null'
-    ThanksForGUI:
+    Author:
       allOf:
-      - $ref: '#/components/schemas/Thanks'
+      - $ref: '#/components/schemas/PerunBean'
       properties:
-        ownerName:
+        firstName:
           type: string
-    Attribute:
-      allOf:
-      - $ref: '#/components/schemas/AttributeDefinition'
-      properties:
-        valueCreatedAt:
-          type:
-          - string
-          - 'null'
-        valueCreatedBy:
-          type:
-          - string
-          - 'null'
-        valueModifiedAt:
-          type:
-          - string
-          - 'null'
-        valueModifiedBy:
-          type:
-          - string
-          - 'null'
-        value: {}
-  responses:
-    ListOfPublicationSystemsResponse:
-      description: returns List<PublicationSystem>
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/PublicationSystem'
-    VoidResponse:
-      description: returns nothing
-    ExceptionResponse:
-      description: exception occurred
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PerunException'
-    PublicationResponse:
-      description: return Publication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Publication'
-    CategoryResponse:
-      description: returns Category
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Category'
-    PublicationForGUIResponse:
-      description: return PublicationForGUI
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PublicationForGUI'
-    ListOfCategoryResponse:
-      description: returns List<Category>
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Category'
-    DoubleResponse:
-      description: returns Double
-      content:
-        application/json:
-          schema:
-            type: number
-            format: double
-    AuthorshipResponse:
-      description: returns Authorship
-      content:
-        application/json:
-          schema:
+        lastName:
+          type: string
+        middleName:
+          type: string
+        titleBefore:
+          type: string
+        titleAfter:
+          type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+        authorships:
+          type: array
+          items:
             $ref: '#/components/schemas/Authorship'
-    ListOfAuthorResponse:
-      description: returns List<Author>
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Author'
-    PublicationSystemResponse:
-      description: returns PublicationSystem
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PublicationSystem'
-    ThanksResponse:
-      description: returns Thanks
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Thanks'
+  responses:
     ListOfPublicationForGUIResponse:
       description: return List<PublicationForGUI>
       content:
@@ -1799,14 +837,43 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/PublicationForGUI'
-    ListOfThanksForGUIResponse:
-      description: returns List<ThanksForGUI>
+    ListOfCategoryResponse:
+      description: returns List<Category>
       content:
         application/json:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/ThanksForGUI'
+              $ref: '#/components/schemas/Category'
+    ListOfPublicationSystemsResponse:
+      description: returns List<PublicationSystem>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PublicationSystem'
+    ListOfAuthorResponse:
+      description: returns List<Author>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Author'
+    DoubleResponse:
+      description: returns Double
+      content:
+        application/json:
+          schema:
+            type: number
+            format: double
+    PublicationResponse:
+      description: return Publication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Publication'
     ListOfPublicationResponse:
       description: return List<Publication>
       content:
@@ -1815,6 +882,102 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Publication'
+    ThanksResponse:
+      description: returns Thanks
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Thanks'
+    CategoryResponse:
+      description: returns Category
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Category'
+    ListOfThanksForGUIResponse:
+      description: returns List<ThanksForGUI>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ThanksForGUI'
+    VoidResponse:
+      description: returns nothing
+    ExceptionResponse:
+      description: exception occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PerunException'
+    AuthorshipResponse:
+      description: returns Authorship
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Authorship'
+    PublicationSystemResponse:
+      description: returns PublicationSystem
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicationSystem'
+    PublicationForGUIResponse:
+      description: return PublicationForGUI
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicationForGUI'
+  parameters:
+    title:
+      name: title
+      description: Title
+      schema:
+        type: string
+      in: query
+      required: false
+    id:
+      name: id
+      description: numeric id
+      schema:
+        type: integer
+      in: query
+      required: true
+    searchString:
+      name: searchString
+      description: Text to search by
+      schema:
+        type: string
+      in: query
+      required: true
+    publicationId:
+      name: publicationId
+      description: id of publication
+      schema:
+        type: integer
+      in: query
+      required: true
+    doi:
+      name: doi
+      description: DOI
+      schema:
+        type: string
+      in: query
+      required: false
+    isbn:
+      name: isbn
+      description: ISBN
+      schema:
+        type: string
+      in: query
+      required: false
+    userId:
+      name: user
+      description: id of User
+      schema:
+        type: integer
+      in: query
+      required: true
   securitySchemes:
     BasicAuth:
       description: HTTP Basic authentication with username and password
@@ -1824,6 +987,3 @@ components:
       description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
       type: http
       scheme: bearer
-x-refined-from:
-- cesnet-perun-rpc-openapi.yml
-- cesnet-perun-rpc-openapi.yml

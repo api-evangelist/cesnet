@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Cesnet Searcher API
   version: 0.0.0
+  title: Perun RPC Searcher API
+  description: Perun Remote Procedure Calls Application Programming Interface
   contact:
     url: https://perun-aai.org
     email: perun@cesnet.cz
-  description: 'Operations tagged Searcher across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{server}/{authentication}/rpc
   description: Perun RPC server
@@ -73,37 +73,6 @@ paths:
                   description: Map of attribute names with searching values Map<sting,string>
                   additionalProperties:
                     type: string
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/searcher/getMembersByUserAttributes:
     post:
       tags:
@@ -135,37 +104,6 @@ paths:
                   description: Map of attribute names with searching values Map<string,string>
                   additionalProperties:
                     type: string
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/searcher/getMembers:
     post:
       tags:
@@ -197,37 +135,6 @@ paths:
                   description: Map of user and member attribute names with searching values Map<string,string>
                   additionalProperties:
                     type: string
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/searcher/getFacilities:
     post:
       tags:
@@ -255,37 +162,6 @@ paths:
                   description: Map of attribute names with searching values Map<sting,string>
                   additionalProperties:
                     type: string
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/searcher/getResources/attributes:
     post:
       tags:
@@ -313,37 +189,6 @@ paths:
                   description: Map of attribute names with searching values Map<sting,string>
                   additionalProperties:
                     type: string
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/searcher/getResources/attributes-match:
     post:
       tags:
@@ -375,37 +220,6 @@ paths:
                   description: Map of attribute names with searching values Map<sting,string>
                   additionalProperties:
                     type: string
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
   /json/searcher/globalSearch:
     get:
       tags:
@@ -419,47 +233,16 @@ paths:
           $ref: '#/components/responses/MapStringListOfPerunBeanResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
 components:
   responses:
-    ListOfFacilitiesResponse:
-      description: returns List<Facility>
+    ListOfUsersResponse:
+      description: returns List<User>
       content:
         application/json:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/Facility'
+              $ref: '#/components/schemas/User'
     MapStringListOfPerunBeanResponse:
       description: returns Map<String,List<PerunBean>>
       content:
@@ -476,6 +259,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PerunException'
+    ListOfFacilitiesResponse:
+      description: returns List<Facility>
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Facility'
     ListOfResourcesResponse:
       description: returns List<Resource>
       content:
@@ -492,28 +283,7 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Member'
-    ListOfUsersResponse:
-      description: returns List<User>
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
   schemas:
-    Facility:
-      allOf:
-      - $ref: '#/components/schemas/Auditable'
-      properties:
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        uuid:
-          type: string
-          format: uuid
     PerunBean:
       description: identifiable entity in Perun, common ancestor of all entity classes
       type: object
@@ -527,6 +297,34 @@ components:
       - beanName
       discriminator:
         propertyName: beanName
+    Resource:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        voId:
+          type: integer
+        facilityId:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/Auditable'
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        uuid:
+          type: string
+          format: uuid
     Auditable:
       description: represents audit information
       allOf:
@@ -556,21 +354,16 @@ components:
           type:
           - integer
           - 'null'
-    Resource:
-      allOf:
-      - $ref: '#/components/schemas/Auditable'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
       properties:
+        errorId:
+          type: string
         name:
           type: string
-        description:
+        message:
           type: string
-        voId:
-          type: integer
-        facilityId:
-          type: integer
-        uuid:
-          type: string
-          format: uuid
     User:
       description: represents user as a physical person
       allOf:
@@ -634,16 +427,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    PerunException:
-      description: exception thrown from inside of Perun
-      type: object
-      properties:
-        errorId:
-          type: string
-        name:
-          type: string
-        message:
-          type: string
   parameters:
     searchString:
       name: searchString
@@ -661,6 +444,3 @@ components:
       description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
       type: http
       scheme: bearer
-x-refined-from:
-- cesnet-perun-rpc-openapi.yml
-- cesnet-perun-rpc-openapi.yml

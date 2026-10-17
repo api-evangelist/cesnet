@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Cesnet Rules API
+  title: ExaFS Rules API
   version: '3.0'
-  description: 'Operations tagged Rules across 2 of this provider''s published API definitions: cesnet-exafs-swagger.yml, cesnet-exafs-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: ExaFS API allows authorized machines to send commands directly in JSON, without the web forms. The commands are validated in the same way as normal rules.
 security:
 - TokenAuth: []
 tags:
@@ -270,19 +270,55 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    IPv4Rule:
-      allOf:
-      - $ref: '#/components/schemas/IPv4RuleInput'
-      - type: object
-        properties:
-          id:
-            type: integer
-          rstate_id:
-            type: integer
-          user_id:
-            type: integer
-          org_id:
-            type: integer
+    IPv6RuleInput:
+      type: object
+      required:
+      - source
+      - source_mask
+      - dest
+      - dest_mask
+      - expires
+      - action
+      properties:
+        source:
+          type: string
+          description: Source IPv6 address
+        source_mask:
+          type: integer
+          description: Source network mask
+        source_port:
+          type: string
+          description: Source port(s)
+        dest:
+          type: string
+          description: Destination IPv6 address
+        dest_mask:
+          type: integer
+          description: Destination network mask
+        destination_port:
+          type: string
+          description: Destination port(s)
+        next_header:
+          type: string
+          description: Next header
+        flags:
+          type: array
+          items:
+            type: string
+          description: TCP flags
+        packet_len:
+          type: string
+          description: Packet length
+        expires:
+          type: string
+          format: date-time
+          description: Rule expiration time
+        comment:
+          type: string
+          description: Rule comment
+        action:
+          type: integer
+          description: Action ID
     RTBHRuleInput:
       type: object
       required:
@@ -311,6 +347,45 @@ components:
         comment:
           type: string
           description: Rule comment
+    IPv4Rule:
+      allOf:
+      - $ref: '#/components/schemas/IPv4RuleInput'
+      - type: object
+        properties:
+          id:
+            type: integer
+          rstate_id:
+            type: integer
+          user_id:
+            type: integer
+          org_id:
+            type: integer
+    RTBHRule:
+      allOf:
+      - $ref: '#/components/schemas/RTBHRuleInput'
+      - type: object
+        properties:
+          id:
+            type: integer
+          rstate_id:
+            type: integer
+          user_id:
+            type: integer
+          org_id:
+            type: integer
+    IPv6Rule:
+      allOf:
+      - $ref: '#/components/schemas/IPv6RuleInput'
+      - type: object
+        properties:
+          id:
+            type: integer
+          rstate_id:
+            type: integer
+          user_id:
+            type: integer
+          org_id:
+            type: integer
     IPv4RuleInput:
       type: object
       required:
@@ -365,81 +440,6 @@ components:
         action:
           type: integer
           description: Action ID
-    RTBHRule:
-      allOf:
-      - $ref: '#/components/schemas/RTBHRuleInput'
-      - type: object
-        properties:
-          id:
-            type: integer
-          rstate_id:
-            type: integer
-          user_id:
-            type: integer
-          org_id:
-            type: integer
-    IPv6Rule:
-      allOf:
-      - $ref: '#/components/schemas/IPv6RuleInput'
-      - type: object
-        properties:
-          id:
-            type: integer
-          rstate_id:
-            type: integer
-          user_id:
-            type: integer
-          org_id:
-            type: integer
-    IPv6RuleInput:
-      type: object
-      required:
-      - source
-      - source_mask
-      - dest
-      - dest_mask
-      - expires
-      - action
-      properties:
-        source:
-          type: string
-          description: Source IPv6 address
-        source_mask:
-          type: integer
-          description: Source network mask
-        source_port:
-          type: string
-          description: Source port(s)
-        dest:
-          type: string
-          description: Destination IPv6 address
-        dest_mask:
-          type: integer
-          description: Destination network mask
-        destination_port:
-          type: string
-          description: Destination port(s)
-        next_header:
-          type: string
-          description: Next header
-        flags:
-          type: array
-          items:
-            type: string
-          description: TCP flags
-        packet_len:
-          type: string
-          description: Packet length
-        expires:
-          type: string
-          format: date-time
-          description: Rule expiration time
-        comment:
-          type: string
-          description: Rule comment
-        action:
-          type: integer
-          description: Action ID
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
@@ -451,6 +451,3 @@ components:
       in: header
       name: x-access-token
       description: auth token received from /auth endpoint
-x-refined-from:
-- cesnet-exafs-swagger.yml
-- cesnet-exafs-openapi.yml

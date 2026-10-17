@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Cesnet Integration Manager API
   version: 0.0.0
+  title: Perun RPC Integration Manager API
+  description: Perun Remote Procedure Calls Application Programming Interface
   contact:
     url: https://perun-aai.org
     email: perun@cesnet.cz
-  description: 'Operations tagged IntegrationManager across 2 of this provider''s published API definitions: cesnet-perun-rpc-openapi.yml, cesnet-perun-rpc-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{server}/{authentication}/rpc
   description: Perun RPC server
@@ -57,37 +57,6 @@ paths:
           $ref: '#/components/responses/GroupMemberDataResponse'
         default:
           $ref: '#/components/responses/ExceptionResponse'
-    servers:
-    - url: https://{server}/{authentication}/rpc
-      description: Perun RPC server
-      variables:
-        server:
-          default: api-dev.perun-aai.org
-          description: DNS name of a Perun server
-        authentication:
-          default: ba
-          description: 'way of authentication:
-
-            ba - HTTP Basic Auth
-
-            krb - Kerberos
-
-            non - no authentication
-
-            cert - X509 client certificate
-
-            oauth - OAuth 2.0 bearer access token
-
-            fed - SAML federation
-
-            '
-          enum:
-          - ba
-          - krb
-          - non
-          - cert
-          - oauth
-          - fed
 components:
   schemas:
     AttributeDefinition:
@@ -132,6 +101,54 @@ components:
       - beanName
       discriminator:
         propertyName: beanName
+    Attribute:
+      allOf:
+      - $ref: '#/components/schemas/AttributeDefinition'
+      properties:
+        valueCreatedAt:
+          type:
+          - string
+          - 'null'
+        valueCreatedBy:
+          type:
+          - string
+          - 'null'
+        valueModifiedAt:
+          type:
+          - string
+          - 'null'
+        valueModifiedBy:
+          type:
+          - string
+          - 'null'
+        value: {}
+    GroupMemberRelation:
+      type: object
+      properties:
+        m:
+          type: integer
+          description: member id
+        u:
+          type: integer
+          description: user_id
+        g:
+          type: integer
+          description: group id
+        sg:
+          type: integer
+          description: source group id
+        gn:
+          type: string
+          description: group_name
+        pg:
+          type: integer
+          description: parent_group_id
+        s:
+          type: string
+          description: source group status
+        t:
+          type: string
+          description: membership type
     Auditable:
       description: represents audit information
       allOf:
@@ -161,6 +178,16 @@ components:
           type:
           - integer
           - 'null'
+    PerunException:
+      description: exception thrown from inside of Perun
+      type: object
+      properties:
+        errorId:
+          type: string
+        name:
+          type: string
+        message:
+          type: string
     GroupMemberData:
       type: object
       properties:
@@ -176,77 +203,19 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Attribute'
-    GroupMemberRelation:
-      type: object
-      properties:
-        m:
-          type: integer
-          description: member id
-        u:
-          type: integer
-          description: user_id
-        g:
-          type: integer
-          description: group id
-        sg:
-          type: integer
-          description: source group id
-        gn:
-          type: string
-          description: group_name
-        pg:
-          type: integer
-          description: parent_group_id
-        s:
-          type: string
-          description: source group status
-        t:
-          type: string
-          description: membership type
-    PerunException:
-      description: exception thrown from inside of Perun
-      type: object
-      properties:
-        errorId:
-          type: string
-        name:
-          type: string
-        message:
-          type: string
-    Attribute:
-      allOf:
-      - $ref: '#/components/schemas/AttributeDefinition'
-      properties:
-        valueCreatedAt:
-          type:
-          - string
-          - 'null'
-        valueCreatedBy:
-          type:
-          - string
-          - 'null'
-        valueModifiedAt:
-          type:
-          - string
-          - 'null'
-        valueModifiedBy:
-          type:
-          - string
-          - 'null'
-        value: {}
   responses:
-    GroupMemberDataResponse:
-      description: returns member-groups relations with attributes
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GroupMemberData'
     ExceptionResponse:
       description: exception occurred
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/PerunException'
+    GroupMemberDataResponse:
+      description: returns member-groups relations with attributes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupMemberData'
   securitySchemes:
     BasicAuth:
       description: HTTP Basic authentication with username and password
@@ -256,6 +225,3 @@ components:
       description: 'OAuth2 Resource Server authentication using access token in ''Authorization: Bearer'' HTTP header'
       type: http
       scheme: bearer
-x-refined-from:
-- cesnet-perun-rpc-openapi.yml
-- cesnet-perun-rpc-openapi.yml

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Cesnet Authorization API
+  title: ExaFS Authorization API
   version: '3.0'
-  description: 'Operations tagged Authorization across 2 of this provider''s published API definitions: cesnet-exafs-swagger.yml, cesnet-exafs-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: ExaFS API allows authorized machines to send commands directly in JSON, without the web forms. The commands are validated in the same way as normal rules.
 security:
 - TokenAuth: []
 tags:
@@ -46,6 +46,3 @@ components:
       in: header
       name: x-access-token
       description: auth token received from /auth endpoint
-x-refined-from:
-- cesnet-exafs-swagger.yml
-- cesnet-exafs-openapi.yml
