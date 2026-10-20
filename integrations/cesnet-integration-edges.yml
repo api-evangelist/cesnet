@@ -4,9 +4,32 @@ checked:
 - grafana-com/integrations/grafana-com-integration-edges.yml
 - https://technical.edugain.org/api.php?action=list_entities&type=idp&format=json
 - https://technical.edugain.org/api.php?action=list_entities&type=sp&format=json
+- https://manrs.org/netops/participants/
+- https://www.peeringdb.com/api/fac
+- https://www.peeringdb.com/api/ix
+- https://www.peeringdb.com/api/net
 source:
 - grafana-com/integrations/grafana-com-integration-edges.yml
 edges:
+- partner_name: Grafana (own)
+  partner: grafana-com
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://grafana.com/grafana/plugins/cesnet-dp3-app/
+  mirror_of: grafana-com/integrations/grafana-com-integration-edges.yml
+  apps:
+  - DP³
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Application
+  badges:
+  - signature:community
 - partner_name: eduGAIN
   partner: null
   type: register
@@ -79,25 +102,37 @@ edges:
       sirtfi: false
       coco: true
     detected_by: sweep-higher-ed.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-higher-ed.py
-  first_seen: '2026-10-15'
-- partner_name: Grafana (own)
-  partner: grafana-com
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://grafana.com/grafana/plugins/cesnet-dp3-app/
-  mirror_of: grafana-com/integrations/grafana-com-integration-edges.yml
-  apps:
-  - DP³
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Application
-  badges:
-  - signature:community
+  first_seen: '2026-10-19'
+- partner_name: PeeringDB (interconnection register)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.peeringdb.com/net/660
+  category: network interconnection register
+  contract_reference:
+    register: PeeringDB (peeringdb.com/api net, ix, fac, org)
+    standard: null
+    spec_file: null
+    role: peeringdb-network
+    registered_name: CESNET
+    register_id: https://www.peeringdb.com/net/660
+    matched_domain: cesnet.cz
+    matched_by: domain
+    asns:
+    - 2852
+    info_types:
+    - Educational/Research
+    ix_presence: 3
+    exchanges_operated: []
+    facilities_operated: 0
+    signal_note: 'participation only: PeeringDB is self-registered by network operators; ASNs, IX presence and facility
+      counts are context, never counted'
+    detected_by: sweep-network-edge.py
+    detected: '2026-10-20'
+  detected_by: sweep-network-edge.py
+  first_seen: '2026-10-20'
