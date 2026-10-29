@@ -64,5 +64,175 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-CESNET is a company surfaced via the API Evangelist harvest backlog (source: spectral-ruleset-github) and added to the network as a stub for full-pipeline profiling.
-- https://www.cesnet.cz/
+CESNET (CESNET, z.s.p.o., an association of legal entities) is the Czech national research and education network operator, an association of top Czech universities and the Czech Academy of Sciences. It runs the high-performance CESNET3 academic backbone and delivers ICT services to its members: networking, MetaCentrum computing, data storage (FileSender, ownCloud), identity federation and eduroam, multimedia/videoconferencing, and security services, and is part of the e-INFRA CZ research infrastructure. It publishes open-source projects, including the Perun identity and access management system, on GitHub.
+
+**Areas:** Company · Research and Education Network · Academic Networks · Czech Republic · High Performance Computing · Data Storage · Identity Federation · Cybersecurity
+
+## CESNET on APIs.io
+
+Everything profiled for CESNET is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cesnet/](https://apis.io/providers/cesnet/)** — or go straight to one of the APIs or properties below.
+
+### APIs (27)
+
+- [CESNET Attributes Manager API](https://apis.io/apis/cesnet/cesnet-attributesmanager-api/) — AttributesManager RPC API in Perun
+- [CESNET Audit Messages Manager API](https://apis.io/apis/cesnet/cesnet-auditmessagesmanager-api/) — AuditMessage RPC API in Perun
+- [CESNET Authorization API](https://apis.io/apis/cesnet/cesnet-authorization-api/) — Endpoints for obtaining and managing API tokens.
+- [CESNET Authz Resolver API](https://apis.io/apis/cesnet/cesnet-authzresolver-api/) — AuthzResolver RPC API in Perun
+- [CESNET Cabinet Manager API](https://apis.io/apis/cesnet/cesnet-cabinetmanager-api/) — CabinetManager RPC API in Perun
+- [CESNET Choices API](https://apis.io/apis/cesnet/cesnet-choices-api/) — Choices for rule actions and communities.
+- [CESNET Config Manager API](https://apis.io/apis/cesnet/cesnet-configmanager-api/) — ConfigManager RPC API in Perun
+- [CESNET Consents Manager API](https://apis.io/apis/cesnet/cesnet-consentsmanager-api/) — ConsentsManager RPC API in Perun
+- [CESNET Database Manager API](https://apis.io/apis/cesnet/cesnet-databasemanager-api/) — DatabaseManager RPC API in Perun
+- [CESNET Ext Sources Manager API](https://apis.io/apis/cesnet/cesnet-extsourcesmanager-api/) — ExtSourcesManager RPC API in Perun
+- [CESNET Facilities Manager API](https://apis.io/apis/cesnet/cesnet-facilitiesmanager-api/) — FacilitiesManager RPC API in Perun
+- [CESNET Groups Manager API](https://apis.io/apis/cesnet/cesnet-groupsmanager-api/) — GroupsManager RPC API in Perun
+- [CESNET Integration Manager API](https://apis.io/apis/cesnet/cesnet-integrationmanager-api/) — IntegrationManager RPC API in Perun
+- [CESNET Invitations Manager API](https://apis.io/apis/cesnet/cesnet-invitationsmanager-api/) — InvitationsManager RPC API in Perun
+- [CESNET Members Manager API](https://apis.io/apis/cesnet/cesnet-membersmanager-api/) — MembersManager RPC API in Perun
+- [CESNET Notification Manager API](https://apis.io/apis/cesnet/cesnet-notificationmanager-api/) — NotificationManager RPC API in Perun
+- [CESNET Owners Manager API](https://apis.io/apis/cesnet/cesnet-ownersmanager-api/) — OwnersManager RPC API in Perun
+- [CESNET Registrar Manager API](https://apis.io/apis/cesnet/cesnet-registrarmanager-api/) — RegistrarManager RPC API in Perun
+- [CESNET Resources Manager API](https://apis.io/apis/cesnet/cesnet-resourcesmanager-api/) — ResourcesManager RPC API in Perun
+- [CESNET RT Messages Manager API](https://apis.io/apis/cesnet/cesnet-rtmessagesmanager-api/) — RTMessagesManager RPC API in Perun
+- [CESNET Rules API](https://apis.io/apis/cesnet/cesnet-rules-api/) — Endpoints for managing IPv4, IPv6, and RTBH rules.
+- [CESNET Searcher API](https://apis.io/apis/cesnet/cesnet-searcher-api/) — Searcher RPC API in Perun
+- [CESNET Services Manager API](https://apis.io/apis/cesnet/cesnet-servicesmanager-api/) — ServicesManager RPC API in Perun
+- [CESNET Tasks Manager API](https://apis.io/apis/cesnet/cesnet-tasksmanager-api/) — TasksManager RPC API in Perun
+- [CESNET Users Manager API](https://apis.io/apis/cesnet/cesnet-usersmanager-api/) — UsersManager RPC API in Perun
+- [CESNET Utils API](https://apis.io/apis/cesnet/cesnet-utils-api/) — various utilities
+- [CESNET Vos Manager API](https://apis.io/apis/cesnet/cesnet-vosmanager-api/) — VosManager RPC API in Perun
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [cesnet-candidate](https://apis.io/servers/cesnet/cesnet-candidate/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Cesnet Agentic Access](https://apis.io/agentic-access/cesnet/cesnet-agentic-access/)
+
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [Application](https://apis.io/schemas/cesnet/cesnet-application/)
+- [ApplicationFormItem](https://apis.io/schemas/cesnet/cesnet-application-form-item/)
+- [ApplicationsPageQuery](https://apis.io/schemas/cesnet/cesnet-applications-page-query/)
+- [PerunNotifTemplate](https://apis.io/schemas/cesnet/cesnet-perun-notif-template/)
+- [Publication](https://apis.io/schemas/cesnet/cesnet-publication/)
+- [RegistrarApplicationInput](https://apis.io/schemas/cesnet/cesnet-registrar-application-input/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Cesnet Context](https://apis.io/jsonld/cesnet/cesnet-context/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Cesnet Exafs Overlay](https://apis.io/overlays/cesnet/cesnet-exafs-overlay/)
+- [Cesnet Perun Rpc Overlay](https://apis.io/overlays/cesnet/cesnet-perun-rpc-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [CESNET — perun rules](https://apis.io/rules/cesnet/cesnet-perun-spectral-rules/)
+- [CESNET API Rules](https://apis.io/rules/cesnet/cesnet-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cesnet Authentication](https://apis.io/security/cesnet/cesnet-authentication/)
+- [Cesnet Domain Security](https://apis.io/security/cesnet/cesnet-domain-security/)
+- [Cesnet Vulnerability Disclosure](https://apis.io/security/cesnet/cesnet-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Cesnet Plans Pricing](https://apis.io/plans/cesnet/cesnet-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Cesnet Rate Limits](https://apis.io/rate-limits/cesnet/cesnet-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.cesnet.cz/)
+- [Documentation](https://docs.du.cesnet.cz/)
+- [Getting started](https://docs.du.cesnet.cz/en/docs/object-storage-rbd/rbd-setup)
+- [Support](https://www.cesnet.cz/en/contacts)
+- [Security](https://csirt.cesnet.cz/en/vulnerability_report)
+- [Terms of service](https://www.cesnet.cz/en/terms-and-conditions)
+- [Privacy policy](https://www.cesnet.cz/en/gdpr)
+- [GitHub](https://github.com/CESNET)
+
+## API Evangelist rating
+
+**Kin Score 50.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.9 |
+| Contract quality | 56.2 |
+| Contract governance | 22.0 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 54.2 |
+| Access clarity | 34.2 |
+
+**Agent readiness 24.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 30.4** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cesnet/](https://apis.io/providers/cesnet/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for CESNET: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cesnet/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
